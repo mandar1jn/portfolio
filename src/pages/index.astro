@@ -39,7 +39,7 @@ const lastPosts = sortedPosts.slice(-3, sortedPosts.length);
 		<div class="grid grid-cols-1 gap-6 md:grid-cols-3">
 			{lastPosts.map((post) => 
 			(
-				<a class="hover:translate-y-1">
+				<a class="hover:translate-y-1" href={post.url}>
 					<div class="overflow-hidden rounded-md bg-slate-800">
 						<div class="aspect-w-3 aspect-h-2">
 							<img class="h-full w-full object-cover object-center" src={post.frontmatter.imgSrc} alt={post.frontmatter.imgAlt} loading="lazy" />
