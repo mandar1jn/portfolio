@@ -1,7 +1,7 @@
 ---
 import type { FrontMatter } from '../utils/posts';
 import BaseLayout from './Layout.astro'
-import {format} from 'date-fns'
+import {format, parseISO} from 'date-fns'
 
 export interface Props {
 	content: FrontMatter;
@@ -12,7 +12,7 @@ const {content} = Astro.props as Props;
 <BaseLayout head={{title: content.title, description: content.description}}>
 	<article class="mx-auto max-w-screen-lg px-3 py-6">
 		<h1>{content.title}</h1>
-		<h4>{format(content.pubDate, "MMM d, y")}</h4>
+		<h4>By Marijn Kneppers on {format(parseISO(content.pubDate), "MMM d, y")}</h4>
 		<slot />
 	</article>
 </BaseLayout>

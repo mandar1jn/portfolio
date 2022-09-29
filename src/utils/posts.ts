@@ -1,7 +1,7 @@
 export type FrontMatter = {
 	title: string;
 	description: string;
-	pubDate: Date;
+	pubDate: string;
 	imgSrc: string;
 	imgAlt: string;
 }
