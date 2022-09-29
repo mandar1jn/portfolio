@@ -1,0 +1,9 @@
+---
+import BaseLayout from './Layout.astro'
+---
+
+<BaseLayout head={{title: "test", description: "test 2"}}>
+	<article class="mx-auto max-w-screen-lg px-3 py-6">
+		<slot />
+	</article>
+</BaseLayout>
