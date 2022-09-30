@@ -11,9 +11,14 @@ const {content} = Astro.props as Props;
 ---
 <BaseLayout head={{title: content.title, description: content.description}}>
 	<article class="mx-auto max-w-screen-lg px-3 py-6">
-		<h1>{content.title}</h1>
-		<div>By Marijn Kneppers on {format(parseISO(content.pubDate), "MMM d, y")}</div>
-		<img src={content.imgSrc} alt={content.imgAlt} />
-		<slot />
+		<h1 class="text-4xl font-bold text-center">{content.title}</h1>
+		<div class="text-gray-400 text-center">By Marijn Kneppers on {format(parseISO(content.pubDate), "MMM d, y")}</div>
+		<div class="mx-auto mt-5 max-w-prose">
+			<img class="rounded-lg object-cover object-center" src={content.imgSrc} alt={content.imgAlt} />
+			<div class="prose prose-invert mt-8 prose-img:rounded-lg">
+				<slot />
+			</div>
+		</div>
+		
 	</article>
 </BaseLayout>
