@@ -21,7 +21,7 @@ After that, I loaded a save and placed a character on the portal. At this point,
 ### Dissecting the command
 So, after I found the command character, I looked at the data recorded by USB Monitor Pro. With this, I created a command called SetColorAlternative and I ran all the commands I found to find out what they did. This resulted in the following results:
 
-``
+<pre>
 SetColorAlternative(0x00, 0x14, 0x28, 0x14, 0xF4, 0x01) (right grey)
 SetColorAlternative(0x00, 0x00, 0xFF, 0x00, 0xD0, 0x07) (right green)
 SetColorAlternative(0x00, 0x00, 0x00, 0x00, 0x00, 0x00) (disable right side)
@@ -30,7 +30,7 @@ SetColorAlternative(0x00, 0x00, 0x00, 0xFF, 0xD0, 0x07) (right blue)
 SetColorAlternative(0x02, 0xFF, 0x00, 0x00, 0xD0, 0x07) (left red)
 SetColorAlternative(0x00, 0xFF, 0x00, 0x00, 0xD0, 0x07) (right red)
 SetColorAlternative(0x00, 0x64, 0x3C, 0x64, 0xF4, 0x01) (right pink)
-``
+</pre>
 
 The first thing I looked at was the side. What I discovered, is that the first byte after the command character is the side where the right is 0x00 and the left is 0x02. Then, I started looking at the colors. Specifically, the primary colors. With this, I found that the second, third, and fourth bytes after the command character represents the colors as an RGB value. The last two bytes are the duration to fade from the original color to the target color. Sadly, I don’t know the correct way to calculate the duration. Just know that a bigger number Is a longer duration.
 
