@@ -9,7 +9,7 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   const allPosts = await Astro.glob<FrontMatter>('./*.md');
   const sortedPosts = sortByDate(allPosts);
   
-  return paginate(sortedPosts, { pageSize: 6 });
+  return paginate(sortedPosts, { pageSize: 1 });
 }
 export interface Props {
   page: Page<MarkdownInstance<FrontMatter>>;
@@ -40,11 +40,13 @@ const description = "blog desc";
 	</Section>
 	<Section>
 		<div class="flex justify-between">
-			<a class="w-30 hover:-translate-x-1" href={page.url.prev}>
+			<div class="w-28 hover:-translate-x-1">
 				{page.url.prev &&
-				"← Older posts"
+					<a href={page.url.prev}>	
+						← Older posts
+					</a>
 				}
-			</a>
+			</div>
 			<div class="flex justify-around w-96">
 			{
 				[...Array(page.lastPage)].map((el, index) => (
@@ -52,11 +54,13 @@ const description = "blog desc";
 				))
 			}
 			</div>
-			<a class="w-30 hover:translate-x-1" href={page.url.next}>
+			<div class="w-28 hover:-translate-x-1">
 				{page.url.next &&
-					"Newer posts →"
+					<a href={page.url.next}>	
+						Newer posts →
+					</a>
 				}
-			</a>
+			</div>
 		</div>
 	</Section>
 
