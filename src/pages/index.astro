@@ -7,7 +7,7 @@ import { FrontMatter, sortByDate } from '../utils/posts';
 
 const posts = await Astro.glob<FrontMatter>("./posts/*.md");
 const sortedPosts = sortByDate(posts);
-const lastPosts = sortedPosts.slice(-3, sortedPosts.length);
+const lastPosts = sortedPosts.slice(0, 3);
 ---
 
 <Layout head={{title: "Welcome to Astro.", description: "The main page"}}>
