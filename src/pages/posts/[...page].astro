@@ -1,0 +1,26 @@
+---
+import type { GetStaticPathsOptions, Page } from "astro";
+import Layout from "../../layouts/Layout.astro"
+import { FrontMatter, sortByDate } from "../../utils/posts";
+
+export async function getStaticPaths({paginate}: GetStaticPathsOptions)
+{
+	const allPosts = await Astro.glob<FrontMatter>("./*.md");
+	const sortedPosts = sortByDate(allPosts);
+
+	return paginate(sortedPosts, {pageSize: 6});
+}
+
+export interface Props {
+	page: Page;
+}
+
+const {page} = Astro.props as Props;
+
+const title = "blog page " + page.currentPage;
+const description = "blog desc";
+---
+
+<Layout head={{title, description}}>
+
+</Layout>
