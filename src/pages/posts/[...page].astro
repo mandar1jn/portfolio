@@ -29,5 +29,26 @@ const description = "blog desc";
 			))}
 		</div>
 	</Section>
+	<Section>
+		<div class="flex justify-between">
+			<a class="w-20 hover:-translate-x-1" href={page.url.prev}>
+				{page.url.prev &&
+				"← Previous"
+				}
+			</a>
+			<div class="flex justify-around w-96">
+			{
+				[...Array(page.lastPage)].map((el, index) => (
+					<a href={`/posts/${(index != 0)? index + 1 : ""}`}>{index + 1}</a>
+				))
+			}
+			</div>
+			<a class="w-20 hover:translate-x-1" href={page.url.next}>
+				{page.url.next &&
+					"Next →"
+				}
+			</a>
+		</div>
+	</Section>
 
 </Layout>
