@@ -9,5 +9,6 @@ export default defineConfig({
   site: "https://test.com",
   integrations: [sitemap(), image({
     serviceEntryPoint: '@astrojs/image/sharp'
-  }), tailwind()]
+  }), tailwind()],
+  output: "static"
 });

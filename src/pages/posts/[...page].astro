@@ -5,14 +5,14 @@ import { FrontMatter, sortByDate } from "../../utils/posts";
 
 export async function getStaticPaths({paginate}: GetStaticPathsOptions)
 {
-	const allPosts = await Astro.glob<FrontMatter>("./*.md");
-	const sortedPosts = sortByDate(allPosts);
+    const allPosts = await Astro.glob<FrontMatter>("./*.md");
+    const sortedPosts = sortByDate(allPosts);
 
-	return paginate(sortedPosts, {pageSize: 6});
+    return paginate(sortedPosts, {pageSize: 6});
 }
 
 export interface Props {
-	page: Page;
+    page: Page;
 }
 
 const {page} = Astro.props as Props;
