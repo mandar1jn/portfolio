@@ -1,0 +1,24 @@
+---
+import type { MarkdownInstance } from "astro";
+import { format, parseISO } from "date-fns";
+import type { FrontMatter } from "../utils/posts";
+
+export interface Props {
+	post: MarkdownInstance<FrontMatter>
+}
+
+const {post} = Astro.props as Props;
+---
+
+<a class="hover:translate-y-1" href={post.url}>
+	<div class="overflow-hidden rounded-md bg-slate-800">
+		<div class="aspect-w-3 aspect-h-2">
+			<img class="h-full w-full object-cover object-center" src={post.frontmatter.imgSrc} alt={post.frontmatter.imgAlt} loading="lazy" />
+		</div>
+		<div class="px-3 pt-4 pb-6 text-center">
+			<h2 class="text-xl font-semibold">{post.frontmatter.title}</h2>
+			<div class="mt-1 text-xs text-gray-400">{format(parseISO(post.frontmatter.pubDate), "MMM d, y")}</div>
+			<div class="mt-2 text-sm">{post.frontmatter.description}</div>
+		</div>
+	</div>
+</a>
