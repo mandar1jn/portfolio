@@ -22,3 +22,9 @@ pnpm-debug.log*
 # Visual Studio folder
 .vs/
 .vscode/
+
+# yarn berry
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+.pnp.*
