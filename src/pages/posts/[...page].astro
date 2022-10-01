@@ -49,7 +49,7 @@ const description = "blog desc";
 			</div>
 			<div class="flex justify-around w-96">
 			{
-				[...Array(page.lastPage)].map((el, index) => (
+				[...Array(page.lastPage)].map((_, index) => (
 					<a href={`/posts/${(index != 0)? index + 1 : ""}`}>{index + 1}</a>
 				))
 			}
