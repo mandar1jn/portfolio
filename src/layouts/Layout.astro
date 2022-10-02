@@ -62,10 +62,22 @@ const { head: { title, description} } = Astro.props as Props;
 		font-size: var(--font-size-lg);
 	}
 
-	code, pre {
+	code {
 		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
 			Bitstream Vera Sans Mono, Courier New, monospace;
 		
-		@apply bg-slate-800 pt-1 pb-1 pr-2 pl-2 border-spacing-1 rounded inline-block
+		@apply bg-slate-800 pt-1 pb-1 pr-2 pl-2 border-spacing-1 rounded inline-block mb-4
+	}
+
+	a {
+		@apply hover:text-cyan-400 underline
+	}
+
+	p {
+		@apply mb-4
+	}
+
+	.gradient {
+		@apply bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-transparent
 	}
 </style>

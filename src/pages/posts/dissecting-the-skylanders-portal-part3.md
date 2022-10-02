@@ -21,22 +21,20 @@ After that, I loaded a save and placed a character on the portal. At this point,
 ### Dissecting the command
 So, after I found the command character, I looked at the data recorded by USB Monitor Pro. With this, I created a command called SetColorAlternative and I ran all the commands I found to find out what they did. This resulted in the following results:
 
-<pre>
-SetColorAlternative(0x00, 0x14, 0x28, 0x14, 0xF4, 0x01) (right grey)
-SetColorAlternative(0x00, 0x00, 0xFF, 0x00, 0xD0, 0x07) (right green)
-SetColorAlternative(0x00, 0x00, 0x00, 0x00, 0x00, 0x00) (disable right side)
-SetColorAlternative(0x02, 0x00, 0xFF, 0x00, 0xD0, 0x07) (left green)
-SetColorAlternative(0x00, 0x00, 0x00, 0xFF, 0xD0, 0x07) (right blue)
-SetColorAlternative(0x02, 0xFF, 0x00, 0x00, 0xD0, 0x07) (left red)
-SetColorAlternative(0x00, 0xFF, 0x00, 0x00, 0xD0, 0x07) (right red)
-SetColorAlternative(0x00, 0x64, 0x3C, 0x64, 0xF4, 0x01) (right pink)
-</pre>
+    SetColorAlternative(0x00, 0x14, 0x28, 0x14, 0xF4, 0x01) (right grey)
+    SetColorAlternative(0x00, 0x00, 0xFF, 0x00, 0xD0, 0x07) (right green)
+    SetColorAlternative(0x00, 0x00, 0x00, 0x00, 0x00, 0x00) (disable right side)
+    SetColorAlternative(0x02, 0x00, 0xFF, 0x00, 0xD0, 0x07) (left green)
+    SetColorAlternative(0x00, 0x00, 0x00, 0xFF, 0xD0, 0x07) (right blue)
+    SetColorAlternative(0x02, 0xFF, 0x00, 0x00, 0xD0, 0x07) (left red)
+    SetColorAlternative(0x00, 0xFF, 0x00, 0x00, 0xD0, 0x07) (right red)
+    SetColorAlternative(0x00, 0x64, 0x3C, 0x64, 0xF4, 0x01) (right pink)
 
 The first thing I looked at was the side. What I discovered, is that the first byte after the command character is the side where the right is 0x00 and the left is 0x02. Then, I started looking at the colors. Specifically, the primary colors. With this, I found that the second, third, and fourth bytes after the command character represents the colors as an RGB value. The last two bytes are the duration to fade from the original color to the target color. Sadly, I don’t know the correct way to calculate the duration. Just know that a bigger number Is a longer duration.
 
 This all leads to a final command structure:
 
-`['J', (0x00 | 0x02), (0x00 - 0xFF), (0x00 - 0xFF), (0x00 - 0xFF), (0x00 - 0xFF), (0x00 - 0xFF)]`
+    ['J', (0x00 | 0x02), (0x00 - 0xFF), (0x00 - 0xFF), (0x00 - 0xFF), (0x00 - 0xFF), (0x00 - 0xFF)]
 
 ## The editor
 Although dissecting this command took some time, it was not the main reason why this story took so long. As my goal is to make editing Skylanders as accessible as possible, I decided to start working on a visual editor so I don’t have to refactor all my code to work with this later on. This also required some changes to the way my project was set up. For the rendering of the application, I used [Raylib](https://github.com/raysan5/raylib) and [Raygui](https://github.com/raysan5/raygui)

@@ -6,9 +6,9 @@ import Section from "../components/Section.astro";
 	<div
 		class="flex flex-col gap-y-3 sm:flex-row sm:items-center sm:justify-between"
 	>
-		<a href="/"
+		<a class="no-underline" href="/"
 			><div
-				class="flex items-center bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-xl font-bold text-transparent"
+				class="flex items-center text-xl font-bold gradient"
 			>
 			<!-- TODO: insert logo (SVG) -->	
 			Marijn Kneppers
@@ -17,13 +17,13 @@ import Section from "../components/Section.astro";
 		<nav>
 			<ul class="flex gap-x-3 font-medium text-gray-200">
 				<li class="hover:text-white">
-					<a href="/">Home</a>
+					<a class="no-underline" href="/">Home</a>
 				</li>
 				<li class="hover:text-white">
-					<a href="/posts/">Posts</a>
+					<a class="no-underline" href="/posts/">Posts</a>
 				</li>
 				<li class="hover:text-white">
-					<a href="https://github.com/mandar1jn" target="_blank">GitHub</a>
+					<a class="no-underline" href="https://github.com/mandar1jn" target="_blank">GitHub</a>
 				</li>
 			</ul>
 		</nav>
