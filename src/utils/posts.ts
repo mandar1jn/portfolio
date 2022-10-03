@@ -1,6 +1,6 @@
 import type { MarkdownInstance } from "astro";
 
-export type FrontMatter = {
+export type PostFrontMatter = {
 	title: string;
 	description: string;
 	pubDate: string;
@@ -8,7 +8,7 @@ export type FrontMatter = {
 	imgAlt: string;
 }
 
-export const sortByDate = (posts: MarkdownInstance<FrontMatter>[]) => {
+export const sortByDate = (posts: MarkdownInstance<PostFrontMatter>[]) => {
 	return posts.sort(
 	  (a, b) =>
 		new Date(b.frontmatter.pubDate).valueOf() -

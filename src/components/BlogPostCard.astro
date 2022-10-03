@@ -1,10 +1,10 @@
 ---
 import type { MarkdownInstance } from "astro";
 import { format, parseISO } from "date-fns";
-import type { FrontMatter } from "../utils/posts";
+import type { PostFrontMatter } from "../utils/posts";
 
 export interface Props {
-	post: MarkdownInstance<FrontMatter>
+	post: MarkdownInstance<PostFrontMatter>
 }
 
 const {post} = Astro.props as Props;
