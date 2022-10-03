@@ -10,4 +10,4 @@ export interface Tag{
 	textColor: Color;
 }
 
-export const UnityTag = {name: "Unity", backgroundColor: {red: 5, green: 5, blue: 5}, textColor: {red: 50, green: 50, blue: 50}};
+export const UnityTag = {name: "Unity", backgroundColor: {red: 149, green: 149, blue: 149}, textColor: {red: 0, green: 0, blue: 0}};
