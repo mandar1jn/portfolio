@@ -1,7 +1,7 @@
 ---
 import type { MarkdownContent, MarkdownInstance } from 'astro';
 import type { ProjectFrontMatter } from '../utils/projects';
-import { UnityTag } from '../utils/tags';
+import { ProjectTag, tags } from '../utils/tags';
 import Tag from './Tag.astro';
 
 export interface Props {
@@ -9,6 +9,15 @@ export interface Props {
 }
 
 const {project} = Astro.props as Props;
+let usedTags: ProjectTag[] = [];
+
+for(let i: number = 0; i < project.frontmatter.tags.length; i++)
+{
+	if(tags[project.frontmatter.tags[i]])
+	{
+		usedTags.push(tags[project.frontmatter.tags[i]]);
+	}
+}
 ---
 
 <div class="bg-slate-700 flex flex-col items-center p-3 gap-x-8 rounded-md md:flex-row">
@@ -29,7 +38,12 @@ const {project} = Astro.props as Props;
 				</a>
 			</div>
 			<div class="ml-3 flex gap-2">
-				<Tag tag={UnityTag} />
+				{
+					usedTags.map((tag) =>
+					(
+						<Tag tag={tag} />
+					))
+				}
 			</div>
 		</div>
 		<p class="mt-4 text-gray-400">

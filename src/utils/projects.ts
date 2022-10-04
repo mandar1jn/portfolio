@@ -3,4 +3,5 @@ export type ProjectFrontMatter = {
 	description: string;
 	imgSrc: string;
 	imgAlt: string;
+	tags: string[]
 }
