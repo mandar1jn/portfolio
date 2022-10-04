@@ -3,16 +3,16 @@ import type { GetStaticPathsOptions, MarkdownInstance, Page } from 'astro';
 import BlogPostCard from '../../components/BlogPostCard.astro';
 import Section from '../../components/Section.astro';
 import Layout from '../../layouts/Layout.astro';
-import { FrontMatter, sortByDate } from '../../utils/posts';
+import { PostFrontMatter, sortByDate } from '../../utils/posts';
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-  const allPosts = await Astro.glob<FrontMatter>('./*.md');
+  const allPosts = await Astro.glob<PostFrontMatter>('./*.md');
   const sortedPosts = sortByDate(allPosts);
   
   return paginate(sortedPosts, { pageSize: 6 });
 }
 export interface Props {
-  page: Page<MarkdownInstance<FrontMatter>>;
+  page: Page<MarkdownInstance<PostFrontMatter>>;
 }
 const { page } = Astro.props as Props;
 
