@@ -3,7 +3,7 @@ layout: "../../layouts/BlogLayout.astro"
 title: "Dissecting the Skylanders portal - part 1"
 description: "Dissecting how the portal of power works, and how you can play with it too."
 pubDate: 2022-06-24T13:08:45+0200
-imgSrc: "/images/runic-portal.png"
+imgSrc: "/images/blog/skylanders-editor/runic-portal.png"
 imgAlt: "A picture of the runic portal from Skylanders: Spyro's adventure"
 ---
 

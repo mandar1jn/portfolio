@@ -3,7 +3,7 @@ layout: "../../layouts/BlogLayout.astro"
 title: "Dissecting the Skylanders portal - part 3"
 description: "Dissecting how the portal of power works, and how you can play with it too."
 pubDate: 2022-07-02T15:07:51+0200
-imgSrc: "/images/runic-portal.png"
+imgSrc: "/images/blog/skylanders-editor/runic-portal.png"
 imgAlt: "A picture of the runic portal from Skylanders: Spyro's adventure"
 ---
 In the first 2 stories, we’ve looked at the structure of a few commands. However, these commands were already documented elsewhere, and although I verified the data, nothing new was discovered. In this story, however, I will document a command that, as far as I can find, has not been documented anywhere before.
@@ -39,7 +39,7 @@ This all leads to a final command structure:
 ## The editor
 Although dissecting this command took some time, it was not the main reason why this story took so long. As my goal is to make editing Skylanders as accessible as possible, I decided to start working on a visual editor so I don’t have to refactor all my code to work with this later on. This also required some changes to the way my project was set up. For the rendering of the application, I used [Raylib](https://github.com/raysan5/raylib) and [Raygui](https://github.com/raysan5/raygui)
 
-![A screenshot of the editor in its current state](/images/editor-raylib.png)
+![A screenshot of the editor in its current state](/images/blog/skylanders-editor/editor-raylib.png)
 
 As you can see, this is still very much a work in progress. Currently, you can connect to the portal and you can set the color. My next goal is to add the ability to set the color of either side and to add some debug features to the editor.
 
