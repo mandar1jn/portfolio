@@ -15,7 +15,7 @@ const {content} = Astro.props as Props;
 		<div class="text-gray-400 text-center">By Marijn Kneppers on {format(parseISO(content.pubDate), "MMM d, y")}</div>
 		<div class="mx-auto mt-5 max-w-prose">
 				<img class="rounded-lg object-cover mx-auto" src={content.imgSrc} alt={content.imgAlt} />
-			<div class="prose prose-invert mt-8 prose-img:rounded-lg">
+			<div class="prose prose-invert mt-8 prose-img:rounded-lg prose-headings:mt-0 prose-headings:mb-0">
 				<slot />
 			</div>
 		</div>
