@@ -8,7 +8,7 @@ export type PostFrontMatter = {
 	imgAlt: string;
 }
 
-export const sortByDate = (posts: MarkdownInstance<PostFrontMatter>[]) => {
+export const sortPostsByDate = (posts: MarkdownInstance<PostFrontMatter>[]) => {
 	return posts.sort(
 	  (a, b) =>
 		new Date(b.frontmatter.pubDate).valueOf() -

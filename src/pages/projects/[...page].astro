@@ -1,12 +1,15 @@
 ---
 import type { GetStaticPathsOptions, MarkdownInstance, Page } from "astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import Section from "../../components/Section.astro";
 import Layout from "../../layouts/Layout.astro";
-import type { ProjectFrontMatter } from "../../utils/projects";
+import { ProjectFrontMatter, sortProjectsByDate } from "../../utils/projects";
 
 export async function getStaticPaths({paginate}: GetStaticPathsOptions)  {
 	const allProjects = await Astro.glob<ProjectFrontMatter>("./*.md");
+	const sortedProjects = sortProjectsByDate(allProjects);
 
-	return paginate(allProjects);
+	return paginate(sortedProjects, {pageSize: 3});
 }
 
 export interface Props {
@@ -19,5 +22,48 @@ const title = "projects page " + page.currentPage;
 const description = "projects desc";
 ---
 
-<Layout head={{title, description}}>
+<Layout head={{ title, description }}>
+  
+	<Section>
+		<div class="text-center">
+			<h1 class="text-4xl font-bold">Marijn Kneppers' projects</h1>
+			<div class="mt-3 text-gray-200">
+				Here you can read all the amazing projects that I worked on
+			</div>
+		</div>
+	</Section>
+
+	<Section>
+		<div class={`gridrounded-md p-3 gap-4`}>
+			{page.data.map((project) => (
+				<ProjectCard project={project} />
+			))}
+		</div>
+	</Section>
+	<Section>
+		<div class="flex justify-between">
+			<div class="w-28 hover:-translate-x-1">
+				{page.url.prev &&
+					<a class="no-underline" href={page.url.prev}>	
+						← Older projects
+					</a>
+				}
+			</div>
+			<div class="flex justify-around w-96">
+			{
+				[...Array(page.lastPage)].map((_, index) => (
+					<a class="no-underline" href={`/posts/${(index != 0)? index + 1 : ""}`}>{index + 1}</a>
+				))
+			}
+			</div>
+			<div class="w-28 hover:-translate-x-1">
+				{page.url.next &&
+					<a class="no-underline" href={page.url.next}>	
+						Newer projects →
+					</a>
+				}
+			</div>
+		</div>
+	</Section>
+
 </Layout>

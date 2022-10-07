@@ -3,14 +3,17 @@ import BlogPostCard from '../components/BlogPostCard.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import Section from '../components/Section.astro';
 import Layout from '../layouts/Layout.astro';
-import { PostFrontMatter, sortByDate } from '../utils/posts';
-import type { ProjectFrontMatter } from '../utils/projects';
+import { PostFrontMatter, sortPostsByDate } from '../utils/posts';
+import { ProjectFrontMatter, sortProjectsByDate } from '../utils/projects';
 
 const posts = await Astro.glob<PostFrontMatter>("./posts/*.md");
-const sortedPosts = sortByDate(posts);
+const sortedPosts = sortPostsByDate(posts);
 const lastPosts = sortedPosts.slice(0, 3);
 
 const projects = await Astro.glob<ProjectFrontMatter>("./projects/*.md");
+const sortedProjects = sortProjectsByDate(projects);
+const lastProjects = sortedProjects.slice(0, 3);
+
 ---
 
 <Layout head={{title: "Welcome to Astro.", description: "The main page"}}>
@@ -42,7 +45,7 @@ const projects = await Astro.glob<ProjectFrontMatter>("./projects/*.md");
 		</div>
 		<div class="grid bg-slate-800 rounded-md p-3 gap-4">
 			{
-				projects.map((project) => (
+				lastProjects.map((project) => (
 					<ProjectCard project={project} />
 				))
 			}
