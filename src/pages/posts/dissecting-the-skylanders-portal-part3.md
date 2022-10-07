@@ -43,4 +43,4 @@ Although dissecting this command took some time, it was not the main reason why 
 
 As you can see, this is still very much a work in progress. Currently, you can connect to the portal and you can set the color. My next goal is to add the ability to set the color of either side and to add some debug features to the editor.
 
-As always, the source for this project can be found [here](https://github.com/mandar1jn/SkylandersEditor).
+As always, the source for this project can be found [on github](https://github.com/mandar1jn/SkylandersEditor).
