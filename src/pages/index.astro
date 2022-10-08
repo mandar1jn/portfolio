@@ -15,7 +15,7 @@ const projects = await Astro.glob<ProjectFrontMatter>("./projects/*.md");
 const sortedProjects = sortProjectsByDate(projects);
 const lastProjects = sortedProjects.slice(0, 3);
 
-import foto from "../../public/images/foto.jpg"
+import foto from "../images/foto.jpg"
 
 ---
 
