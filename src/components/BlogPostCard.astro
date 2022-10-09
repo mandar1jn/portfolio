@@ -13,7 +13,7 @@ const {post} = Astro.props as Props;
 <a class="hover:translate-y-1 no-underline max-w-md mx-auto" href={post.url}>
 	<div class="overflow-hidden rounded-md bg-slate-800">
 		<div class="aspect-w-3 aspect-h-2">
-			<img class="h-full w-full object-cover object-center" src={post.frontmatter.imgSrc} alt={post.frontmatter.imgAlt} />
+			<img class="h-full w-full object-cover object-center" width="313px" height="246px" src={post.frontmatter.imgSrc} alt={post.frontmatter.imgAlt} />
 		</div>
 		<div class="px-3 pt-4 pb-6 text-center">
 			<h2 class="text-xl font-semibold">{post.frontmatter.title}</h2>
