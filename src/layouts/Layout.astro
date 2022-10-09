@@ -23,7 +23,7 @@ const { head: { title, description} } = Astro.props as Props;
 		<meta name="author" content="Marijn Kneppers" />
 		<title>{title} - {siteName}</title>
 	</head>
-	<body class="bg-slate-900 text-gray-100">
+	<body class="text-gray-100">
 		<NavBar />
 		<slot />
 		<Footer />
@@ -36,18 +36,20 @@ const { head: { title, description} } = Astro.props as Props;
 		--font-size-xl: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
 
 		--color-text: hsl(12, 5%, 4%);
-		--color-bg: hsl(10, 21%, 95%);
 		--color-border: hsl(17, 24%, 90%);
 	}
 
 	html {
 		font-size: var(--font-size-base);
 		color: var(--color-text);
-		background-color: var(--color-bg);
 	}
 </style>
 
 <style is:global>
+
+	html {
+		@apply bg-slate-900
+	}
 
 	h1 {
 		font-size: var(--font-size-xl);

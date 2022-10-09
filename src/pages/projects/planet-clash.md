@@ -8,4 +8,4 @@ pubDate: "Sat Jan 29 2022 21:00:00 GMT+0200"
 tags: ["c", "raylib", "webassembly"]
 ---
 
-a cool mod
+a cool game
