@@ -17,7 +17,7 @@ The theme reminded me of a tutorial series created by blackthornprod on [how to 
 The basic gameplay was made in the first day using the basic circle drawing function from raylib. 
 This, of course, looked really bad. So, on the second day, my little brother created all the sprites you see in game while I expanded the gameplay and programmed in the sprites.
 
-
+The game is available on [itch.io](https://mandar1jn.itch.io/planet-clash) and the source is available on [github](https://github.com/mandar1jn/planet-clash)
 
 ![The main menu screen](/images/projects/planet-clash/main_menu.png)
 ![The gameplay screen](/images/projects/planet-clash/gameplay.png)
