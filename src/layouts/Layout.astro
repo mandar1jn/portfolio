@@ -1,7 +1,7 @@
 ---
 import Footer from "../components/Footer.astro";
 import NavBar from "../components/NavBar.astro";
-import { siteName } from "../utils/config";
+import config from "../utils/config";
 
 export interface Props {
 	head: {
@@ -20,8 +20,9 @@ const { head: { title, description} } = Astro.props as Props;
 		<meta name="viewport" content="width=device-width" />
 		<meta name="description" content={description} />
 		<meta name="generator" content={Astro.generator} />
-		<meta name="author" content="Marijn Kneppers" />
-		<title>{title} - {siteName}</title>
+		<meta name="author" content={config.author.fullName} />
+		<meta name="copyright" content={config.author.fullName} />
+		<title>{title} - {config.siteName}</title>
 	</head>
 	<body class="text-gray-100">
 		<NavBar />
