@@ -44,7 +44,7 @@ const description = "projects desc";
 		<div class="flex justify-between">
 			<div class="w-28 hover:-translate-x-1">
 				{page.url.prev &&
-					<a class="no-underline" href={page.url.prev}>	
+					<a href={page.url.prev}>	
 						← Older projects
 					</a>
 				}
@@ -52,13 +52,13 @@ const description = "projects desc";
 			<div class="flex justify-around w-96">
 			{
 				[...Array(page.lastPage)].map((_, index) => (
-					<a class="no-underline" href={`/posts/${(index != 0)? index + 1 : ""}`}>{index + 1}</a>
+					<a href={`/posts/${(index != 0)? index + 1 : ""}`}>{index + 1}</a>
 				))
 			}
 			</div>
 			<div class="w-28 hover:-translate-x-1">
 				{page.url.next &&
-					<a class="no-underline" href={page.url.next}>	
+					<a href={page.url.next}>	
 						Newer projects →
 					</a>
 				}

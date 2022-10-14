@@ -10,7 +10,7 @@ export interface Props {
 const {post} = Astro.props as Props;
 ---
 
-<a class="hover:translate-y-1 no-underline max-w-md mx-auto" href={post.url}>
+<a class="hover:translate-y-1 max-w-md mx-auto" href={post.url}>
 	<div class="overflow-hidden rounded-md bg-slate-800">
 		<div class="aspect-w-3 aspect-h-2">
 			<img class="h-full w-full object-cover object-center" width="313px" height="246px" src={post.frontmatter.imgSrc} alt={post.frontmatter.imgAlt} />
