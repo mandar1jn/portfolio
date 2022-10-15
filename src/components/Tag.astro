@@ -8,8 +8,8 @@ export interface Props {
 const {tag} = Astro.props as Props;
 ---
 
-<div class="rounded-md px-2 py-1 text-xs font-semibold" style={`background-color: #${tag.backgroundColor.red.toString(16)}${tag.backgroundColor.green.toString(16)}${tag.backgroundColor.blue.toString(16)}; color: #${tag.textColor.red.toString(16)}${tag.textColor.green.toString(16)}${tag.textColor.blue.toString(16)};`}>
+<span class="rounded-md px-2 py-1 text-xs font-semibold" style={`background-color: #${tag.backgroundColor.red.toString(16)}${tag.backgroundColor.green.toString(16)}${tag.backgroundColor.blue.toString(16)}; color: #${tag.textColor.red.toString(16)}${tag.textColor.green.toString(16)}${tag.textColor.blue.toString(16)};`}>
 	{
 		tag.name
 	}
-</div>
+</span>

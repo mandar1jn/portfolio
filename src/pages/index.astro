@@ -16,6 +16,8 @@ const sortedProjects = sortProjectsByDate(projects);
 const lastProjects = sortedProjects.slice(0, 3);
 
 import foto from "../images/foto.jpg"
+import Tag from '../components/Tag.astro';
+import { tags } from '../utils/tags';
 
 ---
 
@@ -28,7 +30,7 @@ import foto from "../images/foto.jpg"
 					Hello. I'm <span class="gradient">Marijn Kneppers</span>
 				</h1>
 				<p class="mt-6 text-xl leading-9">
-					I'm a 16 year old developer living in the Netherlands
+					I'm an enthousiastic 16 year old developer living in the Netherlands.
 				</p>
 				</div>
 				<div class="shrink-0">

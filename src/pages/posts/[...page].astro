@@ -17,7 +17,7 @@ export interface Props {
 const { page } = Astro.props as Props;
 
 const title = "Posts page " + page.currentPage;
-const description = "Here you can read about what's on my mind or what I'm currently working on";
+const description = "Here you can read all about what's on my mind or what I'm currently working on";
 ---
 
 <Layout head={{ title, description }}>
@@ -26,7 +26,7 @@ const description = "Here you can read about what's on my mind or what I'm curre
 		<div class="text-center">
 			<h1 class="text-4xl font-bold">Marijn Kneppers' blog</h1>
 			<div class="mt-3 text-gray-200">
-				Here you can read my amazing posts
+				Here you can read all about what's on my mind or what I'm currently working on
 			</div>
 		</div>
 	</Section>
