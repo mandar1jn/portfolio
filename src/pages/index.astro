@@ -16,39 +16,37 @@ const sortedProjects = sortProjectsByDate(projects);
 const lastProjects = sortedProjects.slice(0, 3);
 
 import foto from "../images/foto.jpg"
-import Tag from '../components/Tag.astro';
-import { tags } from '../utils/tags';
 
 ---
 
 <Layout head={{title: "Home", description: "Hello. I'm Marijn Kneppers, a 16 year old developer from the Netherlands."}}>
 	<Section>
 		<main>
-			<div class="flex flex-col items-center md:flex-row md:justify-between md:gap-x-24">
+			<div class="introductionContainer">
 				<div>
-				<h1 class="text-3xl font-bold mb-0 mt-0">
+				<h1 class="introductionName">
 					Hello. I'm <span class="gradient">Marijn Kneppers</span>
 				</h1>
-				<p class="mt-6 text-xl leading-9">
+				<p class="introduction">
 					I'm an enthousiastic 16 year old developer living in the Netherlands.
 				</p>
 				</div>
-				<div class="shrink-0">
+				<div class="image">
 					<Image aspectRatio={0.75} width={300} src={foto} alt="A picture of me" loading={"eager"} />
 				</div>
 			</div>
 		</main>
 	</Section>
 	<Section>
-		<div class="flex items-baseline justify-between mb-4">
-			<div class="text-2xl font-bold">
+		<div class="articlesHeader">
+			<div class="recent">
 				Recent <span class="gradient">Projects</span>
 			</div>
-			<div class="text-sm hover:translate-x-1">
+			<div class="viewAll">
 				<a href="/projects/">View all projects →</a>
 			</div>
 		</div>
-		<div class="grid bg-slate-800 rounded-md p-3 gap-4">
+		<div class="projects">
 			{
 				lastProjects.map((project) => (
 					<ProjectCard project={project} />
@@ -57,15 +55,15 @@ import { tags } from '../utils/tags';
 		</div>
 	</Section>
 	<Section>
-		<div class="flex items-baseline justify-between mb-4">
-			<div class="text-2xl font-bold">
+		<div class="articlesHeader">
+			<div class="recent">
 				Recent <span class="gradient">Posts</span>
 			</div>
-			<div class="text-sm hover:translate-x-1">
+			<div class="viewAll">
 				<a href="/posts/">View all posts →</a>
 			</div>
 		</div>
-		<div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
+		<div class="blogPosts">
 			{lastPosts.map((post) => 
 			(
 				<BlogPostCard post={post} />
@@ -73,3 +71,34 @@ import { tags } from '../utils/tags';
 		</div>
 	</Section>
 </Layout>
+
+<style>
+	.introductionContainer {
+		@apply flex flex-col items-center md:flex-row md:justify-between md:gap-x-24
+	}
+	.introductionName {
+		@apply text-3xl font-bold mb-0 mt-0
+	}
+	.introduction {
+		@apply mt-6 text-xl leading-9
+	}
+	.image {
+		@apply shrink-0
+	}
+	.articlesHeader {
+		@apply flex items-baseline justify-between mb-4
+	}
+	.recent {
+		@apply text-2xl font-bold
+	}
+	.viewAll {
+		@apply text-sm hover:translate-x-1
+	}
+	.projects {
+		@apply grid bg-slate-800 rounded-md p-3 gap-4
+	}
+
+	.blogPosts {
+		@apply grid grid-cols-1 gap-6 sm:grid-cols-3
+	}
+</style>

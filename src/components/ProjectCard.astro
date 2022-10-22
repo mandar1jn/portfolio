@@ -20,24 +20,22 @@ for(let i: number = 0; i < project.frontmatter.tags.length; i++)
 }
 ---
 
-<div class="bg-slate-700 flex flex-col items-center p-3 gap-x-8 rounded-md md:flex-row">
-	<div class="shrink-0">
+<div class="projectCard">
+	<div class="imageContainer">
 		<a href={project.url}>
-			<img src={project.frontmatter.imgSrc} alt={project.frontmatter.imgAlt} class="h-36 w-36 hover:translate-y-1" />
+			<img src={project.frontmatter.imgSrc} alt={project.frontmatter.imgAlt} class="image" />
 		</a>
 	</div>
 	<div>
-		<div class="flex flex-col items-center md:flex-row">
-			<div>
-				<a href={project.url} class="hover:text-cyan-400">
-					<div class="font-bold text-xl">
-						{
-							project.frontmatter.title
-						}
-					</div>
-				</a>
-			</div>
-			<div class="ml-3 flex gap-2">
+		<div class="titleContainer">
+			<a href={project.url}>
+				<div class="title">
+					{
+						project.frontmatter.title
+					}
+				</div>
+			</a>
+			<div class="tags">
 				{
 					usedTags.map((tag) =>
 					(
@@ -46,10 +44,40 @@ for(let i: number = 0; i < project.frontmatter.tags.length; i++)
 				}
 			</div>
 		</div>
-		<p class="mt-4 text-gray-300">
+		<p class="description">
 			{
 				project.frontmatter.description
 			}
 		</p>
 	</div>
 </div>
+
+<style>
+	.projectCard {
+		@apply bg-slate-700 flex flex-col items-center p-3 gap-x-8 rounded-md md:flex-row
+	}
+
+	.imageContainer {
+		@apply shrink-0
+	}
+
+	.image {
+		@apply h-36 w-36 hover:translate-y-1
+	}
+
+	.titleContainer {
+		@apply flex flex-col items-center md:flex-row
+	}
+
+	.title {
+		@apply font-bold text-xl
+	}
+
+	.description {
+		@apply mt-4 text-gray-300
+	}
+
+	.tags {
+		@apply ml-3 flex gap-2
+	}
+</style>

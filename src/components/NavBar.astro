@@ -3,32 +3,42 @@ import Section from "../components/Section.astro";
 ---
 
 <Section>
-	<div
-		class="flex flex-col gap-y-3 sm:flex-row sm:items-center sm:justify-between"
-	>
-		<a href="/"
-			><div
-				class="flex items-center text-xl font-bold gradient"
-			>
+	<div class="navbar">
+		<a href="/">
+			<div class="title gradient">
 			<!-- TODO: insert logo (SVG) -->	
 			Marijn Kneppers
 			</div>
 		</a>
 		<nav>
-			<ul class="flex gap-x-3 font-medium text-gray-200">
-				<li class="hover:text-white">
+			<ul class="links">
+				<li>
 					<a href="/">Home</a>
 				</li>
-				<li class="hover:text-white">
+				<li>
 					<a href="/projects/">Projects</a>
 				</li>
-				<li class="hover:text-white">
+				<li >
 					<a href="/posts/">Posts</a>
 				</li>
-				<li class="hover:text-white">
+				<li>
 					<a href="https://github.com/mandar1jn" target="_blank">GitHub</a>
 				</li>
 			</ul>
 		</nav>
 	</div>
 </Section>
+
+<style>
+	.navbar {
+		@apply flex flex-col gap-y-3 sm:flex-row sm:items-center sm:justify-between
+	}
+
+	.title {
+		@apply flex items-center text-xl font-bold
+	}
+
+	.links {
+		@apply flex gap-x-3 font-medium text-gray-200
+	}
+</style>

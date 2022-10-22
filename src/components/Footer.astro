@@ -2,11 +2,11 @@
 import Section from "./Section.astro";
 ---
 <Section>
-	<div class="border-t border-gray-600 pt-5">
+	<div class="footer">
 		<footer>
 			<a href="/sitemap-index.xml">Sitemap</a>
 		</footer>
-		<div class="text-sm text-gray-200 flex flex-row justify-between mt-5">
+		<div class="copyright">
 			<p>
 				© Copyright 2022 by <span class="gradient">Marijn Kneppers</span>. All rights reserved.
 			</p>
@@ -16,3 +16,13 @@ import Section from "./Section.astro";
 		</div>
 	</div>
 </Section>
+
+<style>
+	.footer {
+		@apply border-t border-gray-600 pt-5
+	}
+
+	.copyright {
+		@apply text-sm text-gray-200 flex flex-row justify-between mt-5
+	}
+</style>

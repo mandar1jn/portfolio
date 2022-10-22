@@ -10,15 +10,43 @@ export interface Props {
 const {post} = Astro.props as Props;
 ---
 
-<a class="hover:translate-y-1 max-w-md mx-auto" href={post.url}>
-	<div class="overflow-hidden rounded-md bg-slate-800">
-		<div class="aspect-w-3 aspect-h-2">
-			<img class="h-full w-full object-cover object-center" width="313px" height="246px" src={post.frontmatter.imgSrc} alt={post.frontmatter.imgAlt} />
-		</div>
-		<div class="px-3 pt-4 pb-6 text-center">
-			<h2 class="text-xl font-semibold">{post.frontmatter.title}</h2>
-			<div class="mt-1 text-xs text-gray-400">{format(parseISO(post.frontmatter.pubDate), "MMM d, y")}</div>
-			<div class="mt-2 text-sm">{post.frontmatter.description}</div>
-		</div>
+<a class="blogPostCard" href={post.url}>
+	<div class="imageContainer">
+		<img class="image" width="333px" height="222px" src={post.frontmatter.imgSrc} alt={post.frontmatter.imgAlt} />
+	</div>
+	<div class="infoContainer">
+		<h2 class="title">{post.frontmatter.title}</h2>
+		<div class="date">{format(parseISO(post.frontmatter.pubDate), "MMM d, y")}</div>
+		<div class="description">{post.frontmatter.description}</div>
 	</div>
 </a>
+
+<style>
+	.blogPostCard {
+		@apply hover:translate-y-1 max-w-md mx-auto overflow-hidden rounded-md bg-slate-800
+	}
+
+	.imageContainer {
+		@apply aspect-[3/2]
+	}
+
+	.image {
+		@apply h-full w-full object-cover object-center
+	}
+
+	.infoContainer {
+		@apply px-3 pt-4 pb-6 text-center
+	}
+
+	.title {
+		@apply text-xl font-semibold
+	}
+
+	.date {
+		@apply mt-1 text-xs text-gray-400
+	}
+
+	.description {
+		@apply mt-2 text-sm
+	}
+</style>

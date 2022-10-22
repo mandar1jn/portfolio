@@ -1,0 +1,46 @@
+---
+import BaseLayout from "./Layout.astro"
+
+interface Props {
+	title: string,
+	description: string,
+	imgSrc: string,
+	imgAlt: string
+}
+
+const {title, description, imgSrc, imgAlt} = Astro.props as Props;
+---
+<BaseLayout head={{title: title, description: description}}>
+	<article class="article">
+		<h1 class="title">{title}</h1>
+		<slot name="after-title" />
+		<div class="articleSection">
+				<img class="image" src={imgSrc} width="256px" height="256px" alt={imgAlt} />
+			<div class="prose articleContent">
+				<slot name="article" />
+			</div>
+		</div>
+	</article>
+</BaseLayout>
+
+<style>
+	.article {
+		@apply mx-auto max-w-screen-lg px-3 py-6
+	}
+
+	.title {
+		@apply text-4xl font-bold text-center
+	}
+
+	.image {
+		@apply rounded-lg object-cover mx-auto
+	}
+
+	.articleSection {
+		@apply mx-auto mt-5 max-w-prose
+	}
+
+	.articleContent {
+		@apply prose-invert mt-8 prose-img:rounded-lg prose-headings:mt-0 prose-headings:mb-0
+	}
+</style>

@@ -1,6 +1,6 @@
 ---
 import type { ProjectFrontMatter } from '../utils/projects';
-import BaseLayout from './Layout.astro'
+import ArticleLayout from './ArticleLayout.astro';
 
 export interface Props {
 	content: ProjectFrontMatter;
@@ -8,14 +8,7 @@ export interface Props {
 
 const {content} = Astro.props as Props;
 ---
-<BaseLayout head={{title: content.title, description: content.description}}>
-	<article class="mx-auto max-w-screen-lg px-3 py-6">
-		<h1 class="text-4xl font-bold text-center">{content.title}</h1>
-		<div class="mx-auto mt-5 max-w-prose">
-				<img class="rounded-lg object-cover mx-auto" src={content.imgSrc} width="256px" height="256px" alt={content.imgAlt} />
-			<div class="prose prose-invert mt-8 prose-img:rounded-lg prose-headings:mt-0 prose-headings:mb-0">
-				<slot />
-			</div>
-		</div>
-	</article>
-</BaseLayout>
+
+<ArticleLayout title={content.title} description={content.description} imgSrc={content.imgSrc} imgAlt={content.imgAlt}>
+	<slot slot="article"/>
+</ArticleLayout>
