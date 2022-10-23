@@ -22,14 +22,14 @@ import foto from "../images/foto.jpg"
 <Layout head={{title: "Home", description: "Hello. I'm Marijn Kneppers, a 16 year old developer from the Netherlands."}}>
 	<Section>
 		<main>
-			<div class="introductionContainer">
-				<div>
-				<h1 class="introductionName">
-					Hello. I'm <span class="gradient">Marijn Kneppers</span>
-				</h1>
-				<p class="introduction">
-					I'm an enthousiastic 16 year old developer living in the Netherlands.
-				</p>
+			<div class="fullIntroductionContainer">
+				<div class="introductionContainer">
+					<h1 class="introductionName">
+						Hello. I'm <span class="gradient">Marijn Kneppers</span>
+					</h1>
+					<p class="introduction">
+						I'm an enthousiastic 16 year old developer living in the Netherlands.
+					</p>
 				</div>
 				<div class="image">
 					<Image aspectRatio={0.75} width={300} src={foto} alt="A picture of me" loading={"eager"} />
@@ -73,8 +73,12 @@ import foto from "../images/foto.jpg"
 </Layout>
 
 <style>
-	.introductionContainer {
+	.fullIntroductionContainer {
 		@apply flex flex-col items-center md:flex-row md:justify-between md:gap-x-24
+	}
+	.introductionContainer
+	{
+		@apply pb-6
 	}
 	.introductionName {
 		@apply text-3xl font-bold mb-0 mt-0

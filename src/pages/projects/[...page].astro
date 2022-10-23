@@ -25,38 +25,38 @@ const description = "Here you can read all about the projects I have been workin
 <Layout head={{ title, description }}>
   
 	<Section>
-		<div class="text-center">
-			<h1 class="text-4xl font-bold">Marijn Kneppers' projects</h1>
-			<div class="mt-3 text-gray-200">
+		<div class="titleContainer">
+			<h1 class="title">Marijn Kneppers' projects</h1>
+			<div class="description">
 				Here you can read all about the projects I have been working on
 			</div>
 		</div>
 	</Section>
 
 	<Section>
-		<div class={`grid rounded-md p-3 gap-4 bg-slate-800`}>
+		<div class="projectList">
 			{page.data.map((project) => (
 				<ProjectCard project={project} />
 			))}
 		</div>
 	</Section>
 	<Section>
-		<div class="flex justify-between">
-			<div class="w-28 hover:-translate-x-1">
+		<div class="projectNavContainer">
+			<div class="projectNav olderProjects">
 				{page.url.prev &&
 					<a href={page.url.prev}>	
 						← Older projects
 					</a>
 				}
 			</div>
-			<div class="flex justify-around w-96">
+			<div class="projectNavIndexes">
 			{
 				[...Array(page.lastPage)].map((_, index) => (
 					<a href={`/posts/${(index != 0)? index + 1 : ""}`}>{index + 1}</a>
 				))
 			}
 			</div>
-			<div class="w-28 hover:-translate-x-1">
+			<div class="projectNav newerProjects">
 				{page.url.next &&
 					<a href={page.url.next}>	
 						Newer projects →
@@ -67,3 +67,33 @@ const description = "Here you can read all about the projects I have been workin
 	</Section>
 
 </Layout>
+
+<style>
+	.titleContainer {
+		@apply text-center
+	}
+	.title {
+		@apply text-4xl font-bold
+	}
+	.description {
+		@apply mt-3 text-gray-200
+	}
+	.projectList {
+		@apply grid rounded-md p-3 gap-4 bg-slate-800
+	}
+	.projectNavContainer {
+		@apply flex justify-between
+	}
+	.projectNav {
+		@apply w-28
+	}
+	.olderProjects {
+		@apply hover:-translate-x-1
+	}
+	.projectNavIndexes {
+		@apply flex justify-around w-96
+	}
+	.newerProjects {
+		@apply hover:translate-x-1
+	}
+</style>

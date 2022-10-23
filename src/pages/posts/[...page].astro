@@ -23,9 +23,9 @@ const description = "Here you can read all about what's on my mind or what I'm c
 <Layout head={{ title, description }}>
   
 	<Section>
-		<div class="text-center">
-			<h1 class="text-4xl font-bold">Marijn Kneppers' blog</h1>
-			<div class="mt-3 text-gray-200">
+		<div class="titleContainer">
+			<h1 class="title">Marijn Kneppers' blog</h1>
+			<div class="description">
 				Here you can read all about what's on my mind or what I'm currently working on
 			</div>
 		</div>
@@ -39,22 +39,22 @@ const description = "Here you can read all about what's on my mind or what I'm c
 		</div>
 	</Section>
 	<Section>
-		<div class="flex justify-between">
-			<div class="w-28 hover:-translate-x-1">
+		<div class="postNavContainer">
+			<div class="postNav olderPosts">
 				{page.url.prev &&
 					<a href={page.url.prev}>	
 						← Older posts
 					</a>
 				}
 			</div>
-			<div class="flex justify-around w-96">
+			<div class="postNavIndexes">
 			{
 				[...Array(page.lastPage)].map((_, index) => (
 					<a href={`/posts/${(index != 0)? index + 1 : ""}`}>{index + 1}</a>
 				))
 			}
 			</div>
-			<div class="w-28 hover:-translate-x-1">
+			<div class="postNav newerPosts">
 				{page.url.next &&
 					<a href={page.url.next}>	
 						Newer posts →
@@ -65,3 +65,30 @@ const description = "Here you can read all about what's on my mind or what I'm c
 	</Section>
 
 </Layout>
+
+<style>
+	.titleContainer {
+		@apply text-center
+	}
+	.title {
+		@apply text-4xl font-bold
+	}
+	.description {
+		@apply mt-3 text-gray-200
+	}
+	.postNavContainer {
+		@apply flex justify-between
+	}
+	.postNav {
+		@apply w-28
+	}
+	.olderPosts {
+		@apply hover:-translate-x-1
+	}
+	.postNavIndexes {
+		@apply flex justify-around w-96
+	}
+	.newerPosts {
+		@apply hover:translate-x-1
+	}
+</style>

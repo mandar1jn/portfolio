@@ -24,13 +24,14 @@ const { head: { title, description} } = Astro.props as Props;
 		<meta name="copyright" content={config.author.fullName} />
 		<title>{title} - {config.siteName}</title>
 	</head>
-	<body class="text-gray-100">
+	<body>
 		<NavBar />
 		<slot />
 		<Footer />
 	</body>
 </html>
-<style>
+
+<style is:global>
 	:root {
 		--font-size-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
 		--font-size-lg: clamp(1.2rem, 0.7vw + 1.2rem, 1.5rem);
@@ -39,19 +40,14 @@ const { head: { title, description} } = Astro.props as Props;
 		--color-text: hsl(12, 5%, 4%);
 		--color-border: hsl(17, 24%, 90%);
 	}
-
 	html {
 		font-size: var(--font-size-base);
 		color: var(--color-text);
-	}
-</style>
-
-<style is:global>
-
-	html {
 		@apply bg-slate-900
 	}
-
+	body {
+		@apply text-gray-100
+	}
 	h1 {
 		font-size: var(--font-size-xl);
 	}
