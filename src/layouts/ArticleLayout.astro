@@ -1,4 +1,5 @@
 ---
+import Section from "../components/Section.astro";
 import BaseLayout from "./Layout.astro"
 
 interface Props {
@@ -16,7 +17,7 @@ const {title, description, imgSrc, imgAlt} = Astro.props as Props;
 		<slot name="after-title" />
 		<div class="articleSection">
 				<img class="image" src={imgSrc} width="256px" height="256px" alt={imgAlt} />
-			<div class="prose articleContent">
+			<div class="articleContent">
 				<slot name="article" />
 			</div>
 		</div>
@@ -37,10 +38,24 @@ const {title, description, imgSrc, imgAlt} = Astro.props as Props;
 	}
 
 	.articleSection {
-		@apply mx-auto mt-5 max-w-prose
+		@apply mx-auto mt-5 max-w-[65ch]
 	}
-
 	.articleContent {
-		@apply prose-invert mt-8 prose-img:rounded-lg prose-headings:mt-0 prose-headings:mb-0
+		@apply mt-8 text-[#d1d5db] leading-7 text-[1rem]
+	}
+</style>
+
+<style is:global>
+	div.articleSection :first-child {
+		@apply mt-0
+	}
+	div.articleSection p {
+		@apply mt-[1.25em] mb-[1.25em]
+	}
+	div.articleSection a {
+		@apply text-white font-medium underline
+	}
+	div.articleSection img {
+		@apply mt-8 mb-8
 	}
 </style>
