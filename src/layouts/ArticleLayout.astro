@@ -1,6 +1,6 @@
 ---
-import Section from "../components/Section.astro";
 import BaseLayout from "./Layout.astro"
+import {Image} from "@astrojs/image/components"
 
 interface Props {
 	title: string,
@@ -16,7 +16,7 @@ const {title, description, imgSrc, imgAlt} = Astro.props as Props;
 		<h1 class="title">{title}</h1>
 		<slot name="after-title" />
 		<div class="articleSection">
-				<img class="image" src={imgSrc} width="256px" height="256px" alt={imgAlt} />
+				<Image class="image" src={imgSrc} format={"avif"} width={256} aspectRatio={1.25} alt={imgAlt} loading={"eager"} />
 			<div class="articleContent">
 				<slot name="article" />
 			</div>

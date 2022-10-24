@@ -15,8 +15,6 @@ const projects = await Astro.glob<ProjectFrontMatter>("./projects/*.md");
 const sortedProjects = sortProjectsByDate(projects);
 const lastProjects = sortedProjects.slice(0, 3);
 
-import foto from "../images/foto.jpg"
-
 ---
 
 <Layout head={{title: "Home", description: "Hello. I'm Marijn Kneppers, a 16 year old developer from the Netherlands."}}>
@@ -32,7 +30,7 @@ import foto from "../images/foto.jpg"
 					</p>
 				</div>
 				<div class="image">
-					<Image aspectRatio={0.75} width={300} src={foto} alt="A picture of me" loading={"eager"} />
+					<Image aspectRatio={0.75} width={300} src={"/images/foto.jpg"} format="avif" alt="A picture of me" loading={"eager"} />
 				</div>
 			</div>
 		</main>

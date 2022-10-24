@@ -3,6 +3,7 @@ import type { MarkdownInstance } from 'astro';
 import type { ProjectFrontMatter } from '../utils/projects';
 import { ProjectTag, tags } from '../utils/tags';
 import Tag from './Tag.astro';
+import {Image} from "@astrojs/image/components"
 
 export interface Props {
 	project: MarkdownInstance<ProjectFrontMatter>;
@@ -23,7 +24,7 @@ for(let i: number = 0; i < project.frontmatter.tags.length; i++)
 <div class="projectCard">
 	<div class="imageContainer">
 		<a href={project.url}>
-			<img src={project.frontmatter.imgSrc} alt={project.frontmatter.imgAlt} class="image" />
+			<Image src={project.frontmatter.imgSrc} format="avif" width={256} height={256} alt={project.frontmatter.imgAlt} class="image" />
 		</a>
 	</div>
 	<div>
