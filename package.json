@@ -16,7 +16,7 @@
     "@astrojs/sitemap": "^1.0.0",
     "@astrojs/tailwind": "^2.1.1",
     "astro": "^1.6.1",
-    "autoprefixer": "^10.4.12",
+    "autoprefixer": "^10.4.13",
     "cssnano": "^5.1.14",
     "date-fns": "^2.29.3",
     "postcss": "^8.4.18",
