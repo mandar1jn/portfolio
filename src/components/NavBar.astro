@@ -3,30 +3,32 @@ import Section from "../components/Section.astro";
 ---
 
 <Section>
-	<div class="navbar">
-		<a href="/">
-			<div class="title gradient">
-			<!-- TODO: insert logo (SVG) -->	
-			Marijn Kneppers
+	<header>
+		<nav class="navbar">
+			<a href="/">
+				<div class="title gradient">
+				<!-- TODO: insert logo (SVG) -->	
+				Marijn Kneppers
+				</div>
+			</a>
+			<div>
+				<ul class="links">
+					<li>
+						<a href="/">Home</a>
+					</li>
+					<li>
+						<a href="/projects/">Projects</a>
+					</li>
+					<li >
+						<a href="/posts/">Posts</a>
+					</li>
+					<li>
+						<a href="https://github.com/mandar1jn" target="_blank">GitHub</a>
+					</li>
+				</ul>
 			</div>
-		</a>
-		<nav>
-			<ul class="links">
-				<li>
-					<a href="/">Home</a>
-				</li>
-				<li>
-					<a href="/projects/">Projects</a>
-				</li>
-				<li >
-					<a href="/posts/">Posts</a>
-				</li>
-				<li>
-					<a href="https://github.com/mandar1jn" target="_blank">GitHub</a>
-				</li>
-			</ul>
 		</nav>
-	</div>
+	</header>
 </Section>
 
 <style>

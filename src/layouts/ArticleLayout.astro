@@ -12,12 +12,12 @@ interface Props {
 const {title, description, imgSrc, imgAlt} = Astro.props as Props;
 ---
 <BaseLayout head={{title: title, description: description}}>
-	<article class="article">
-		<h1 class="title">{title}</h1>
+	<article id="article">
+		<h1 id="title">{title}</h1>
 		<slot name="after-title" />
-		<div class="articleSection">
-				<Image class="image" src={imgSrc} format={"avif"} width={256} aspectRatio={1.25} alt={imgAlt} loading={"eager"} />
-			<div class="articleContent">
+		<div id="articleSection">
+				<Image id="image" src={imgSrc} format={"avif"} width={256} aspectRatio={1.25} alt={imgAlt} loading={"eager"} />
+			<div id="articleContent">
 				<slot name="article" />
 			</div>
 		</div>
@@ -25,37 +25,31 @@ const {title, description, imgSrc, imgAlt} = Astro.props as Props;
 </BaseLayout>
 
 <style>
-	.article {
+	#article {
 		@apply mx-auto max-w-screen-lg px-3 py-6
 	}
 
-	.title {
+	#title {
 		@apply text-4xl font-bold text-center
 	}
 
-	.image {
+	#image {
 		@apply rounded-lg object-cover mx-auto
 	}
 
-	.articleSection {
+	#articleSection {
 		@apply mx-auto mt-5 max-w-[65ch]
 	}
-	.articleContent {
-		@apply mt-8 text-[#d1d5db] leading-7 text-[1rem]
+	#articleSection :global(p) {
+		@apply mt-5 mb-5
 	}
-</style>
-
-<style is:global>
-	div.articleSection :first-child {
-		@apply mt-0
-	}
-	div.articleSection p {
-		@apply mt-[1.25em] mb-[1.25em]
-	}
-	div.articleSection a {
+	#articleSection :global(a) {
 		@apply text-white font-medium underline
 	}
-	div.articleSection img {
+	#articleSection :global(img) {
 		@apply mt-8 mb-8
+	}
+	#articleContent {
+		@apply text-[#d1d5db] leading-7 text-base
 	}
 </style>

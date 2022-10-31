@@ -19,21 +19,19 @@ const lastProjects = sortedProjects.slice(0, 3);
 
 <Layout head={{title: "Home", description: "Hello. I'm Marijn Kneppers, a 16 year old developer from the Netherlands."}}>
 	<Section>
-		<main>
-			<div class="fullIntroductionContainer">
-				<div class="introductionContainer">
-					<h1 class="introductionName">
-						Hello. I'm <span class="gradient">Marijn Kneppers</span>
-					</h1>
-					<p class="introduction">
-						I'm an enthousiastic 16 year old developer living in the Netherlands.
-					</p>
-				</div>
-				<div class="image">
-					<Image aspectRatio={0.75} width={300} src={"/images/foto.jpg"} format="avif" alt="A picture of me" loading={"eager"} />
-				</div>
+		<div class="fullIntroductionContainer">
+			<div class="introductionContainer">
+				<h1 class="introductionName">
+					Hello. I'm <span class="gradient">Marijn Kneppers</span>
+				</h1>
+				<p class="introduction">
+					I'm an enthousiastic 16 year old developer living in the Netherlands.
+				</p>
 			</div>
-		</main>
+			<div class="image">
+				<Image aspectRatio={0.75} width={300} src={"/images/foto.jpg"} format="avif" alt="A picture of me" loading={"eager"} />
+			</div>
+		</div>
 	</Section>
 	<Section>
 		<div class="articlesHeader">

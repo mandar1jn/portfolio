@@ -1,11 +1,12 @@
 ---
 import Section from "./Section.astro";
 ---
-<Section>
-	<div class="footer">
-		<footer>
+
+<footer class="footer">
+		<Section>
+		<div id="nav">
 			<a href="/sitemap-index.xml">Sitemap</a>
-		</footer>
+		</div>
 		<div class="copyright">
 			<p>
 				© Copyright 2022 by <span class="gradient">Marijn Kneppers</span>. All rights reserved.
@@ -14,11 +15,12 @@ import Section from "./Section.astro";
 				Made with ♥ by me.
 			</div>
 		</div>
-	</div>
-</Section>
+	</Section>
+</footer>
+
 
 <style>
-	.footer {
+	#nav {
 		@apply border-t border-gray-600 pt-5
 	}
 
