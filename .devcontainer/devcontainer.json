@@ -1,0 +1,16 @@
+{
+	"name": "Marijn Kneppers' portfolio",
+	"forwardPorts": [3000],
+	"portsAttributes": {
+		"3000": {
+			"label": "Application",
+			"onAutoForward": "openBrowser"
+		}
+	},
+	"postCreateCommand": "yarn install",
+	"customizations": {
+		"vscode": {
+			"extensions": ["astro-build.astro-vscode", "bradlc.vscode-tailwindcss"]
+		}
+	}
+}
