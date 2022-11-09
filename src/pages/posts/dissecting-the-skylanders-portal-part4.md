@@ -8,12 +8,12 @@ imgAlt: "A picture of the runic portal from Skylanders: Spyro's adventure"
 ---
 
 ## Introduction
-Hey everyone. It's been a while. To be exact, it has been over 4 months. In that time, I've rewritten my program several times, but that's something I'll get into later. In this post I'll discuss where I've been, how to read from a figure using the skylanders portal, and I'll start dissecting the figure data.
+Hey everyone. It's been a while. To be exact, it has been over 4 months. In that time, I've rewritten my program several times, but that's something I'll get into later. In this post, I'll discuss where I've been, and how to read from a figure using the Skylanders portal, and I'll start dissecting the figure data.
 
 ## Where I've been
-When I originally started this series, I wrote my program in C using Raygui. Soon after my last post, I realised that this approach wouldn't work. I realised I would benefit heavily from classes and a UI framwork where I didn't have to draw each frame trough code. So, I switched to C++ and Qt6. This worked for a while. Designing windows became easier and I could now use classes. Sadly, that is where the benefits end. Qt6 virtually forces you to use their IDE and it's just not up to the standards of Visual Studio 2022. It made debugging extremely hard. So, I made my final switch for now. I switched to my favourite programming language, C#. And that is where I am now. I have dropped the GUI for now in favour of a console based solution. This way, I can focus on results before useability.
+When I originally started this series, I wrote my program in C using Raygui. Soon after my last post, I realized that this approach wouldn't work. I realized that I would benefit heavily from classes and a UI framework where I didn't have to draw each frame through code. So, I switched to C++ and Qt6. This worked for a while. Designing windows became easier and I could now use classes. Sadly, that is where the benefits end. Qt6 virtually forces you to use their IDE and it's just not up to the standards of Visual Studio 2022. It made debugging extremely hard. So, I made my final switch for now. I switched to my favorite programming language, C#. And that is where I am now. I have dropped the GUI for now in favor of a console-based solution. This way, I can focus on results before useability.
 
-## A new command has appeard
+## A new command has appeared
 Rest assured, rewriting my code wasn't the only thing that I have done. I've also researched a new command. It's finally time to read from figures.
 
 Let me introduce to you, the Query command:
@@ -27,7 +27,7 @@ The final byte is the     Block. A single figure contains an NFC chip that can s
 With this knowledge, we can also deduce the response. The response is the same as the command, with an extra 16 bytes of data appended to it. This is the data contained in that     Block.
 
 ## Dumping a skylander
-For this article I have dumped 2 skylanders. A series 2 Cynder and a Head Rush.
+For this article, I have dumped 2 Skylanders. A series 2 Cynder and a Head Rush.
 
 Cynder:
 
@@ -163,11 +163,11 @@ Head Rush:
     Block 0x3E:  0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
     Block 0x3F:  0x00 0x00 0x00 0x00 0x00 0x00 0x7F 0x0F 0x08 0x69 0x00 0x00 0x00 0x00 0x00 0x00 0x00
 
-The first thing I wondered was how the game recongises which character you put on the portal. So, I made a back up of my Skylanders Trap Team disc and I looked at it's file system in dolphin. Happily, the data partition contains a handy folder called characters with files in the format "NUMBER_NAME.\*". For example, the file for Cynder is "032_cynder.\*". My assumption was that the number was some kind of ID stored on the character. Sure enough, there it was in block 0x01: 0x20. The hexadecimal representation of 32. To verify my findings, I started looking for the Head Rush files. After some looking, I found it, "455_Earth_Rampage.\*". As you might notice from the number, it's higher then the 255 limit of a byte. So, let's look at the bytes around the initial ID byte. For Head Rush, the first two bytes of sector 0x01 are 0xC7 and 0x01. These two added together won't form 455, but if we assume that they are in little endian, they form 0x01C7 in big endian. And sure enough, we have our 455.
+The first thing I wondered was how the game recognizes which character you put on the portal. So, I made a backup of my Skylanders Trap Team disc and I looked at its file system in dolphin. Happily, the data partition contains a handy folder called characters with files in the format "NUMBER_NAME.\*". For example, the file for Cynder is "032_cynder.\*". My assumption was that the number was some kind of ID stored on the character. Sure enough, there it was in block 0x01: 0x20. The hexadecimal representation of 32. To verify my findings, I started looking for the Head Rush files. After some looking, I found it, "455_Earth_Rampage.\*". As you might notice from the number, it's higher than the 255 limit of a byte. So, let's look at the bytes around the initial ID byte. For Head Rush, the first two bytes of sector 0x01 are 0xC7 and 0x01. These two added together won't form 455, but if we assume that they are in little endian, they form 0x01C7 in big endian. And sure enough, we have our 455.
 
 In short, the figure ID is stored in sector 0x01 as the first two bytes. The format for these bytes is little endian.
 
-As I mentioned, my figure was a Series 2 Cynder. However, there were no other cynder files to be found. This means figures likely store a seperate variant ID or something like this. This is something that I'll have to look into.
+As I mentioned, my figure was a Series 2 Cynder. However, there were no other Cynder files to be found. This means figures likely store a separate variant ID or something like this. This is something that I'll have to look into.
 
 ## Conclusion
-For now, that will be it for this article. As I'm getting closer and closer to dissecting the portal and the figures, it gets more and more interesting. I'm really looking forward to diving deeper into these figures. As always, the code can be found on [github](https://github.com/mandar1jn/SkylandersEditor).
+For now, that will be it for this article. As I'm getting closer and closer to dissecting the portal and the figures, it gets more and more interesting. I'm really looking forward to diving deeper into these figures. As always, the code can be found on [GitHub](https://github.com/mandar1jn/SkylandersEditor).
