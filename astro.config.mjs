@@ -3,6 +3,7 @@ import sitemap from "@astrojs/sitemap";
 import image from "@astrojs/image";
 
 import tailwind from "@astrojs/tailwind";
+import remarkGfm from 'remark-gfm';
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,6 +13,8 @@ export default defineConfig({
   }), tailwind()],
   output: "static",
   markdown: {
-	syntaxHighlight: false
+	syntaxHighlight: false,
+	extendDefaultPlugins: true,
+	remarkPlugins: [remarkGfm]
   }
 });

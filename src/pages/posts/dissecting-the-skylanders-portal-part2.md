@@ -22,7 +22,9 @@ Now for the array structure. Note that all the following array layouts will not 
 
 The structure of the commands is very simple. It’s the command followed by the required data. For example, a activate command would look as follows:
 
-    [{A | 0x41}, (0x00 | 0x01)]
+```js
+[{A | 0x41}, (0x00 | 0x01)]
+```
 
 Let’s break down this annotation. The square brackets at the beginning and end indicate that this is an array. After that, we have the curly brackets. These stand for an alternate annotation. The commands themselves are single characters, but I decided to also note the hexadecimal annotation. The different notations are split by a vertical line. After that, we have a comma. This is just to indicate that we increase our position within the array by one. After that, we have two regular brackets. This means the data at that point in the array can be one of the options given. Just like with the curly brackets, these options are also split by a vertical line.
 
@@ -34,54 +36,47 @@ The portal has a plethora of commands, but in this story, I will document the fi
 ### Ready
 This command might not seem much, but it does have a use. This command is used to poll whether the portal is ready to receive data. When no response is given, assume the portal is either not connected or your code does something wrong. The response to the command also contains the device ID. The command layout goes as follows:
 
-    [{R | 0x52}]
+```js
+[{R | 0x52}]
+```
 
 Yes. As I said, this command does not seem much. The only data being sent is the command. No data is appended. The response, as said before, contains the device type. I don’t own multiple portals, but [RPCS3](https://rpcs3.net) has a portal emulation feature that emulates a traptanium portal, and, looking [at their code](https://github.com/Desterly/rpcs3/blob/master/rpcs3/Emu/Io/Skylander.cpp#L294), they use the same ID as my traptanium portal. So, without any further ado, here is the response to the ready command:
 
-    [{R | 0x52}, (0x01 | 0x02), (0x3D | 0x18 | 0x0A)}
+```js
+[{R | 0x52}, (0x01 | 0x02), (0x3D | 0x18 | 0x0A)}
+```
 
 As you can see, the 2 bytes after the command character can be several different options. Sadly, I only own 3 portals so I can’t document the others. If you do happen to own a portal outside of the runic portal from Skylanders giants, the traptanium portal, or the engine portal (that works on consoles), please let me know. If you have a wireless version of any of these portals (that works on consoles), please feel free to contact me. The portal types I found until now are:
 
-<table>
-	<thead>
-		<tr>
-			<th>Type</th>
-			<th>ID</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>runic (wired)</td>
-			<td>0x01, 0x3D</td>
-		</tr>
-		<tr>
-			<td>traptanium</td>
-			<td>0x02, 0x18</td>
-		</tr>
-		<tr>
-			<td>rift engine</td>
-			<td>0x02, 0x0A</td>
-		</tr>
-	</tbody>
-</table>
+| Type | ID  |
+| - | - |
+| runic (wired) | 0x01, 0x3D |
+| traptanium | 0x02, 0x18 |
+| rift engine | 0x02, 0x0A |
 
 ### Activate
 The activate command is another relatively simple command, with only one option.
 
-    [{A | 0x41}, (0x00, 0x01)]
+```js
+[{A | 0x41}, (0x00, 0x01)]
+```
 
 This command is quite self-explanatory. The first byte is the command character and the second byte is what I will refer to as the activation byte. The activation byte can either be 0x00 (deactivate), or 0x01 (activate).
 
 So, now for the response:
 
-    [{A | 0x41}, (0x00 | 0x01), 0xFF, 0x77]
+```js
+[{A | 0x41}, (0x00 | 0x01), 0xFF, 0x77]
+```
 
 As you can see, the first and second bytes mirror the command character and activation byte. The third and fourth characters, however, are a mystery to me. For all my portals, they returned the same result. More research into portal variants might be needed.
 
 ### Color
 Outside of the activate command, this is the only command that has a visible effect on the portal. This command can also control the portal color when the portal is deactivated. On portals that don’t have any lights, like the rift engine portal, this command is silently ignored. Because of this, and the fact that the command has no effect on the data being sent, you should not await a response for this command.
 
-    [{C | 0x43}, (0x00 - 0xFF), (0x00 - 0xFF),(0x00 - 0xFF)]
+```js
+[{C | 0x43}, (0x00 - 0xFF), (0x00 - 0xFF),(0x00 - 0xFF)]
+```
 
 First of all, I’d like to point out a new way of annotating possible bytes. Here, you will see two bytes split by a hyphen (-). This is used to annotate a range. In this case, a range of 0x00 up until and including 0xFF.
 
@@ -89,7 +84,9 @@ So, now, what do these bytes stand for? Well, the first byte is of course the co
 
 As I said before, you should not await a response for this command. The portal does, however, send a response when lights are available. Because of this, I did decide to document it. To response is as follows:
 
-    [{C | 0x43}, (0x00 - 0xFF), (0x00 - 0xFF),(0x00 - 0xFF)]
+```js
+[{C | 0x43}, (0x00 - 0xFF), (0x00 - 0xFF),(0x00 - 0xFF)]
+```
 
 That’s right. The response is the exact same as the original command. No interesting or required data is being sent.
 
