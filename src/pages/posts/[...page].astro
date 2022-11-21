@@ -32,7 +32,7 @@ const description = "Here you can read all about what's on my mind or what I'm c
 	</Section>
 
 	<Section>
-		<div class={`grid grid-cols-1 grid-rows-${Math.ceil(page.data.length / 3)} gap-6 md:grid-cols-3`}>
+		<div class="cards">
 			{page.data.map((post) => (
 				<BlogPostCard post={post} />
 			))}
@@ -66,29 +66,48 @@ const description = "Here you can read all about what's on my mind or what I'm c
 
 </Layout>
 
-<style>
+<style define:vars={{rows: Math.ceil(page.data.length / 3)}}>
 	.titleContainer {
-		@apply text-center
+		text-align: center;
 	}
 	.title {
-		@apply text-4xl font-bold
+		font-weight: 700;
+		font-size: 2.25rem;
+		line-height: 2.5rem;
 	}
 	.description {
-		@apply mt-3 text-gray-200
+		margin-top: 0.75rem;
+		color: var(--color-gray-200);
 	}
+	.cards {
+		display: grid;
+		grid-template-columns: repeat(1, minmax(0, 1fr));
+		grid-template-rows: repeat(var(--rows), minmax(0, 1fr));
+		gap: 1.5rem;
+	}
+
+	@media (min-width: 768px) {
+		.cards {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+	}
+
 	.postNavContainer {
-		@apply flex justify-between
+		display: flex;
+		justify-content: space-between;
 	}
 	.postNav {
-		@apply w-28
+		width: 128px;
 	}
-	.olderPosts {
-		@apply hover:-translate-x-1
+	.olderPosts:hover {
+		transform: translate(-4px);
 	}
 	.postNavIndexes {
-		@apply flex justify-around w-96
+		display: flex;
+		justify-content: space-around;
+		width: 384px;
 	}
-	.newerPosts {
-		@apply hover:translate-x-1
+	.newerPosts:hover {
+		transform: translate(4px);
 	}
 </style>

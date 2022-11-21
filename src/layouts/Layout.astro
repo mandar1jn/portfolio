@@ -41,14 +41,25 @@ const { head: { title, description} } = Astro.props as Props;
 
 		--color-text: hsl(12, 5%, 4%);
 		--color-border: hsl(17, 24%, 90%);
+
+		--color-slate-900: rgb(15 23 42);
+		--color-slate-800: rgb(30 41 59);
+
+		--color-cyan-400: rgb(34 211 238);
+		--color-sky-500: rgb(14 165 233);
+
+		--color-gray-100: rgb(243 244 246);
+		--color-gray-200: rgb(229 231 235);
+
+		--medium-min-width: 768px;
 	}
 	html {
 		font-size: var(--font-size-base);
 		color: var(--color-text);
-		@apply bg-slate-900
+    	background-color: var(--color-slate-900);
 	}
 	body {
-		@apply text-gray-100
+		color: var(--color-gray-100);
 	}
 	h1 {
 		font-size: var(--font-size-xl);
@@ -62,19 +73,25 @@ const { head: { title, description} } = Astro.props as Props;
 		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
 			Bitstream Vera Sans Mono, Courier New, monospace;
 		
-		@apply bg-slate-800 pt-1 pb-1 pr-2 pl-2 border-spacing-1 rounded inline-block
+		background-color: var(--color-slate-800);
+		padding: 4px 8px 4px 8px;
+		border-radius: 4px;
+		display: inline-block;
 	}
 
 	pre {
 		white-space: pre-wrap;
-		@apply bg-slate-900
+		margin-top: 20px;
+		margin-bottom: 20px;
 	}
 
-	a {
-		@apply hover:text-cyan-400
+	a:hover {
+		color: var(--color-cyan-400);
 	}
 
 	.gradient {
-		@apply bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-transparent
+		background-image: linear-gradient(to bottom right, var(--color-sky-500), var(--color-cyan-400));
+		-webkit-background-clip: text;
+		color: transparent;
 	}
 </style>

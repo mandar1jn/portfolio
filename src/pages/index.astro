@@ -29,7 +29,7 @@ const lastProjects = sortedProjects.slice(0, 3);
 				</p>
 			</div>
 			<div class="image">
-				<div class="w-[300px] h-[400px]">
+				<div class="picture">
 					<Image width={600} height={800} src={"/images/foto.jpg"} format="avif" alt="A picture of me" loading={"eager"} />
 				</div>
 			</div>
@@ -86,6 +86,9 @@ const lastProjects = sortedProjects.slice(0, 3);
 	}
 	.image {
 		@apply shrink-0
+	}
+	.picture {
+		@apply w-[300px] h-[400px]
 	}
 	.articlesHeader {
 		@apply flex items-baseline justify-between mb-4
