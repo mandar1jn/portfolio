@@ -12,7 +12,7 @@
     "check": "astro check"
   },
   "dependencies": {
-    "@astrojs/image": "^0.11.6",
+    "@astrojs/image": "^0.12.1",
     "@astrojs/sitemap": "^1.0.0",
     "@astrojs/tailwind": "^2.1.2",
     "astro": "^1.6.10",
