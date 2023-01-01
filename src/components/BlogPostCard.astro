@@ -1,24 +1,24 @@
 ---
 import type { MarkdownInstance } from "astro";
 import { format, parseISO } from "date-fns";
-import type { PostFrontMatter } from "../utils/posts";
 import {Image} from "@astrojs/image/components"
+import type { CollectionEntry } from "astro:content";
 
 export interface Props {
-	post: MarkdownInstance<PostFrontMatter>
+	post: CollectionEntry<"blog">
 }
 
 const {post} = Astro.props as Props;
 ---
 
-<a class="blogPostCard" href={post.url}>
+<a class="blogPostCard" href={"/posts/" + post.slug}>
 	<div class="imageContainer">
-		<Image class="image" width={333} height={222} src={post.frontmatter.imgSrc} format={"avif"} alt={post.frontmatter.imgAlt} />
+		<Image class="image" width={333} height={222} src={post.data.imgSrc} format={"avif"} alt={post.data.imgAlt} />
 	</div>
 	<div class="infoContainer">
-		<h2 class="title">{post.frontmatter.title}</h2>
-		<div class="date">{format(parseISO(post.frontmatter.pubDate), "MMM d, y")}</div>
-		<div class="description">{post.frontmatter.description}</div>
+		<h2 class="title">{post.data.title}</h2>
+		<div class="date">{format(parseISO(post.data.pubDate), "MMM d, y")}</div>
+		<div class="description">{post.data.description}</div>
 	</div>
 </a>
 

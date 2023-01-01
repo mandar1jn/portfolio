@@ -2,12 +2,13 @@
 import BlogPostCard from '../components/BlogPostCard.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import Section from '../components/Section.astro';
+import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
-import { PostFrontMatter, sortPostsByDate } from '../utils/posts';
+import { sortPostsByDate } from '../utils/posts';
 import { ProjectFrontMatter, sortProjectsByDate } from '../utils/projects';
 import {Image} from "@astrojs/image/components"
 
-const posts = await Astro.glob<PostFrontMatter>("./posts/*.md");
+const posts = await getCollection('blog');
 const sortedPosts = sortPostsByDate(posts);
 const lastPosts = sortedPosts.slice(0, 3);
 

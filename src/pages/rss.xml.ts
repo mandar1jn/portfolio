@@ -1,10 +1,8 @@
 import rss from '@astrojs/rss';
+import { getCollection } from 'astro:content';
 import sanitizeHtml from 'sanitize-html';
 
-const postImportResult = import.meta.glob('./posts/**/*.md', { eager: true }); 
-const posts: any[] = Object.values(postImportResult);
-
-console.log(posts[0].frontmatter)
+const posts = await getCollection("blog");
 
 export const get = () => rss({
   // `<title>` field in output xml
@@ -18,10 +16,10 @@ export const get = () => rss({
   // simple example: generate items for every md file in /src/pages
   // see "Generating items" section for required frontmatter and advanced use cases
   items: posts.map((post) => ({
-    link: post.url,
-    title: post.frontmatter.title,
-    pubDate: post.frontmatter.pubDate,
-    content: sanitizeHtml(post.compiledContent()),
+    link: "/posts/" + post.slug,
+    title: post.data.title,
+    pubDate: new Date(post.data.pubDate),
+    content: sanitizeHtml(post.body),
   })),
   // (optional) inject custom xml
   customData: `<language>en-us</language>`,
