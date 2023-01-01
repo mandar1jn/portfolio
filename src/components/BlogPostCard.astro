@@ -16,7 +16,7 @@ const {post} = Astro.props as Props;
 	</div>
 	<div class="infoContainer">
 		<h2 class="title">{post.data.title}</h2>
-		<div class="date">{format(post.data.pubDate, "MMM d, y")}</div>
+		<time datetime={`${format(post.data.pubDate, "yyyy-MM-dd HH:mm")}`} class="date">{format(post.data.pubDate, "MMM d, y")}</time>
 		<div class="description">{post.data.description}</div>
 	</div>
 </a>
@@ -43,6 +43,7 @@ const {post} = Astro.props as Props;
 	}
 
 	.date {
+		display: block;
 		@apply mt-1 text-xs text-gray-400
 	}
 
