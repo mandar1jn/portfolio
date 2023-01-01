@@ -1,5 +1,4 @@
 ---
-layout: "../../layouts/BlogLayout.astro"
 title: "Creating my portfolio website with Astro"
 description: "How I wrote my portfolio website using Astro, why you should, and what you should look out for"
 pubDate: 2022-06-24T13:08:45+0200

@@ -1,5 +1,4 @@
 ---
-layout: "../../layouts/BlogLayout.astro"
 title: "Some big Skylanders discoveries"
 description: "Some new figure data, new and returning commands, and a wireshark extension"
 pubDate: 2022-11-27T14:09:35+0200

@@ -1,12 +1,10 @@
 ---
-layout: "../../layouts/BlogLayout.astro"
 title: "Dissecting the Skylanders portal - part 1"
 description: "Dissecting how the portal of power works, and how you can play with it too."
 pubDate: 2022-06-24T13:08:45+0200
 imgSrc: "/images/blog/skylanders-editor/runic-portal.png"
 imgAlt: "A picture of the runic portal from Skylanders: Spyro's adventure"
 ---
-
 If you’ve paid any attention to gaming over the last decade, you have probably heard of them. Skylanders. The plastic figurines that accompany the game with the same name. But how does the game recognize them? And how can we communicate with them? In this series of articles, I’m planning to find out.
 
 The game reads the figures through a portal of power. A USB-powered device that reads the data from the figures.

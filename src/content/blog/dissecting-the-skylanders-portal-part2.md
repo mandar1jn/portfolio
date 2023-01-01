@@ -1,5 +1,4 @@
 ---
-layout: "../../layouts/BlogLayout.astro"
 title: "Dissecting the Skylanders portal - part 2"
 description: "Dissecting how the portal of power works, and how you can play with it too."
 pubDate: 2022-06-25T16:20:12+0200

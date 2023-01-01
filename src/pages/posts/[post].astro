@@ -1,8 +1,9 @@
 ---
 import { CollectionEntry, getCollection } from "astro:content";
-import type { GetStaticPathsOptions } from 'astro';
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { format } from "date-fns";
 
-export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+export async function getStaticPaths() {
 	const posts: CollectionEntry<'blog'>[] = await getCollection('blog', ({ data }) => {
 		if(import.meta.env.MODE == "production")
 			return data.draft != true;
@@ -21,4 +22,14 @@ interface Props {
 const { post } = Astro.props as Props;
 const { Content } = await post.render();
 ---
-<Content />
+
+<ArticleLayout title={post.data.title} description={post.data.description} imgSrc={post.data.imgSrc} imgAlt={post.data.imgAlt}>
+	<div slot="after-title" class="date">By Marijn Kneppers on {format(post.data.pubDate, "MMM d, y")}</div>
+	<Content slot="article" />
+</ArticleLayout>
+
+<style>
+	.date {
+		@apply text-gray-400 text-center
+	}
+</style>
