@@ -3,7 +3,11 @@ import { CollectionEntry, getCollection } from "astro:content";
 import type { GetStaticPathsOptions } from 'astro';
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-	const posts: CollectionEntry<'blog'>[] = await getCollection('blog');
+	const posts: CollectionEntry<'blog'>[] = await getCollection('blog', ({ data }) => {
+		if(import.meta.env.MODE == "production")
+			return data.draft != true;
+		return true;
+	});
 
 	const params = posts.map((post) => { const slug = post.slug; return {params: {post: slug}, props: {post: post}} })
 	

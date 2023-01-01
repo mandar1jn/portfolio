@@ -7,7 +7,12 @@ import { sortPostsByDate } from '../../utils/posts';
 import { CollectionEntry, getCollection } from 'astro:content';
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-	const allPosts = await getCollection('blog');
+
+	const allPosts = await getCollection('blog', ({ data }) => {
+		if(import.meta.env.MODE == "production")
+			return data.draft != true;
+		return true;
+	});
 	const sortedPosts = sortPostsByDate(allPosts);
 	
 	return paginate(sortedPosts, { pageSize: 6 });
