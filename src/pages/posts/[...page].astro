@@ -6,10 +6,10 @@ import Layout from '../../layouts/Layout.astro';
 import { PostFrontMatter, sortPostsByDate } from '../../utils/posts';
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-  const allPosts = await Astro.glob<PostFrontMatter>('./*.md');
-  const sortedPosts = sortPostsByDate(allPosts);
-  
-  return paginate(sortedPosts, { pageSize: 6 });
+	const allPosts = await Astro.glob<PostFrontMatter>('./**/*.md');
+	const sortedPosts = sortPostsByDate(allPosts);
+	
+	return paginate(sortedPosts, { pageSize: 6 });
 }
 export interface Props {
   page: Page<MarkdownInstance<PostFrontMatter>>;
@@ -21,7 +21,7 @@ const description = "Here you can read all about what's on my mind or what I'm c
 ---
 
 <Layout head={{ title, description }}>
-  
+
 	<Section>
 		<div class="titleContainer">
 			<h1 class="title">Marijn Kneppers' blog</h1>

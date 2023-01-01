@@ -6,7 +6,7 @@ import Layout from "../../layouts/Layout.astro";
 import { ProjectFrontMatter, sortProjectsByDate } from "../../utils/projects";
 
 export async function getStaticPaths({paginate}: GetStaticPathsOptions)  {
-	const allProjects = await Astro.glob<ProjectFrontMatter>("./*.md");
+	const allProjects = await Astro.glob<ProjectFrontMatter>("./**/*.md");
 	const sortedProjects = sortProjectsByDate(allProjects);
 
 	return paginate(sortedProjects, {pageSize: 3});
