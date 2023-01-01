@@ -1,6 +1,5 @@
 ---
-import type { MarkdownInstance } from "astro";
-import { format, parseISO } from "date-fns";
+import { format } from "date-fns";
 import {Image} from "@astrojs/image/components"
 import type { CollectionEntry } from "astro:content";
 
@@ -17,7 +16,7 @@ const {post} = Astro.props as Props;
 	</div>
 	<div class="infoContainer">
 		<h2 class="title">{post.data.title}</h2>
-		<div class="date">{format(parseISO(post.data.pubDate), "MMM d, y")}</div>
+		<div class="date">{format(post.data.pubDate, "MMM d, y")}</div>
 		<div class="description">{post.data.description}</div>
 	</div>
 </a>
