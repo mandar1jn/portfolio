@@ -86,6 +86,15 @@ declare module 'astro:content' {
   data: InferEntrySchema<"blog">
 },
 },
+"projects": {
+"planet-clash.md": {
+  id: "planet-clash.md",
+  slug: "planet-clash",
+  body: string,
+  collection: "projects",
+  data: InferEntrySchema<"projects">
+},
+},
 
 	};
 
