@@ -1,18 +1,9 @@
-import type { MarkdownInstance } from "astro";
+import type { CollectionEntry } from "astro:content";
 
-export type ProjectFrontMatter = {
-	title: string;
-	description: string;
-	imgSrc: string;
-	imgAlt: string;
-	pubDate: string;
-	tags: string[];
-}
-
-export const sortProjectsByDate = (projects: MarkdownInstance<ProjectFrontMatter>[]) => {
+export const sortProjectsByDate = (projects: CollectionEntry<"projects">[]) => {
 	return projects.sort(
 	  (a, b) =>
-		new Date(b.frontmatter.pubDate).valueOf() -
-		new Date(a.frontmatter.pubDate).valueOf()
+		b.data.pubDate.valueOf() -
+		a.data.pubDate.valueOf()
 	);
   };

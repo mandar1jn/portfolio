@@ -1,38 +1,37 @@
 ---
-import type { MarkdownInstance } from 'astro';
-import type { ProjectFrontMatter } from '../utils/projects';
 import { ProjectTag, tags } from '../utils/tags';
 import Tag from './Tag.astro';
 import {Image} from "@astrojs/image/components"
+import type { CollectionEntry } from 'astro:content';
 
 export interface Props {
-	project: MarkdownInstance<ProjectFrontMatter>;
+	project: CollectionEntry<"projects">;
 }
 
 const {project} = Astro.props as Props;
 let usedTags: ProjectTag[] = [];
 
-for(let i: number = 0; i < project.frontmatter.tags.length; i++)
+for(let i: number = 0; i < project.data.tags.length; i++)
 {
-	if(tags[project.frontmatter.tags[i]])
+	if(tags[project.data.tags[i]])
 	{
-		usedTags.push(tags[project.frontmatter.tags[i]]);
+		usedTags.push(tags[project.data.tags[i]]);
 	}
 }
 ---
 
 <div class="projectCard">
 	<div class="imageContainer">
-		<a href={project.url}>
-			<Image src={project.frontmatter.imgSrc} format="avif" width={256} height={256} alt={project.frontmatter.imgAlt} class="image" />
+		<a href={"/projects/" + project.slug}>
+			<Image src={project.data.imgSrc} format="avif" width={256} height={256} alt={project.data.imgAlt} class="image" />
 		</a>
 	</div>
 	<div>
 		<div class="titleContainer">
-			<a href={project.url}>
+			<a href={"/projects/" + project.slug}>
 				<div class="title">
 					{
-						project.frontmatter.title
+						project.data.title
 					}
 				</div>
 			</a>
@@ -47,7 +46,7 @@ for(let i: number = 0; i < project.frontmatter.tags.length; i++)
 		</div>
 		<p class="description">
 			{
-				project.frontmatter.description
+				project.data.description
 			}
 		</p>
 	</div>

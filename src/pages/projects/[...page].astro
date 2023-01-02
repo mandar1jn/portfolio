@@ -1,19 +1,20 @@
 ---
 import type { GetStaticPathsOptions, MarkdownInstance, Page } from "astro";
+import { CollectionEntry, getCollection } from "astro:content";
 import ProjectCard from "../../components/ProjectCard.astro";
 import Section from "../../components/Section.astro";
 import Layout from "../../layouts/Layout.astro";
-import { ProjectFrontMatter, sortProjectsByDate } from "../../utils/projects";
+import { sortProjectsByDate } from "../../utils/projects";
 
 export async function getStaticPaths({paginate}: GetStaticPathsOptions)  {
-	const allProjects = await Astro.glob<ProjectFrontMatter>("./**/*.md");
+	const allProjects = await getCollection("projects");
 	const sortedProjects = sortProjectsByDate(allProjects);
 
 	return paginate(sortedProjects, {pageSize: 3});
 }
 
 export interface Props {
-	page: Page<MarkdownInstance<ProjectFrontMatter>>;
+	page: Page<CollectionEntry<"projects">>;
 }
 
 const {page} = Astro.props as Props;

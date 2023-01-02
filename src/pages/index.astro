@@ -5,14 +5,14 @@ import Section from '../components/Section.astro';
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import { sortPostsByDate } from '../utils/posts';
-import { ProjectFrontMatter, sortProjectsByDate } from '../utils/projects';
+import { sortProjectsByDate } from '../utils/projects';
 import {Image} from "@astrojs/image/components"
 
 const posts = await getCollection('blog');
 const sortedPosts = sortPostsByDate(posts);
 const lastPosts = sortedPosts.slice(0, 3);
 
-const projects = await Astro.glob<ProjectFrontMatter>("./projects/*.md");
+const projects = await getCollection("projects");
 const sortedProjects = sortProjectsByDate(projects);
 const lastProjects = sortedProjects.slice(0, 3);
 
