@@ -7,7 +7,6 @@ imgAlt: "The logo of Planet Clash. A pixel art of Earth and another planet colli
 pubDate: "Sat Jan 29 2022 21:00:00 GMT+0200"
 tags: ["c", "raylib", "webassembly"]
 ---
-
 From Januray 21st until January 28 2022 raysan5, the creator of Raylib, hosted the [raylib 5K gamejam](https://itch.io/jam/raylib-5k-gamejam) with the theme "That was close!" to celebrate that the discord reached 5k members.
 
 Sadly, this jam started in the middle of a test week I had, so I could only do the minimal project setup in the first 5 days. That's why this game was really made in 2 days.
