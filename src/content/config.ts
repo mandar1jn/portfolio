@@ -6,9 +6,7 @@ const blog = defineCollection({
 	schema: {
 		title: z.string(),
 		description: z.string(),
-		pubDate: z.preprocess((arg) => {
-			if (typeof arg == "string" || arg instanceof Date) return new Date(arg);
-		  }, z.date()),
+		pubDate: z.coerce.date(),
 		imgSrc: z.string(),
 		imgAlt: z.string(),
 		draft: z.boolean().optional()
@@ -21,9 +19,7 @@ const projects = defineCollection({
 		description: z.string(),
 		imgSrc: z.string(),
 		imgAlt: z.string(),
-		pubDate: z.preprocess((arg) => {
-			if(typeof arg == "string" || arg instanceof Date) return new Date(arg)
-		}, z.date()),
+		pubDate: z.coerce.date(),
 		tags: z.string().array()
 	}
 })

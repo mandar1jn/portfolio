@@ -24,7 +24,7 @@ const { Content } = await post.render();
 ---
 
 <ArticleLayout title={post.data.title} description={post.data.description} imgSrc={post.data.imgSrc} imgAlt={post.data.imgAlt}>
-	<div slot="after-title" class="date">By Marijn Kneppers on <time datetime={`${format(post.data.pubDate, "yyyy-MM-dd HH:mm")}`}>{format(post.data.pubDate, "MMM d, y")}</time></div>
+	<div slot="after-title" class="date">By Marijn Kneppers on <time datetime={post.data.pubDate.toISOString()}>{format(post.data.pubDate, "MMM d, y")}</time></div>
 	<Content slot="article" />
 </ArticleLayout>
 
