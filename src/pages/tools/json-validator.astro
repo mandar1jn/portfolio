@@ -1,0 +1,48 @@
+---
+import Layout from "../../layouts/Layout.astro"
+import Section from "../../components/Section.astro";
+---
+
+<Layout head={{title: "base64 converter", description: "Convert your base64 to strings"}}>
+	<Section id="validator">
+		<textarea id="input" />
+		<button id="button">Click me</button>
+		<p id="output">Unknown</p>
+	</Section>
+</Layout>
+
+<script>
+	const button: HTMLButtonElement = document.getElementById("button") as HTMLButtonElement;
+	const textArea: HTMLTextAreaElement = document.getElementById("input") as HTMLTextAreaElement;
+	const output: HTMLParagraphElement = document.getElementById("output") as HTMLParagraphElement;
+
+	const validate = () =>
+	{
+		const isValid = (): boolean =>
+		{
+			try{
+				const input = textArea.value;
+				JSON.parse(input);
+			}
+			catch {
+				return false;
+			}
+			return true;
+		}
+
+		output.innerText = (isValid())? "Valid" : "Invalid";
+	}
+
+	button.addEventListener("click", validate);
+</script>
+
+<style>
+	#validator {
+		display: flex;
+		flex-direction: column;
+	}
+
+	textarea {
+		color: black;
+	}
+</style>

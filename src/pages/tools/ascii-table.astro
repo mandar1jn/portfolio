@@ -1,0 +1,92 @@
+---
+import Section from "../../components/Section.astro";
+import Layout from "../../layouts/Layout.astro";
+
+type code = {
+	decimal: number,
+	hex: string,
+	binary: string,
+	character: string
+}
+
+const overrides: {[key: number]: string;} = {
+	0: "NUL",
+	1: "SOH",
+	2: "STX",
+	3: "ETX",
+	4: "EOT",
+	5: "ENQ",
+	6: "ACK",
+	7: "BEL",
+	8: "BS",
+	9: "TAB",
+	10: "LF",
+	11: "VT",
+	12: "FF",
+	13: "CR",
+	14: "SO",
+	15: "SI",
+	16: "DLE",
+	17: "DC1",
+	18: "DC2",
+	19: "DC3",
+	20: "DC4",
+	21: "NAK",
+	22: "SYN",
+	23: "ETB",
+	24: "CAN",
+	25: "EM",
+	26: "SUB",
+	27: "ESC",
+	28: "FS",
+	29: "GS",
+	30: "RS",
+	31: "US",
+	32: "Space",
+	127: "DEL"
+}
+
+let codes: code[] = [];
+
+for(let i = 0; i < 128; i++)
+{
+	codes[i] = {
+		decimal: i,
+		hex: `0x${i.toString(16)}`,
+		binary: `0b${i.toString(2).padStart(7, '0')}`,
+		character: (overrides[i] != undefined)? overrides[i] : String.fromCharCode(i)
+	}
+}
+---
+
+<Layout head={{title: "Ascii table", description: "A full table of all ascii strings"}}>
+	<Section>
+		<table>
+			<tr>
+				<th>Decimal</th>
+				<th>Hexadecimal</th>
+				<th>Binary</th>
+				<th>Character</th>
+			</tr>
+		{
+			codes.map((code) =>
+			{
+				return (
+					<tr>
+						<td>{code.decimal}</td>
+						<td>{code.hex}</td>
+						<td>{code.binary}</td>
+						<td>{code.character}</td>
+					</tr>
+				);
+			})
+		}
+		</table>
+	</Section>
+</Layout>
+
+<style>
+	table {
+		margin: auto;
+	}
+</style>

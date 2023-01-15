@@ -1,0 +1,35 @@
+---
+import figures from "../../../public/skylanders/figures.json";
+import Section from "../../components/Section.astro";
+import Layout from "../../layouts/Layout.astro";
+---
+<Layout head={{title: "Skylanders", description: "A table of all known skylanders and their ID's"}} >
+	<Section>
+		<table>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Id</th>
+					<th>Variant</th>
+					<th>Element</th>
+					<th>Series</th>
+				</tr>
+			</thead>
+			<tbody>
+				{
+					figures.map(figure => {
+						return (
+							<tr>
+								<td>{figure.Name}</td>
+								<td>0x{figure.Id.toString(16).padStart(4, '0')}</td>
+								<td>0x{figure.Variant.toString(16).padStart(4, '0')}</td>
+								<td>{figure.Element}</td>
+								<td>{figure.Series}</td>
+							</tr>
+						);
+					})
+				}
+			</tbody>
+		</table>
+	</Section>
+</Layout>
