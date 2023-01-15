@@ -77,4 +77,15 @@ const { head: { title, description} } = Astro.props as Props;
 	.gradient {
 		@apply bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-transparent
 	}
+
+	table {
+		border: solid white 1px;
+		border-spacing: 6px;
+		border-radius: 6px;
+		text-align: center;
+	}
+
+	th {
+		@apply bg-slate-700
+	}
 </style>

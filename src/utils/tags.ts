@@ -16,7 +16,7 @@ const WebAssemblyTag = {name: "WebAssembly", backgroundColor: {red: 101, green: 
 const CSharpTag = {name: "C#", backgroundColor: {red: 0, green: 148, blue: 4}, textColor: {red: 255, green: 255, blue: 255}}
 const TypescriptTag = {name: "typescript", backgroundColor: {red: 0, green: 122, blue: 204}, textColor: {red: 255, green: 255, blue: 255}}
 
-export const tags: Record<string, ProjectTag> = {
+export const tags: {[key: string]: ProjectTag;} = {
 	"c": CTag,
 	"raylib": RaylibTag,
 	"webassembly": WebAssemblyTag,
