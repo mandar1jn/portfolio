@@ -17,7 +17,4 @@ export default defineConfig({
 	extendDefaultPlugins: true,
 	remarkPlugins: [remarkGfm]
   },
-  experimental: {
-	contentCollections: true
-  }
 });

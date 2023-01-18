@@ -21,3 +21,6 @@ pnpm-debug.log*
 
 # Visual Studio folder
 .vs/
+
+# Astro files
+.astro/
