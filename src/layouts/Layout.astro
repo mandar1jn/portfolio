@@ -1,6 +1,6 @@
 ---
-import Footer from "../components/Footer.astro";
-import NavBar from "../components/NavBar.astro";
+import Footer from "@components/Footer.astro";
+import NavBar from "@components/NavBar.astro";
 import config from "../utils/config";
 
 export interface Props {
@@ -23,6 +23,7 @@ const { head: { title, description} } = Astro.props as Props;
 		<meta name="author" content={config.author.fullName} />
 		<meta name="copyright" content={config.author.fullName} />
 		<title>{title} - {config.siteName}</title>
+		<slot name="head" />
 	</head>
 	<body>
 		<NavBar />

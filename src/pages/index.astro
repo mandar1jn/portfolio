@@ -1,9 +1,9 @@
 ---
-import BlogPostCard from '../components/BlogPostCard.astro';
-import ProjectCard from '../components/ProjectCard.astro';
-import Section from '../components/Section.astro';
+import BlogPostCard from '@components/BlogPostCard.astro';
+import ProjectCard from '@components/ProjectCard.astro';
+import Section from '@components/Section.astro';
 import { getCollection } from 'astro:content';
-import Layout from '../layouts/Layout.astro';
+import Layout from '@layouts/Layout.astro';
 import { sortPostsByDate } from '../utils/posts';
 import { sortProjectsByDate } from '../utils/projects';
 import {Image} from "@astrojs/image/components"
