@@ -20,10 +20,10 @@
   resolved "https://registry.yarnpkg.com/@astrojs/compiler/-/compiler-0.29.19.tgz#dd8020a08c18639ce9de5b7203f4a4212d391279"
   integrity sha512-lvPpoOA6Fc1NpJrPT65ZOhhFieYkiBds9wzOhWX55lXMUpNPu5CUxqzgDAkNSTIoXHZxkxHfi+6EpFNnRZBBYQ==
 
-"@astrojs/compiler@^0.32.0":
-  version "0.32.0"
-  resolved "https://registry.yarnpkg.com/@astrojs/compiler/-/compiler-0.32.0.tgz#b97275d8ec0baa707be8cb99c82f9ff905a61cf4"
-  integrity sha512-QL5qMGkfsC1/kDjJF4RRagz8/hACBUb19cHWrQ8AROphS42qXM6JhoO1Og5FohV3p2VfT5CdEJspn4uNsgZvmw==
+"@astrojs/compiler@^1.0.0":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@astrojs/compiler/-/compiler-1.0.1.tgz#ed5d758c9824cc497361b632f1570d9ce2a4ce31"
+  integrity sha512-77aacobLKcL98NmhK3OBS5EHIrX9gs1ckB/vGSIdkVZuB7u51V4jh05I6W0tSvG7/86tALv6QtHTRZ8rLhFTbQ==
 
 "@astrojs/image@beta":
   version "1.0.0-beta.2"
@@ -893,11 +893,11 @@ astring@^1.8.0:
   integrity sha512-97a+l2LBU3Op3bBQEff79i/E4jMD2ZLFD8rHx9B6mXyB2uQwhJQYfiDqUwtfjF4QA1F2qs//N6Cw8LetMbQjcw==
 
 astro@beta:
-  version "2.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/astro/-/astro-2.0.0-beta.2.tgz#06e12f589ba816719151a781cf0b7f9c0aad9c7d"
-  integrity sha512-ogeHrDFE3ZCsP48tsfZJb4RCR9bIjKh8s/FhjxgbKQwCEE6IBnaL06ta1Qbnn7hUJlQXAZjIWCv9sc7zGGykHw==
+  version "2.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/astro/-/astro-2.0.0-beta.3.tgz#c4a544f63ed1ba1742da9a517a9b5be022652561"
+  integrity sha512-2wv5U93Np0smjlWlw2Nhm96bB2LEMV+zpUrqJcX/VEgBALAKM3Smq69/PlMwkX8vMbwlpKj9ICxzVsYrXWQaCg==
   dependencies:
-    "@astrojs/compiler" "^0.32.0"
+    "@astrojs/compiler" "^1.0.0"
     "@astrojs/language-server" "^0.28.3"
     "@astrojs/markdown-remark" "^2.0.0-beta.2"
     "@astrojs/telemetry" "^2.0.0-beta.0"
@@ -1515,15 +1515,10 @@ estree-walker@^2.0.2:
   resolved "https://registry.yarnpkg.com/estree-walker/-/estree-walker-2.0.2.tgz#52f010178c2a4c117a7757cfe942adb7d2da4cac"
   integrity sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==
 
-estree-walker@^3.0.0:
+estree-walker@^3.0.0, estree-walker@^3.0.1:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/estree-walker/-/estree-walker-3.0.2.tgz#2d17ff18067683aaf97aed83fe0d300603db9b67"
   integrity sha512-C03BvXCQIH/po+PNPONx/zSM9ziPr9weX8xNhYb/IJtdJ9z+L4z9VKPTB+UTHdmhnIopA2kc419ueyVyHVktwA==
-
-estree-walker@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/estree-walker/-/estree-walker-3.0.1.tgz#c2a9fb4a30232f5039b7c030b37ead691932debd"
-  integrity sha512-woY0RUD87WzMBUiZLx8NsYr23N5BKsOMZHhu2hoNRVh6NXGfoiT1KOL8G3UHlJAnEDGmfa5ubNA/AacfG+Kb0g==
 
 events@^3.3.0:
   version "3.3.0"
