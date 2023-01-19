@@ -13,17 +13,19 @@
 	},
 	"dependencies": {
 		"@astrojs/image": "beta",
-		"@astrojs/mdx": "^0.14.0",
-		"@astrojs/rss": "^2.0.0",
+		"@astrojs/mdx": "beta",
+		"@astrojs/rss": "beta",
 		"@astrojs/sitemap": "^1.0.0",
 		"@astrojs/tailwind": "beta",
 		"astro": "beta",
 		"date-fns": "^2.29.3",
+		"markdown-it": "^13.0.1",
 		"sanitize-html": "^2.8.1",
 		"sharp": "^0.31.3",
 		"tailwindcss": "^3.2.4"
 	},
 	"devDependencies": {
+		"@types/markdown-it": "^12.2.3",
 		"@types/sanitize-html": "^2.8.0"
 	}
 }
