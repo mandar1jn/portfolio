@@ -3,11 +3,16 @@ import figures from "../../assets/skylanders/figures.json";
 import Layout from "../../layouts/Layout.astro";
 import Section from "../../components/Section.astro";
 ---
-
-<Layout head={{ title: "title", description: "description" }}>
+<Layout head={{ title: "Skylanders figure generator", description: "This page can be used to generate valid dump files for skylanders figures to be used with emulators or nfc cards" }}>
 
 	<Section>
 		<h1>Skylanders figure generator</h1>
+		<p>
+			This website is custom written by me and <b>not</b> associated with Activision or Toys for Bob.
+		</p>
+		<p>
+			Note: figures have not been validated and might not work.
+		</p>
 	</Section>
 	<Section>
 		<form id="form">
@@ -16,9 +21,12 @@ import Section from "../../components/Section.astro";
 				{
 					figures.map((figure, index) =>
 					{
-						return (
-							<option value={`${index}`}>{figure.Name}</option>
-						);
+						if(typeof (figure.Variant) !== "string")
+						{
+							return (
+								<option value={`${index}`}>{figure.Name}</option>
+							);
+						}
 					})
 				}
 			</select>
@@ -31,6 +39,11 @@ import Section from "../../components/Section.astro";
 <style>
 	select {
 		color: black;
+	}
+
+	form {
+		display: grid;
+		grid-column: 1;
 	}
 </style>
 
@@ -80,6 +93,7 @@ import Section from "../../components/Section.astro";
 	function generate() {
 
 		const index: number = parseInt(selector.value);
+		const figure = figures[index];
 
 		const data = new Uint8Array(1024);
 
@@ -87,12 +101,12 @@ import Section from "../../components/Section.astro";
 		data[0] = parseInt(uuidArray[0], 16);
 		data[1] = parseInt(uuidArray[1], 16);
 
-		const idString = figures[index].Id.toString(16).padStart(4, "0");
+		const idString = figure.Id.toString(16).padStart(4, "0");
 		const idStringArray = idString.match(/.{2}/g)!;
 		data[16] = parseInt(idStringArray[1], 16);
 		data[17] = parseInt(idStringArray[0], 16);
 
-		const variantString = figures[index].Variant.toString(16).padStart(4, "0");
+		const variantString = figure.Variant.toString(16).padStart(4, "0");
 		const variantStringArray = variantString.match(/.{2}/g)!;
 		data[28] = parseInt(variantStringArray[1], 16);
 		data[29] = parseInt(variantStringArray[0], 16);
