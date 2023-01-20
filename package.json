@@ -17,7 +17,7 @@
 		"@astrojs/rss": "beta",
 		"@astrojs/sitemap": "^1.0.0",
 		"@astrojs/tailwind": "beta",
-		"astro": "beta",
+		"astro": "^2.0.0-beta.3",
 		"date-fns": "^2.29.3",
 		"markdown-it": "^13.0.1",
 		"sanitize-html": "^2.8.1",
