@@ -13,11 +13,11 @@
 	},
 	"dependencies": {
 		"@astrojs/image": "^0.13.0",
-		"@astrojs/mdx": "^0.15.0",
+		"@astrojs/mdx": "^0.15.1",
 		"@astrojs/rss": "^2.1.0",
 		"@astrojs/sitemap": "^1.0.0",
 		"@astrojs/tailwind": "^3.0.0",
-		"astro": "^2.0.0",
+		"astro": "^2.0.2",
 		"date-fns": "^2.29.3",
 		"markdown-it": "^13.0.1",
 		"sanitize-html": "^2.8.1",
