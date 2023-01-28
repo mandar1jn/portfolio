@@ -33,14 +33,31 @@ import Section from "../components/Section.astro";
 
 <style>
 	.navbar {
-		@apply flex flex-col gap-y-3 sm:flex-row sm:items-center sm:justify-between
+		display: flex;
+		flex-direction: column;
+		row-gap: 0.75rem;
+	}
+
+	@media (min-width: 640px) {
+		.navbar {
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+		}
 	}
 
 	.title {
-		@apply flex items-center text-xl font-bold
+		display: flex;
+		align-items: center;
+		font-size: 1.25rem;
+		line-height: 1.75rem;
+		font-weight: 700;
 	}
 
 	.links {
-		@apply flex gap-x-3 font-medium text-gray-200
+		display: flex;
+		column-gap: 0.75rem;
+		font-weight: 500;
+		color: var(--color-gray-200)
 	}
 </style>

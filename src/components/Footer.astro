@@ -22,10 +22,20 @@ import Section from "./Section.astro";
 
 <style>
 	#nav {
-		@apply border-t border-gray-600 pt-5 flex flex-col
+		border-top-width: 1px;
+		border-color: var(--color-gray-600);
+		padding-top: 1.25rem;
+		display: flex;
+		flex-direction: column;
 	}
 
 	.copyright {
-		@apply text-sm text-gray-200 flex flex-row justify-between mt-5
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		color: var(--color-gray-200);
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		margin-top: 1.25rem;
 	}
 </style>
