@@ -1,8 +1,5 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
-import sanitizeHtml from 'sanitize-html';
-import MarkdownIt from "markdown-it";
-const parser = new MarkdownIt();
 
 const posts = await getCollection('blog', ({ data }) => {
 	if(import.meta.env.PROD)
@@ -25,7 +22,6 @@ export const get = () => rss({
     link: "/posts/" + post.slug,
     title: post.data.title,
     pubDate: post.data.pubDate,
-    content: sanitizeHtml(parser.render(post.body)),
   })),
   // (optional) inject custom xml
   customData: `<language>en-us</language>`,
