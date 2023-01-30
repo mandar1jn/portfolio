@@ -8,7 +8,11 @@ import { sortPostsByDate } from '../utils/posts';
 import { sortProjectsByDate } from '../utils/projects';
 import {Image} from "@astrojs/image/components"
 
-const posts = await getCollection('blog');
+const posts = await getCollection('blog', ({ data }) => {
+	if(import.meta.env.MODE == "production")
+		return data.draft != true;
+	return true;
+});
 const sortedPosts = sortPostsByDate(posts);
 const lastPosts = sortedPosts.slice(0, 3);
 
