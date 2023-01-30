@@ -12,3 +12,13 @@ It's been a busy few weeks when it comes to my Skylanders research. Until now, a
 So, how am I going about proving my research?
 
 ### The Dolphin Emulator
+On December 8, deReeperJosh opened [his Pull Request](https://github.com/dolphin-emu/dolphin/pull/11331) to the Dolphin Emulator to add emulation for the Skylanders portal to Dolphin. The original code for this was mostly based on the [RPCS3 Emulator](https://rpcs3.net/) and although it's functional, it has some flaws. So, I decided to make a few contributions. For example, some command implementations were slightly off or described incorrectly in the comments. This implementation coincides with my research on the portal. After this, deReeperJosh went about fixing up some of the underlying usb emulation code and after that, it was ready to merge.
+
+Finally, on the 24th of January, the PR got merged and it's now an official part of the dolphin emulator
+
+#### Figure data
+Alongside the portal emulator, deReeperJosh also added code to generate figure data. This generates a `.sky` file with the bare minimum information required to get a figure to be recognised and loaded by the game. I am currently working on expanding the knowledge about the data on figures.
+
+### A physical emulator
+Since my research into the portal commands had been mostly completed, me and some other people decided to create a physical device that could emulate a Skylanders portal. For this, we are using a RaspberryPi Pico W. Using this, we have gotten the games to recognise the device as a portal and read a figure off of it. Some things like writing have not been implemented yet, but will hopefully be implemented soon. We are also working on a website that you can use to control the device remotely. Interested in our progress? You can check it out [at the github organization](https://github.com/pop-emu).
+
