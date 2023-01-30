@@ -1,9 +1,10 @@
 ---
-import Section from "./Section.astro";
+import Section from "@components/Section.astro";
+import Icon from "@components/Icon.astro";
 ---
 
 <footer class="footer">
-		<Section>
+	<Section>
 		<div id="nav">
 			<a href="/sitemap-index.xml">Sitemap</a>
 			<a href="/rss.xml">Feed</a>
@@ -12,8 +13,13 @@ import Section from "./Section.astro";
 			<p>
 				© Copyright 2022 by <span class="gradient">Marijn Kneppers</span>. All rights reserved.
 			</p>
-			<div>
-				Made with ♥ by me.
+			<div id="icons">
+				<a href="https://www.linkedin.com/in/marijn-kneppers/" target="_blank">
+					<Icon icon="LinkedIn" width={32} />
+				</a>
+				<a href="https://github.com/mandar1jn/" target="_blank">
+					<Icon icon="Github" width={32} />
+				</a>
 			</div>
 		</div>
 	</Section>
@@ -37,5 +43,12 @@ import Section from "./Section.astro";
 		flex-direction: row;
 		justify-content: space-between;
 		margin-top: 1.25rem;
+	}
+
+	#icons {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 10px;
 	}
 </style>

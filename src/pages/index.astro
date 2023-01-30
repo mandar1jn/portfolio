@@ -6,7 +6,8 @@ import { getCollection } from 'astro:content';
 import Layout from '@layouts/Layout.astro';
 import { sortPostsByDate } from '../utils/posts';
 import { sortProjectsByDate } from '../utils/projects';
-import {Image} from "@astrojs/image/components"
+import {Image} from "@astrojs/image/components";
+import Icon from "@components/Icon.astro";
 
 const posts = await getCollection('blog', ({ data }) => {
 	if(import.meta.env.MODE == "production")
@@ -19,7 +20,6 @@ const lastPosts = sortedPosts.slice(0, 3);
 const projects = await getCollection("projects");
 const sortedProjects = sortProjectsByDate(projects);
 const lastProjects = sortedProjects.slice(0, 3);
-
 ---
 
 <Layout head={{title: "Home", description: "Hello. I'm Marijn Kneppers, a 16 year old developer from the Netherlands."}}>
@@ -32,10 +32,18 @@ const lastProjects = sortedProjects.slice(0, 3);
 				<p class="introduction">
 					I'm an enthousiastic 16 year old developer living in the Netherlands.
 				</p>
+				<div id="icons">
+					<a href="https://www.linkedin.com/in/marijn-kneppers/" target="_blank">
+						<Icon icon="LinkedIn" width={64} />
+					</a>
+					<a href="https://github.com/mandar1jn/" target="_blank">
+						<Icon icon="Github" width={64} />
+					</a>
+				</div>
 			</div>
 			<div class="image">
 				<div class="w-[300px] h-[400px]">
-					<Image width={600} height={800} src={"/images/foto.jpg"} format="avif" alt="A picture of me" loading={"eager"} />
+					<Image width={600} height={800} src="/images/foto.jpg" format="avif" alt="A picture of me" loading={"eager"} />
 				</div>
 			</div>
 		</div>
@@ -107,5 +115,20 @@ const lastProjects = sortedProjects.slice(0, 3);
 
 	.blogPosts {
 		@apply grid grid-cols-1 gap-6 sm:grid-cols-3
+	}
+
+	#icons {
+		display: flex;
+		align-items: center;
+		flex-direction: row;
+		gap: 20px;
+		margin-top: 20px;
+	}
+
+	@media (max-width: 768px)
+	{
+		#icons {
+			justify-content: center;
+		}
 	}
 </style>
