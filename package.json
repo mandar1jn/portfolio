@@ -12,16 +12,15 @@
 		"check": "astro check"
 	},
 	"dependencies": {
-		"@astrojs/image": "^0.13.0",
+		"@astrojs/image": "^0.13.1",
 		"@astrojs/mdx": "^0.15.1",
 		"@astrojs/rss": "^2.1.0",
-		"@astrojs/sitemap": "^1.0.0",
-		"@astrojs/tailwind": "^3.0.0",
-		"astro": "^2.0.2",
+		"@astrojs/sitemap": "^1.0.1",
+		"@astrojs/tailwind": "^3.0.1",
+		"astro": "^2.0.4",
 		"date-fns": "^2.29.3",
 		"sharp": "^0.31.3",
 		"tailwindcss": "^3.2.4"
 	},
-	"devDependencies": {
-	}
+	"devDependencies": {}
 }
