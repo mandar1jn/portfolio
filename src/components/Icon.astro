@@ -16,4 +16,4 @@ interface Props {
 const {icon, width} = Astro.props as Props;
 const iconData = icons[icon];
 ---
-<Image src={iconData.icon} aspectRatio={iconData.aspectRatio} width={width} alt={iconData.alt} format="avif" />
+<Image src={iconData.icon} width={width} aspectRatio={iconData.aspectRatio} alt={iconData.alt} format="avif" />

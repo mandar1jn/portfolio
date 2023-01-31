@@ -5,6 +5,7 @@ let config =
 		firstName: "Marijn",
 		lastName: "Kneppers",
 		fullName: "Marijn Kneppers",
+		twitterHandle: "@Mandar1jn",
 		birthData: new Date(Date.parse("2006-08-27T06:30:00+02:00"))
 	}
 }

@@ -18,11 +18,26 @@ const { head: { title, description} } = Astro.props as Props;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
+		<meta name="twitter:card" content="summary" />
+
+		<title>{title} - {config.siteName}</title>
+		<meta property="og:title" content={title} />
+
+		<meta name="twitter:title" content={title} />
+		
 		<meta name="description" content={description} />
+		<meta property="og:description" content={description} />
+		<meta name="twitter:description" content={description} />
+
 		<meta name="generator" content={Astro.generator} />
 		<meta name="author" content={config.author.fullName} />
 		<meta name="copyright" content={config.author.fullName} />
-		<title>{title} - {config.siteName}</title>
+
+		<meta property="og:url" content={Astro.url} />
+		
+		<meta property="og:site_name" content={config.siteName} />
+		<meta name="twitter:site" content={config.author.twitterHandle} />
+
 		<slot name="head" />
 	</head>
 	<body>
