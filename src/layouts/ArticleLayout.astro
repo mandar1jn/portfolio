@@ -16,7 +16,7 @@ const {title, description, imgSrc, imgAlt} = Astro.props as Props;
 		<h1 id="title">{title}</h1>
 		<slot name="after-title" />
 		<div id="articleSection">
-				<Image src={imgSrc} width={256} aspectRatio={5/4} alt={imgAlt} format="avif" loading="eager" id="image" />
+				<Image src={imgSrc} width={256} height={205} alt={imgAlt} format="avif" loading="eager" id="image" />
 			<div id="articleContent">
 				<slot name="article" />
 			</div>
