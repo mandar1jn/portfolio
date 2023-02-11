@@ -17,7 +17,7 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 	
 	return paginate(sortedPosts, { pageSize: 6 });
 }
-export interface Props {
+interface Props {
   page: Page<CollectionEntry<"blog">>;
 }
 const { page } = Astro.props as Props;
