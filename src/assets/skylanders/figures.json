@@ -1017,7 +1017,7 @@
 	{
 		"Id": 114,
 		"Variant": 4629,
-		"Name": "Eye-Brawl (Pumpkin) (Giant) ???",
+		"Name": "Eye-Brawl (Pumpkin) (Giant)",
 		"Series": "Giants",
 		"Element": "Undead"
 	},
@@ -1031,7 +1031,7 @@
 	{
 		"Id": 115,
 		"Variant": 4113,
-		"Name": "Fright Rider (Halloween) ???",
+		"Name": "Fright Rider (Halloween)",
 		"Series": "Giants",
 		"Element": "Undead"
 	},
@@ -2620,7 +2620,7 @@
 	{
 		"Id": 682,
 		"Variant": 39321,
-		"Name": "Crystal - Air Acorn ???",
+		"Name": "Crystal - Air Acorn",
 		"Series": "Imaginators",
 		"Element": "Air"
 	},
@@ -2662,7 +2662,7 @@
 	{
 		"Id": 684,
 		"Variant": 39321,
-		"Name": "Crystal - Tech Pyramid ???",
+		"Name": "Crystal - Tech Pyramid",
 		"Series": "Imaginators",
 		"Element": "Tech"
 	},
@@ -2683,7 +2683,7 @@
 	{
 		"Id": 685,
 		"Variant": 39321,
-		"Name": "Crystal - Fire Angel ???",
+		"Name": "Crystal - Fire Angel",
 		"Series": "Imaginators",
 		"Element": "Fire"
 	},
@@ -2704,7 +2704,7 @@
 	{
 		"Id": 686,
 		"Variant": 39321,
-		"Name": "Crystal - Earth Rune ???",
+		"Name": "Crystal - Earth Rune",
 		"Series": "Imaginators",
 		"Element": "Earth"
 	},
@@ -2746,7 +2746,7 @@
 	{
 		"Id": 688,
 		"Variant": 9999,
-		"Name": "Crystal - Dark Rune ???",
+		"Name": "Crystal - Dark Rune",
 		"Series": "Imaginators",
 		"Element": "Dark"
 	},
@@ -2788,16 +2788,9 @@
 	{
 		"Id": 689,
 		"Variant": 39321,
-		"Name": "Crystal - Light Angel ???",
+		"Name": "Crystal - Light Angel",
 		"Series": "Imaginators",
 		"Element": "Light"
-	},
-	{
-		"Id": 699,
-		"Variant": 21000,
-		"Name": "Goldie (Invincible)",
-		"Series": "Imaginators",
-		"Element": "Magic"
 	},
 	{
 		"Id": 999,
@@ -3502,7 +3495,7 @@
 	{
 		"Id": 3228,
 		"Variant": 17410,
-		"Name": "Vehicle - Stealth Stinger (Nitro) ???",
+		"Name": "Vehicle - Stealth Stinger (Nitro)",
 		"Series": "Superchargers",
 		"Element": "Life"
 	},
@@ -3978,7 +3971,7 @@
 	{
 		"Id": 3500,
 		"Variant": 17411,
-		"Name": "Sky Trophy (Legendary) ???",
+		"Name": "Sky Trophy (Legendary)",
 		"Series": "Superchargers",
 		"Element": "Air"
 	},
@@ -4002,103 +3995,5 @@
 		"Name": "Kaos Trophy",
 		"Series": "Superchargers",
 		"Element": "Kaos"
-	},
-	{
-		"Id": 3999,
-		"Variant": 0,
-		"Name": "Template Legacy",
-		"Series": "Giants",
-		"Element": "Tech"
-	},
-	{
-		"Id": 5999,
-		"Variant": 0,
-		"Name": "Template Land Vehicle",
-		"Series": "Superchargers",
-		"Element": "Unknown"
-	},
-	{
-		"Id": 6999,
-		"Variant": 0,
-		"Name": "Template Air Vehicle",
-		"Series": "Superchargers",
-		"Element": "Unknown"
-	},
-	{
-		"Id": 7999,
-		"Variant": 0,
-		"Name": "Template Sea Vehicle",
-		"Series": "Superchargers",
-		"Element": "Unknown"
-	},
-	{
-		"Id": 113,
-		"Variant": "Unknown",
-		"Name": "Sniper",
-		"Series": "Giants",
-		"Element": "Life"
-	},
-	{
-		"Id": 699,
-		"Variant": 21000,
-		"Name": "Goldie (Invincible)",
-		"Series": "Imaginators",
-		"Element": "Magic"
-	},
-	{
-		"Id": 999,
-		"Variant": 4096,
-		"Name": "Debug Minion",
-		"Series": "Spyros Adventure",
-		"Element": "Magic"
-	},
-	{
-		"Id": 1999,
-		"Variant": 0,
-		"Name": "Template Template (Bottom)",
-		"Series": "SwapForce",
-		"Element": "Unknown"
-	},
-	{
-		"Id": 2999,
-		"Variant": 0,
-		"Name": "Template Template (Top)",
-		"Series": "SwapForce",
-		"Element": "Unknown"
-	},
-	{
-		"Id": 3011,
-		"Variant": 9220,
-		"Name": "Wind Up (Gear Head Vicarious Visions)",
-		"Series": "SwapForce",
-		"Element": "Tech"
-	},
-	{
-		"Id": 3999,
-		"Variant": 0,
-		"Name": "Template Legacy",
-		"Series": "SwapForce",
-		"Element": "Tech"
-	},
-	{
-		"Id": 5999,
-		"Variant": 0,
-		"Name": "Template Land Vehicle",
-		"Series": "Superchargers",
-		"Element": "Unknown"
-	},
-	{
-		"Id": 6999,
-		"Variant": 0,
-		"Name": "Template Air Vehicle",
-		"Series": "Superchargers",
-		"Element": "Unknown"
-	},
-	{
-		"Id": 7999,
-		"Variant": 0,
-		"Name": "Template Sea Vehicle",
-		"Series": "Superchargers",
-		"Element": "Unknown"
 	}
 ]
