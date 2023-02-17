@@ -75,10 +75,10 @@
     unist-util-visit "^4.1.0"
     vfile "^5.3.2"
 
-"@astrojs/mdx@^0.16.2":
-  version "0.16.2"
-  resolved "https://registry.yarnpkg.com/@astrojs/mdx/-/mdx-0.16.2.tgz#35a766699162def3c8493f5fa218ced7707cde16"
-  integrity sha512-ZNOdBW7ExnWM50+wubg8iw5J1jkUVkTHAJXQt3IwH4TVIOC3mQyr5hDPfN2/pwG9Ch9RNlI+7nsDFNaHY0AeaA==
+"@astrojs/mdx@^0.17.0":
+  version "0.17.0"
+  resolved "https://registry.yarnpkg.com/@astrojs/mdx/-/mdx-0.17.0.tgz#0f4ba5c84a6c96c2623ba5321420d7a90584cef5"
+  integrity sha512-vy4m/mwzdfDK4jC9wraFLMVwx13eXBPC8r7nkO5s8YlcFX6IDcl2LKPurP3+/ibpTei9IPQLIZOufXRDO96SYg==
   dependencies:
     "@astrojs/markdown-remark" "^2.0.1"
     "@astrojs/prism" "^2.0.0"
