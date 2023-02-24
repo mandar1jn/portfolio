@@ -15,7 +15,7 @@
 		"@astrojs/image": "^0.13.1",
 		"@astrojs/mdx": "^0.16.2",
 		"@astrojs/rss": "^2.1.0",
-		"@astrojs/sitemap": "^1.0.1",
+		"@astrojs/sitemap": "^1.1.0",
 		"@astrojs/tailwind": "^3.0.1",
 		"astro": "^2.0.12",
 		"date-fns": "^2.29.3",
