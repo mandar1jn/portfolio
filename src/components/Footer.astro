@@ -6,8 +6,8 @@ import Icon from "@components/Icon.astro";
 <footer class="footer">
 	<Section>
 		<div id="nav">
-			<a href="/sitemap-index.xml">Sitemap</a>
-			<a href="/rss.xml">Feed</a>
+			<a class="navLink" href="/sitemap-index.xml">Sitemap</a>
+			<a class="navLink" href="/rss.xml">Feed</a>
 		</div>
 		<div class="copyright">
 			<p>
@@ -33,6 +33,9 @@ import Icon from "@components/Icon.astro";
 		padding-top: 1.25rem;
 		display: flex;
 		flex-direction: column;
+	}
+	.navLink {
+		height: 48px;
 	}
 
 	.copyright {
