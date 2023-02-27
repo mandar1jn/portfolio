@@ -26,28 +26,44 @@ const {title, description, imgSrc, imgAlt} = Astro.props as Props;
 
 <style>
 	#article {
-		@apply mx-auto max-w-screen-lg px-3 py-6
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 1024px;
+		padding-left: 0.75rem;
+		padding-right: 0.75rem;
+		padding-top: 1.5rem;
+		padding-bottom: 1.5rem;
 	}
 
 	#title {
-		@apply text-4xl font-bold text-center
+		font-size: 2.25rem;
+    	line-height: 2.5rem;
+		font-weight: bold;
+		text-align: center;
 	}
 
 	#image {
-		@apply rounded-lg object-cover mx-auto
+		border-radius: 0.5rem;
+		object-fit: cover;
+		margin-left: auto;
+    	margin-right: auto;
 	}
 
 	#articleSection {
 		@apply mx-auto mt-5 max-w-[65ch]
 	}
 	#articleSection :global(p) {
-		@apply mt-5 mb-5
+		margin-top: 1.25rem;
+		margin-bottom: 1.25rem;
 	}
 	#articleSection :global(a) {
-		@apply text-white font-medium underline
+		color: white;
+		font-weight: 500;
+		text-decoration: underline;
 	}
 	#articleSection :global(img) {
-		@apply mt-8 mb-8
+		margin-top: 2rem;
+		margin-bottom: 2rem;
 	}
 	#articleContent {
 		@apply text-[#d1d5db] leading-7 text-base

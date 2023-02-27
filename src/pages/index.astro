@@ -85,11 +85,21 @@ const lastProjects = sortedProjects.slice(0, 3);
 
 <style>
 	.fullIntroductionContainer {
-		@apply flex flex-col items-center md:flex-row md:justify-between md:gap-x-24
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	@media(min-width: 768px)
+	{
+		.fullIntroductionContainer {
+			flex-direction: row;
+			justify-content: space-between;
+			column-gap: 6rem;
+		}
 	}
 	.introductionContainer
 	{
-		@apply pb-6
+		padding-bottom: 1.5rem;
 	}
 	.introductionName {
 		@apply text-3xl font-bold mb-0 mt-0
