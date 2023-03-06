@@ -1,7 +1,7 @@
 ---
 import {Image} from "@astrojs/image/components";
-import GithubIcon from "../assets/icons/github.png";
-import LinkedInIcon from "../assets/icons/LinkedIn.png";
+import GithubIcon from "../assets/icons/github.svg";
+import LinkedInIcon from "../assets/icons/LinkedIn.svg";
 
 const icons = {
 	"Github": {icon: GithubIcon, aspectRatio: 230/225, alt: "The Github Logo"},
@@ -10,10 +10,11 @@ const icons = {
 
 interface Props {
 	icon: keyof typeof icons;
-	width: number;
+	width?: number;
+	height?: number;
 }
 
-const {icon, width} = Astro.props as Props;
+const {icon, width, height} = Astro.props as Props;
 const iconData = icons[icon];
 ---
-<Image src={iconData.icon} width={width} aspectRatio={iconData.aspectRatio} alt={iconData.alt} format="avif" />
+<Image src={iconData.icon} width={width} height={height} aspectRatio={iconData.aspectRatio} alt={iconData.alt} />
