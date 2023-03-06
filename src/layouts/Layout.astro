@@ -18,6 +18,12 @@ const { head: { title, description} } = Astro.props as Props;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
+
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+		<link rel="manifest" href="/site.webmanifest">
+
 		<meta name="twitter:card" content="summary" />
 
 		<title>{title} - {config.siteName}</title>
@@ -58,7 +64,7 @@ const { head: { title, description} } = Astro.props as Props;
 		--color-text: hsl(12, 5%, 4%);
 		--color-border: hsl(17, 24%, 90%);
 
-		--color-slate-900: rgb(15 23 42);
+		--color-slate-900: #0f172a;
 		--color-slate-800: rgb(30 41 59);
 		--color-slate-700: rgb(51 65 85);
 
