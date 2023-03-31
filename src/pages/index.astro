@@ -6,8 +6,9 @@ import { getCollection } from 'astro:content';
 import Layout from '@layouts/Layout.astro';
 import { sortPostsByDate } from '../utils/posts';
 import { sortProjectsByDate } from '../utils/projects';
-import {Image} from "@astrojs/image/components";
+import {Image} from "astro:assets";
 import Icon from "@components/Icon.astro";
+import heroImage from "@assets/images/foto.jpg";
 
 const posts = await getCollection('blog', ({ data }) => {
 	if(import.meta.env.MODE == "production")
@@ -42,8 +43,8 @@ const lastProjects = sortedProjects.slice(0, 3);
 				</div>
 			</div>
 			<div class="image">
-				<div class="w-[300px] h-[400px]">
-					<Image width={600} height={800} src="/images/foto.jpg" format="avif" alt="A picture of me" loading={"eager"} />
+				<div class=" w-[300px] h-[400px]">
+					<Image src={heroImage} format="avif" alt="A picture of me" loading={"eager"} class="heroImage" />
 				</div>
 			</div>
 		</div>
@@ -125,6 +126,11 @@ const lastProjects = sortedProjects.slice(0, 3);
 
 	.blogPosts {
 		@apply grid grid-cols-1 gap-6 sm:grid-cols-3
+	}
+
+	.heroImage {
+		object-fit: cover;
+		height: 400px;
 	}
 
 	#icons {

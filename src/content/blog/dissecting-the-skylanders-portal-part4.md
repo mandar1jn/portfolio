@@ -2,10 +2,9 @@
 title: "Dissecting the Skylanders portal - part 4"
 description: "Dissecting how the portal of power works, and how you can play with it too."
 pubDate: 2022-11-09T20:08:27+0200
-imgSrc: "/images/blog/skylanders-editor/runic-portal.png"
+imgSrc: "@assets/images/blog/skylanders-editor/runic-portal.png"
 imgAlt: "A picture of the runic portal from Skylanders: Spyro's adventure"
 ---
-
 ## Introduction
 Hey everyone. It's been a while. To be exact, it has been over 4 months. In that time, I've rewritten my program several times, but that's something I'll get into later. In this post, I'll discuss where I've been, and how to read from a figure using the Skylanders portal, and I'll start dissecting the figure data.
 

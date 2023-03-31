@@ -2,24 +2,22 @@
 title: "Dissecting the Skylanders portal - part 3"
 description: "Dissecting how the portal of power works, and how you can play with it too."
 pubDate: 2022-07-02T15:07:51+0200
-imgSrc: "/images/blog/skylanders-editor/runic-portal.png"
+imgSrc: "@assets/images/blog/skylanders-editor/runic-portal.png"
 imgAlt: "A picture of the runic portal from Skylanders: Spyro's adventure"
 ---
-import {Image} from "@astrojs/image/components"
-
-In the first 2 stories, we’ve looked at the structure of a few commands. However, these commands were already documented elsewhere, and although I verified the data, nothing new was discovered. In this story, however, I will document a command that, as far as I can find, has not been documented anywhere before.
+In the first 2 stories, we’ve looked at the structure of a few commands. However, these commands were already documented elsewhere, and although I verified the data, nothing new was discovered. In this story, however, I will document a command that, as far as I can find, has not been documented anywhere before.
 
 ## The command
 
 ### Discovery
-I actually discovered this command by accident. I had not touched Skylanders: Trap Team in a while. Me, and my little brother, decided to play it once again. And, while doing so, I noticed that the Traptanium portal had unique colors on both sides. So, I decided to boot up my tools and find out how it works.
+I actually discovered this command by accident. I had not touched Skylanders: Trap Team in a while. Me, and my little brother, decided to play it once again. And, while doing so, I noticed that the Traptanium portal had unique colors on both sides. So, I decided to boot up my tools and find out how it works.
 
-### Finding the command
-To find the command, I used dolphin to emulate the game, and USB Monitor Pro to read the data being sent to the command. Using dolphin, I started the game and booted up USB Monitor Pro.
+### Finding the command
+To find the command, I used dolphin to emulate the game, and USB Monitor Pro to read the data being sent to the command. Using dolphin, I started the game and booted up USB Monitor Pro.
 
 After that, I loaded a save and placed a character on the portal. At this point, the portal starts to have different colors on both sides. Looking at USB Monitor Pro, I found the command character. That being, the character ‘J’.
 
-### Dissecting the command
+### Dissecting the command
 So, after I found the command character, I looked at the data recorded by USB Monitor Pro. With this, I created a command called SetColorAlternative and I ran all the commands I found to find out what they did. This resulted in the following results:
 
 ```csharp
@@ -42,10 +40,10 @@ This all leads to a final command structure:
 ```
 
 ## The editor
-Although dissecting this command took some time, it was not the main reason why this story took so long. As my goal is to make editing Skylanders as accessible as possible, I decided to start working on a visual editor so I don’t have to refactor all my code to work with this later on. This also required some changes to the way my project was set up. For the rendering of the application, I used [Raylib](https://github.com/raysan5/raylib) and [Raygui](https://github.com/raysan5/raygui)
+Although dissecting this command took some time, it was not the main reason why this story took so long. As my goal is to make editing Skylanders as accessible as possible, I decided to start working on a visual editor so I don’t have to refactor all my code to work with this later on. This also required some changes to the way my project was set up. For the rendering of the application, I used [Raylib](https://github.com/raysan5/raylib) and [Raygui](https://github.com/raysan5/raygui)
 
-<Image src="/images/blog/skylanders-editor/editor-raylib.png" width={720} height={540} format="avif" alt="A screenshot of the editor in it's current state" />
+![A screenshot of the editor in it's current state](../../assets/images/blog/skylanders-editor/editor-raylib.png)
 
-As you can see, this is still very much a work in progress. Currently, you can connect to the portal and you can set the color. My next goal is to add the ability to set the color of either side and to add some debug features to the editor.
+As you can see, this is still very much a work in progress. Currently, you can connect to the portal and you can set the color. My next goal is to add the ability to set the color of either side and to add some debug features to the editor.
 
-As always, the source for this project can be found [on github](https://github.com/mandar1jn/SkylandersEditor).
+As always, the source for this project can be found [on github](https://github.com/mandar1jn/SkylandersEditor).

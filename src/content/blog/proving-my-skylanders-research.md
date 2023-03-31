@@ -2,7 +2,7 @@
 title: "Proving my Skylanders research"
 description: "In this post, I will discuss how I have been proving my Skylanders research"
 pubDate: 2022-11-27T14:09:35+0200
-imgSrc: "/images/blog/skylanders-editor/runic-portal.png"
+imgSrc: "@assets/images/blog/skylanders-editor/runic-portal.png"
 imgAlt: "A picture of the runic portal from Skylanders: Spyro's adventure"
 draft: true
 ---

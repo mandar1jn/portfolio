@@ -1,5 +1,4 @@
 ---
-import {Image} from "@astrojs/image/components";
 import GithubIcon from "../assets/icons/github.svg";
 import LinkedInIcon from "../assets/icons/LinkedIn.svg";
 
@@ -16,5 +15,33 @@ interface Props {
 
 const {icon, width, height} = Astro.props as Props;
 const iconData = icons[icon];
+
+let props = {
+	width: 0,
+	height: 0
+}
+
+if(width)
+{
+	if(height)
+	{
+		props = {width, height};
+	}
+	else
+	{
+		props = {width, height: Math.round(width / icons[icon].aspectRatio)};
+	}
+}
+if(height)
+{
+	if(width)
+	{
+		props = {width, height};
+	}
+	else
+	{
+		props = {width: Math.round(height * icons[icon].aspectRatio), height};
+	}
+}
 ---
-<Image src={iconData.icon} width={width} height={height} aspectRatio={iconData.aspectRatio} alt={iconData.alt} />
+<img src={iconData.icon.src} width={props.width} height={props.height} alt={iconData.alt} />

@@ -12,8 +12,6 @@
 		"check": "astro check"
 	},
 	"dependencies": {
-		"@astrojs/image": "^0.16.0",
-		"@astrojs/mdx": "^0.18.0",
 		"@astrojs/rss": "^2.2.0",
 		"@astrojs/sitemap": "^1.2.0",
 		"@astrojs/tailwind": "^3.1.0",

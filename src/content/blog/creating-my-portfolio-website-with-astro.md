@@ -2,7 +2,7 @@
 title: "Creating my portfolio website with Astro"
 description: "How I wrote my portfolio website using Astro, why you should, and what you should look out for"
 pubDate: 2022-06-24T13:08:45+0200
-imgSrc: "/images/blog/skylanders-editor/runic-portal.png"
+imgSrc: "@assets/images/blog/skylanders-editor/runic-portal.png"
 imgAlt: "A picture of the runic portal from Skylanders: Spyro's adventure"
 draft: true
 ---
