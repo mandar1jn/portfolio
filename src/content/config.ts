@@ -1,9 +1,9 @@
-import { z, defineCollection, image } from "astro:content"
+import { z, defineCollection } from "astro:content"
 
 
 
 const blog = defineCollection({
-	schema: z.object({
+	schema: ({image}) => z.object({
 		title: z.string(),
 		description: z.string(),
 		pubDate: z.coerce.date(),
@@ -14,7 +14,7 @@ const blog = defineCollection({
 })
 
 const projects = defineCollection({
-	schema: z.object({
+	schema: ({image}) => z.object({
 		title: z.string(),
 		description: z.string(),
 		imgSrc: image(),
