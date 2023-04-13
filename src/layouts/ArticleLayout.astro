@@ -50,7 +50,10 @@ const {title, description, imgSrc, imgAlt} = Astro.props as Props;
 	}
 
 	#articleSection {
-		@apply mx-auto mt-5 max-w-[65ch]
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 1.25rem;
+		max-width: 65ch;
 	}
 	#articleSection :global(p) {
 		margin-top: 1.25rem;
@@ -66,6 +69,9 @@ const {title, description, imgSrc, imgAlt} = Astro.props as Props;
 		margin-bottom: 2rem;
 	}
 	#articleContent {
-		@apply text-[#d1d5db] leading-7 text-base
+		color: #D1D5DB;
+		line-height: 1.75rem;
+		font-size: 1rem;
+    	line-height: 1.75rem;
 	}
 </style>
