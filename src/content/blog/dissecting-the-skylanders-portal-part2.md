@@ -29,10 +29,10 @@ Let’s break down this annotation. The square brackets at the beginning and end
 
 When writing your code for the portal, it is important to note that it might not immediately respond to your commands. When in an activated state, reading data from the IN-endpoint might result in status data first. Because of this, I recommend continuously reading from the device until it responds with the same command code.
 
-## The first commands
+# The first commands
 The portal has a plethora of commands, but in this story, I will document the first three.
 
-### Ready
+## Ready
 This command might not seem much, but it does have a use. This command is used to poll whether the portal is ready to receive data. When no response is given, assume the portal is either not connected or your code does something wrong. The response to the command also contains the device ID. The command layout goes as follows:
 
 ```js
@@ -53,7 +53,7 @@ As you can see, the 2 bytes after the command character can be several different
 | traptanium | 0x02, 0x18 |
 | rift engine | 0x02, 0x0A |
 
-### Activate
+## Activate
 The activate command is another relatively simple command, with only one option.
 
 ```js
@@ -70,7 +70,7 @@ So, now for the response:
 
 As you can see, the first and second bytes mirror the command character and activation byte. The third and fourth characters, however, are a mystery to me. For all my portals, they returned the same result. More research into portal variants might be needed.
 
-### Color
+## Color
 Outside of the activate command, this is the only command that has a visible effect on the portal. This command can also control the portal color when the portal is deactivated. On portals that don’t have any lights, like the rift engine portal, this command is silently ignored. Because of this, and the fact that the command has no effect on the data being sent, you should not await a response for this command.
 
 ```js
@@ -89,5 +89,5 @@ As I said before, you should not await a response for this command. The portal d
 
 That’s right. The response is the exact same as the original command. No interesting or required data is being sent.
 
-## Conclusion
+# Conclusion
 Well, that was that for this story. I hope you find this stuff just as interesting as I do. You can, once again, find the source code for this project [on github](https://github.com/mandar1jn/SkylandersEditor).

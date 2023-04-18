@@ -7,17 +7,17 @@ imgAlt: "A picture of the runic portal from Skylanders: Spyro's adventure"
 ---
 In the first 2 stories, we’ve looked at the structure of a few commands. However, these commands were already documented elsewhere, and although I verified the data, nothing new was discovered. In this story, however, I will document a command that, as far as I can find, has not been documented anywhere before.
 
-## The command
+# The command
 
-### Discovery
+## Discovery
 I actually discovered this command by accident. I had not touched Skylanders: Trap Team in a while. Me, and my little brother, decided to play it once again. And, while doing so, I noticed that the Traptanium portal had unique colors on both sides. So, I decided to boot up my tools and find out how it works.
 
-### Finding the command
+## Finding the command
 To find the command, I used dolphin to emulate the game, and USB Monitor Pro to read the data being sent to the command. Using dolphin, I started the game and booted up USB Monitor Pro.
 
 After that, I loaded a save and placed a character on the portal. At this point, the portal starts to have different colors on both sides. Looking at USB Monitor Pro, I found the command character. That being, the character ‘J’.
 
-### Dissecting the command
+## Dissecting the command
 So, after I found the command character, I looked at the data recorded by USB Monitor Pro. With this, I created a command called SetColorAlternative and I ran all the commands I found to find out what they did. This resulted in the following results:
 
 ```csharp
@@ -39,7 +39,7 @@ This all leads to a final command structure:
 ['J', (0x00 | 0x02), (0x00 - 0xFF), (0x00 - 0xFF), (0x00 - 0xFF), (0x00 - 0xFF), (0x00 - 0xFF)]
 ```
 
-## The editor
+# The editor
 Although dissecting this command took some time, it was not the main reason why this story took so long. As my goal is to make editing Skylanders as accessible as possible, I decided to start working on a visual editor so I don’t have to refactor all my code to work with this later on. This also required some changes to the way my project was set up. For the rendering of the application, I used [Raylib](https://github.com/raysan5/raylib) and [Raygui](https://github.com/raysan5/raygui)
 
 ![A screenshot of the editor in it's current state](../../assets/images/blog/skylanders-editor/editor-raylib.png)
