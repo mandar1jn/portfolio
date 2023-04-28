@@ -1,0 +1,97 @@
+---
+import Section from "@components/Section.astro";
+
+---
+<Section>
+	<canvas id="triangle" width="800" height="600"/>
+</Section>
+
+<script>
+	import { ConfigureCanvas, InitializeWebGPU } from "@scripts/sandbox/webgpu";
+
+	const {gpu, adapter, device} = await InitializeWebGPU();
+
+	const {canvas, context} = ConfigureCanvas(gpu, device, "triangle");
+
+	import shader from "@assets/sandbox/webgpu/triangle/shader.wgsl?raw";
+
+	const shaderModule = device.createShaderModule({
+		code: shader,
+	});
+
+	const vertices = new Float32Array([
+		0.0, 0.6, 0, 1, 1, 0, 0, 1, -0.5, -0.6, 0, 1, 0, 1, 0, 1, 0.5, -0.6, 0,
+		1, 0, 0, 1, 1,
+	]);
+
+	const vertexBuffer = device.createBuffer({
+		size: vertices.byteLength,
+		usage: GPUBufferUsage.VERTEX | GPUBufferUsage.COPY_DST,
+	});
+
+	device.queue.writeBuffer(vertexBuffer, 0, vertices, 0, vertices.length);
+
+	const vertexBuffers: GPUVertexBufferLayout = [
+		{
+			attributes: [
+				{
+					shaderLocation: 0, // position
+					offset: 0,
+					format: "float32x4",
+				},
+				{
+					shaderLocation: 1, // color
+					offset: 16,
+					format: "float32x4",
+				},
+			],
+			arrayStride: 32,
+			stepMode: "vertex",
+		},
+	];
+
+	const pipelineDescriptor: GPURenderPipelineDescriptor = {
+		vertex: {
+			module: shaderModule,
+			entryPoint: "vertex_main",
+			buffers: vertexBuffers,
+		},
+		fragment: {
+			module: shaderModule,
+			entryPoint: "fragment_main",
+			targets: [
+				{
+					format: navigator.gpu.getPreferredCanvasFormat(),
+				},
+			],
+		},
+		primitive: {
+			topology: "triangle-list",
+		},
+		layout: "auto",
+	};
+
+	const renderPipeline = await device.createRenderPipelineAsync(pipelineDescriptor);
+
+	const commandEncoder = device.createCommandEncoder();
+
+	const renderPassdescriptor: GPURenderPassDescriptor = {
+		colorAttachments: [{
+			clearValue: {r: 0.0, g: 0.0, b: 0.0, a: 1.0},
+			loadOp: "clear",
+			storeOp: "store",
+			view: context.getCurrentTexture().createView()
+		}]
+	};
+
+	const passEncoder = commandEncoder.beginRenderPass(renderPassdescriptor);
+
+	passEncoder.setPipeline(renderPipeline);
+	passEncoder.setVertexBuffer(0, vertexBuffer);
+	passEncoder.draw(3);
+
+	passEncoder.end();
+
+	device.queue.submit([commandEncoder.finish()]);
+</script>
+

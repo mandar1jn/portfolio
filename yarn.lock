@@ -663,6 +663,11 @@
   resolved "https://registry.yarnpkg.com/@vscode/l10n/-/l10n-0.0.11.tgz#325d7beb2cfb87162bc624d16c4d546de6a73b72"
   integrity sha512-ukOMWnCg1tCvT7WnDfsUKQOFDQGsyR5tNgRpwmqi+5/vzU3ghdDXzvIM4IOPdSb3OeSsBNvmSL8nxIVOqi2WXA==
 
+"@webgpu/types@^0.1.31":
+  version "0.1.31"
+  resolved "https://registry.yarnpkg.com/@webgpu/types/-/types-0.1.31.tgz#b0c1074083735ad206d1798c9609a237096acfef"
+  integrity sha512-ozP2mEPjnJvtE7Q8Fz0/FnW00gcM0ySV+hi/Q+ddLX/hQk4xoaRT1NtQQVSS3mbEUWkVC5pizEkwS40qe0GK+g==
+
 acorn@^8.8.1:
   version "8.8.2"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.8.2.tgz#1b2f25db02af965399b9776b0c2c391276d37c4a"
@@ -1423,6 +1428,11 @@ github-slugger@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/github-slugger/-/github-slugger-2.0.0.tgz#52cf2f9279a21eb6c59dd385b410f0c0adda8f1a"
   integrity sha512-IaOQ9puYtjrkq7Y0Ygl9KDZnrf/aiUJYUpVf89y8kyaxbRG7Y1SrX/jaumrv81vc61+kiMempujsM3Yw7w5qcw==
+
+gl-matrix@^3.4.3:
+  version "3.4.3"
+  resolved "https://registry.yarnpkg.com/gl-matrix/-/gl-matrix-3.4.3.tgz#fc1191e8320009fd4d20e9339595c6041ddc22c9"
+  integrity sha512-wcCp8vu8FT22BnvKVPjXa/ICBWRq/zjFfdofZy1WSpQZpphblv12/bOQLBC1rMM7SGOFS9ltVmKOHil5+Ml7gA==
 
 glob-parent@^5.1.2, glob-parent@~5.1.2:
   version "5.1.2"

@@ -1,4 +1,12 @@
-<section class="section">
+---
+type Props = {
+	id?: string;
+}
+
+const {id} = Astro.props as Props;
+---
+
+<section class="section" id={id}>
 	<slot />
 </section>
 

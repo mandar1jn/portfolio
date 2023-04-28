@@ -5,7 +5,9 @@
 		"paths": {
 			"@components/*": ["src/components/*"],
 			"@layouts/*": ["src/layouts/*"],
-			"@assets/*": ["src/assets/*"]
-		}
+			"@assets/*": ["src/assets/*"],
+			"@scripts/*": ["src/scripts/*"]
+		},
+		"typeRoots": [ "./node_modules/@webgpu/types", "./node_modules/@types"]
 	}
 }
