@@ -15,7 +15,7 @@ import Layout from "@layouts/Layout.astro";
 </Layout>
 
 <script>
-	import { ConfigureCanvas, InitializeWebGPU } from "@scripts/sandbox/webgpu";
+	import { InitializeWebGPU, ConfigureCanvas } from "@scripts/sandbox/webgpu/index";
 
 	const { gpu, adapter, device } = await InitializeWebGPU();
 

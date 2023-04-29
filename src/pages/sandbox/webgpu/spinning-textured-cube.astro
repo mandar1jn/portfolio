@@ -5,38 +5,76 @@ import Layout from "@layouts/Layout.astro";
 
 <Layout
 	head={{
-		title: "WebGPU spinning triangle",
-		description: "A spinning triangle rendered using WebGPU",
+		title: "WebGPU spinning and textured cube",
+		description: "A spinning and textured cube rendered using WebGPU",
 	}}
 >
 	<Section>
-		<canvas id="spinning-triangle" width="800" height="600"></canvas>
+		<canvas id="spinning-textured-cube" width="800" height="600"></canvas>
 	</Section>
 </Layout>
 
 <script>
-	import { InitializeWebGPU, ConfigureCanvas} from "@scripts/sandbox/webgpu/index";
+	import { InitializeWebGPU, ConfigureCanvas, Material } from "@scripts/sandbox/webgpu/index";
 
 	const { gpu, adapter, device } = await InitializeWebGPU();
 
 	const { canvas, context } = ConfigureCanvas(
 		gpu,
 		device,
-		"spinning-triangle"
+		"spinning-textured-cube"
 	);
 
 	import { mat4 } from "gl-matrix";
 
-	import shader from "@assets/sandbox/webgpu/spinning-triangle/shader.wgsl?raw";
+	import shader from "@assets/sandbox/webgpu/spinning-textured-cube/shader.wgsl?raw";
 
 	const shaderModule = device.createShaderModule({
 		code: shader,
 	});
 
 	const vertices = new Float32Array([
-		0.0, 0.5, 0, 1, 1, 0, 0, 1,
-		-0.5, -0.5, 0, 1, 0, 1, 0, 1,
-		0.5, -0.5, 0, 1, 0, 0, 1, 1,
+		1, -1, 1, 1,   1, 0, 1, 1,	0, 1,
+		-1, -1, 1, 1,  0, 0, 1, 1,	1, 1,
+		-1, -1, -1, 1, 0, 0, 0, 1,	1, 0,
+		1, -1, -1, 1,  1, 0, 0, 1,	0, 0,
+		1, -1, 1, 1,   1, 0, 1, 1,	0, 1,
+		-1, -1, -1, 1, 0, 0, 0, 1,	1, 0,
+
+		1, 1, 1, 1,    1, 1, 1, 1,	0, 1,
+		1, -1, 1, 1,   1, 0, 1, 1,	1, 1,
+		1, -1, -1, 1,  1, 0, 0, 1,	1, 0,
+		1, 1, -1, 1,   1, 1, 0, 1,	0, 0,
+		1, 1, 1, 1,    1, 1, 1, 1,	0, 1,
+		1, -1, -1, 1,  1, 0, 0, 1,	1, 0,
+
+		-1, 1, 1, 1,   0, 1, 1, 1,	0, 1,
+		1, 1, 1, 1,    1, 1, 1, 1,	1, 1,
+		1, 1, -1, 1,   1, 1, 0, 1,	1, 0,
+		-1, 1, -1, 1,  0, 1, 0, 1,	0, 0,
+		-1, 1, 1, 1,   0, 1, 1, 1,	0, 1,
+		1, 1, -1, 1,   1, 1, 0, 1,	1, 0,
+
+		-1, -1, 1, 1,  0, 0, 1, 1,	0, 1,
+		-1, 1, 1, 1,   0, 1, 1, 1,	1, 1,
+		-1, 1, -1, 1,  0, 1, 0, 1,	1, 0,
+		-1, -1, -1, 1, 0, 0, 0, 1,	0, 0,
+		-1, -1, 1, 1,  0, 0, 1, 1,	0, 1,
+		-1, 1, -1, 1,  0, 1, 0, 1,	1, 0,
+
+		1, 1, 1, 1,    1, 1, 1, 1,	0, 1,
+		-1, 1, 1, 1,   0, 1, 1, 1,	1, 1,
+		-1, -1, 1, 1,  0, 0, 1, 1,	1, 0,
+		-1, -1, 1, 1,  0, 0, 1, 1,	1, 0,
+		1, -1, 1, 1,   1, 0, 1, 1,	0, 0,
+		1, 1, 1, 1,    1, 1, 1, 1,	0, 1,
+
+		1, -1, -1, 1,  1, 0, 0, 1,	0, 1,
+		-1, -1, -1, 1, 0, 0, 0, 1,	1, 1,
+		-1, 1, -1, 1,  0, 1, 0, 1,	1, 0,
+		1, 1, -1, 1,   1, 1, 0, 1,	0, 0,
+		1, -1, -1, 1,  1, 0, 0, 1,	0, 1,
+		-1, 1, -1, 1,  0, 1, 0, 1,	1, 0,
 	]);
 
 	const vertexBuffer = device.createBuffer({
@@ -60,11 +98,20 @@ import Layout from "@layouts/Layout.astro";
 					offset: 16,
 					format: "float32x4",
 				},
+				{
+					shaderLocation: 2, // uv,
+					offset: 32,
+					format: "float32x2"
+				}
 			],
-			arrayStride: 32,
+			arrayStride: 40,
 			stepMode: "vertex",
 		},
 	];
+
+	import planetImage from "@assets/images/projects/planet-clash/icon.png";
+
+	const material: Material = await Material.GenerateMaterialFromImage(gpu, device, planetImage);
 
 	let t = 0;
 
@@ -75,10 +122,10 @@ import Layout from "@layouts/Layout.astro";
 		mat4.perspective(projection, Math.PI / 4, 800 / 600, 0.1, 10);
 
 		const view = mat4.create();
-		mat4.lookAt(view, [0, 0, 2], [0, 0, 0], [0, 1, 0]);
+		mat4.lookAt(view, [0, 0, 5], [0, 0, 0], [0, 1, 0]);
 
 		const model = mat4.create();
-		mat4.rotate(model, model, t, [0, 1, 0]);
+		mat4.rotate(model, model, t, [1, 1, 0]);
 
 		const uniformBuffer = device.createBuffer({
 			size: 64 * 3,
@@ -96,6 +143,16 @@ import Layout from "@layouts/Layout.astro";
 					visibility: GPUShaderStage.VERTEX,
 					buffer: {},
 				},
+				{
+					binding: 1,
+					visibility: GPUShaderStage.FRAGMENT,
+					texture: {}
+				},
+				{
+					binding: 2,
+					visibility: GPUShaderStage.FRAGMENT,
+					sampler: {}
+				}
 			],
 		});
 
@@ -108,6 +165,14 @@ import Layout from "@layouts/Layout.astro";
 						buffer: uniformBuffer,
 					},
 				},
+				{
+					binding: 1,
+					resource: material.view
+				},
+				{
+					binding: 2,
+					resource: material.sampler
+				}
 			],
 		});
 
@@ -129,6 +194,7 @@ import Layout from "@layouts/Layout.astro";
 			},
 			primitive: {
 				topology: "triangle-list",
+				cullMode: "back"
 			},
 			layout: device.createPipelineLayout({
 				bindGroupLayouts: [bindGroupLayout],
@@ -158,7 +224,7 @@ import Layout from "@layouts/Layout.astro";
 		passEncoder.setPipeline(renderPipeline);
 		passEncoder.setBindGroup(0, bindGroup);
 		passEncoder.setVertexBuffer(0, vertexBuffer);
-		passEncoder.draw(3);
+		passEncoder.draw(36);
 
 		passEncoder.end();
 

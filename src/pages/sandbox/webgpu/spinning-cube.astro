@@ -15,7 +15,7 @@ import Layout from "@layouts/Layout.astro";
 </Layout>
 
 <script>
-	import { ConfigureCanvas, InitializeWebGPU } from "@scripts/sandbox/webgpu";
+	import { InitializeWebGPU, ConfigureCanvas } from "@scripts/sandbox/webgpu/index";
 
 	const { gpu, adapter, device } = await InitializeWebGPU();
 
@@ -27,7 +27,7 @@ import Layout from "@layouts/Layout.astro";
 
 	import { mat4 } from "gl-matrix";
 
-	import shader from "@assets/sandbox/webgpu/spinning-triangle/shader.wgsl?raw";
+	import shader from "@assets/sandbox/webgpu/spinning-cube/shader.wgsl?raw";
 
 	const shaderModule = device.createShaderModule({
 		code: shader,
