@@ -2,6 +2,7 @@ export const InitializeWebGPU = async () => {
 	const gpu = navigator.gpu;
 
 	if (!gpu) {
+		alert("This browser does not support WebGPU");
 		throw "This browser does not support WebGPU";
 	}
 

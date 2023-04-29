@@ -1,19 +1,31 @@
 ---
-import Section from "@components/Section.astro"
+import Section from "@components/Section.astro";
+import Layout from "@layouts/Layout.astro";
 ---
 
-<Section>
-	<canvas id="spinning-triangle" width="800" height="600"/>
-</Section>
+<Layout
+	head={{
+		title: "WebGPU spinning triangle",
+		description: "A spinning triangle rendered using WebGPU",
+	}}
+>
+	<Section>
+		<canvas id="spinning-triangle" width="800" height="600"></canvas>
+	</Section>
+</Layout>
 
 <script>
 	import { ConfigureCanvas, InitializeWebGPU } from "@scripts/sandbox/webgpu";
 
-	const {gpu, adapter, device} = await InitializeWebGPU();
+	const { gpu, adapter, device } = await InitializeWebGPU();
 
-	const {canvas, context} = ConfigureCanvas(gpu, device, "spinning-triangle");
+	const { canvas, context } = ConfigureCanvas(
+		gpu,
+		device,
+		"spinning-triangle"
+	);
 
-	import {mat4} from "gl-matrix";
+	import { mat4 } from "gl-matrix";
 
 	import shader from "@assets/sandbox/webgpu/spinning-triangle/shader.wgsl?raw";
 
@@ -34,6 +46,7 @@ import Section from "@components/Section.astro"
 
 	device.queue.writeBuffer(vertexBuffer, 0, vertices, 0, vertices.length);
 
+	// @ts-ignore incorrectly marks object as missing some attributes
 	const vertexBuffers: GPUVertexBufferLayout = [
 		{
 			attributes: [
@@ -57,10 +70,9 @@ import Section from "@components/Section.astro"
 
 	const render = async () => {
 		t += 0.01;
-		if(t > 2.0 * Math.PI)
-			t = 0;
+		if (t > 2.0 * Math.PI) t = 0;
 		const projection = mat4.create();
-		mat4.perspective(projection, Math.PI / 4, 800/600, 0.1, 10);
+		mat4.perspective(projection, Math.PI / 4, 800 / 600, 0.1, 10);
 
 		const view = mat4.create();
 		mat4.lookAt(view, [0, 0, 2], [0, 0, 0], [0, 1, 0]);
@@ -70,35 +82,40 @@ import Section from "@components/Section.astro"
 
 		const uniformBuffer = device.createBuffer({
 			size: 64 * 3,
-			usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST
-		})
+			usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST,
+		});
 
 		device.queue.writeBuffer(uniformBuffer, 0, model as ArrayBuffer);
 		device.queue.writeBuffer(uniformBuffer, 64, view as ArrayBuffer);
 		device.queue.writeBuffer(uniformBuffer, 128, projection as ArrayBuffer);
 
 		const bindGroupLayout = device.createBindGroupLayout({
-			entries: [{
-				binding: 0,
-				visibility: GPUShaderStage.VERTEX,
-				buffer: {}
-			}]
-		})
+			entries: [
+				{
+					binding: 0,
+					visibility: GPUShaderStage.VERTEX,
+					buffer: {},
+				},
+			],
+		});
 
 		const bindGroup = device.createBindGroup({
 			layout: bindGroupLayout,
-			entries: [{
-				binding: 0,
-				resource: {
-					buffer: uniformBuffer
-				}
-			}]
-		})
+			entries: [
+				{
+					binding: 0,
+					resource: {
+						buffer: uniformBuffer,
+					},
+				},
+			],
+		});
 
 		const pipelineDescriptor: GPURenderPipelineDescriptor = {
 			vertex: {
 				module: shaderModule,
 				entryPoint: "vertex_main",
+				// @ts-ignore see previous ts-ignore
 				buffers: vertexBuffers,
 			},
 			fragment: {
@@ -114,24 +131,29 @@ import Section from "@components/Section.astro"
 				topology: "triangle-list",
 			},
 			layout: device.createPipelineLayout({
-				bindGroupLayouts: [bindGroupLayout]
+				bindGroupLayouts: [bindGroupLayout],
 			}),
 		};
 
-		const renderPipeline = await device.createRenderPipelineAsync(pipelineDescriptor);
+		const renderPipeline = await device.createRenderPipelineAsync(
+			pipelineDescriptor
+		);
 
 		const commandEncoder = device.createCommandEncoder();
 
 		const renderPassdescriptor: GPURenderPassDescriptor = {
-			colorAttachments: [{
-				clearValue: {r: 0.0, g: 0.0, b: 0.0, a: 1.0},
-				loadOp: "clear",
-				storeOp: "store",
-				view: context.getCurrentTexture().createView()
-			}]
+			colorAttachments: [
+				{
+					clearValue: { r: 0.0, g: 0.0, b: 0.0, a: 1.0 },
+					loadOp: "clear",
+					storeOp: "store",
+					view: context.getCurrentTexture().createView(),
+				},
+			],
 		};
 
-		const passEncoder = commandEncoder.beginRenderPass(renderPassdescriptor);
+		const passEncoder =
+			commandEncoder.beginRenderPass(renderPassdescriptor);
 
 		passEncoder.setPipeline(renderPipeline);
 		passEncoder.setBindGroup(0, bindGroup);

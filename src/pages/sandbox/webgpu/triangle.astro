@@ -1,17 +1,25 @@
 ---
 import Section from "@components/Section.astro";
-
+import Layout from "@layouts/Layout.astro";
 ---
-<Section>
-	<canvas id="triangle" width="800" height="600"/>
-</Section>
+
+<Layout
+	head={{
+		title: "WebGPU triangle",
+		description: "A triangle rendered using WebGPU",
+	}}
+>
+	<Section>
+		<canvas id="triangle" width="800" height="600"></canvas>
+	</Section>
+</Layout>
 
 <script>
 	import { ConfigureCanvas, InitializeWebGPU } from "@scripts/sandbox/webgpu";
 
-	const {gpu, adapter, device} = await InitializeWebGPU();
+	const { gpu, adapter, device } = await InitializeWebGPU();
 
-	const {canvas, context} = ConfigureCanvas(gpu, device, "triangle");
+	const { canvas, context } = ConfigureCanvas(gpu, device, "triangle");
 
 	import shader from "@assets/sandbox/webgpu/triangle/shader.wgsl?raw";
 
@@ -31,6 +39,7 @@ import Section from "@components/Section.astro";
 
 	device.queue.writeBuffer(vertexBuffer, 0, vertices, 0, vertices.length);
 
+	// @ts-ignore incorrectly marks object as missing some attributes
 	const vertexBuffers: GPUVertexBufferLayout = [
 		{
 			attributes: [
@@ -54,6 +63,7 @@ import Section from "@components/Section.astro";
 		vertex: {
 			module: shaderModule,
 			entryPoint: "vertex_main",
+			// @ts-ignore see previous ts-ignore
 			buffers: vertexBuffers,
 		},
 		fragment: {
@@ -71,17 +81,21 @@ import Section from "@components/Section.astro";
 		layout: "auto",
 	};
 
-	const renderPipeline = await device.createRenderPipelineAsync(pipelineDescriptor);
+	const renderPipeline = await device.createRenderPipelineAsync(
+		pipelineDescriptor
+	);
 
 	const commandEncoder = device.createCommandEncoder();
 
 	const renderPassdescriptor: GPURenderPassDescriptor = {
-		colorAttachments: [{
-			clearValue: {r: 0.0, g: 0.0, b: 0.0, a: 1.0},
-			loadOp: "clear",
-			storeOp: "store",
-			view: context.getCurrentTexture().createView()
-		}]
+		colorAttachments: [
+			{
+				clearValue: { r: 0.0, g: 0.0, b: 0.0, a: 1.0 },
+				loadOp: "clear",
+				storeOp: "store",
+				view: context.getCurrentTexture().createView(),
+			},
+		],
 	};
 
 	const passEncoder = commandEncoder.beginRenderPass(renderPassdescriptor);
@@ -94,4 +108,3 @@ import Section from "@components/Section.astro";
 
 	device.queue.submit([commandEncoder.finish()]);
 </script>
-

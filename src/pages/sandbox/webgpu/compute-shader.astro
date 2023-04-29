@@ -1,13 +1,15 @@
 ---
 import Section from "@components/Section.astro";
+import Layout from "@layouts/Layout.astro";
 
 ---
-
-<Section>
-	<p>
-		See console output for compute shader results.
-	</p>
-</Section>
+<Layout head={{title: "WebGPU compute shader", description: "A compute shader written using WebGPU"}}>
+	<Section>
+		<p>
+			See console output for compute shader results.
+		</p>
+	</Section>
+</Layout>
 
 <script>
 	import { InitializeWebGPU } from "@scripts/sandbox/webgpu";
