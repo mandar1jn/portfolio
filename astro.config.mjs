@@ -11,9 +11,12 @@ export default defineConfig({
 		syntaxHighlight: false,
 	},
 	experimental: {
-		assets: true
+		assets: true,
+		inlineStylesheets: "auto"
 	},
 	image: {
-		service: "astro/assets/services/sharp",
+		service: {
+			entrypoint: "astro/assets/services/sharp",
+		},
 	}
 });
