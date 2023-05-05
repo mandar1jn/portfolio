@@ -71,22 +71,41 @@ for(let i: number = 0; i < project.data.tags.length; i++)
 	}
 
 	.image {
-		@apply h-36 w-36 hover:translate-y-1
+		height: 9rem;
+		width: 9rem;
+	}
+
+	.image:hover {
+		transform: translateY(0.25rem);
 	}
 
 	.titleContainer {
-		@apply flex flex-col items-center md:flex-row
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	@media only screen and (min-width: 768px)
+	{
+		.titleContainer {
+			flex-direction: row;
+		}
 	}
 
 	.title {
-		@apply font-bold text-xl
+		font-weight: bold;
+		font-size: 1.25rem;
+		line-height: 1.75rem;
 	}
 
 	.description {
-		@apply mt-4 text-gray-300
+		margin-top: 1rem;
+		color: var(--color-gray-300)
 	}
 
 	.tags {
-		@apply ml-3 flex gap-2
+		margin-left: 0.75rem;
+		display: flex;
+		gap: 0.5rem;
 	}
 </style>
