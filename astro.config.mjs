@@ -10,9 +10,11 @@ export default defineConfig({
 	markdown: {
 		syntaxHighlight: false,
 	},
+	build: {
+		inlineStylesheets: "auto",
+	},
 	experimental: {
 		assets: true,
-		inlineStylesheets: "auto"
 	},
 	image: {
 		service: {
