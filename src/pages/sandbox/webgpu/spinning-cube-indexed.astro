@@ -1,0 +1,229 @@
+---
+import Section from "@components/Section.astro";
+import Layout from "@layouts/Layout.astro";
+---
+
+<Layout
+	head={{
+		title: "WebGPU spinning cube using an index buffer",
+		description: "A spinning cube rendered using WebGPU and an index buffer",
+	}}
+>
+	<Section>
+		<canvas id="spinning-cube-indexed" width="800" height="600"></canvas>
+	</Section>
+</Layout>
+
+<script>
+	import { InitializeWebGPU, ConfigureCanvas } from "@scripts/sandbox/webgpu/index";
+
+	const { gpu, adapter, device } = await InitializeWebGPU();
+
+	const { canvas, context } = ConfigureCanvas(
+		gpu,
+		device,
+		"spinning-cube-indexed"
+	);
+
+	import { mat4 } from "gl-matrix";
+
+	import shader from "@assets/sandbox/webgpu/spinning-cube/shader.wgsl?raw";
+
+	const shaderModule = device.createShaderModule({
+		code: shader,
+	});
+
+	const vertices = new Float32Array([
+		1, -1, 1, 1,   1, 0, 1, 1,
+		-1, -1, 1, 1,  0, 0, 1, 1,
+		-1, -1, -1, 1, 0, 0, 0, 1,
+		1, -1, -1, 1,  1, 0, 0, 1,
+		1, 1, 1, 1,    1, 1, 1, 1,
+		1, 1, -1, 1,   1, 1, 0, 1,
+		-1, 1, 1, 1,   0, 1, 1, 1,
+		-1, 1, -1, 1,  0, 1, 0, 1,
+	]);
+
+	const indexes = new Uint32Array([
+		0,
+		1,
+		2,
+		3,
+		0,
+		2,
+		4,
+		0,
+		3,
+		5,
+		4,
+		3,
+		6,
+		4,
+		5,
+		7,
+		6,
+		5,
+		1,
+		6,
+		7,
+		2,
+		1,
+		7,
+		4,
+		6,
+		1,
+		1,
+		0,
+		4,
+		3,
+		2,
+		7,
+		5,
+		3,
+		7,
+	]);
+
+	const vertexBuffer = device.createBuffer({
+		size: vertices.byteLength,
+		usage: GPUBufferUsage.VERTEX | GPUBufferUsage.COPY_DST,
+		label: "Vertex buffer"
+	});
+
+	const indexBuffer = device.createBuffer({
+		size: indexes.byteLength,
+		usage: GPUBufferUsage.INDEX | GPUBufferUsage.COPY_DST,
+		label: "index buffer"
+	})
+
+	device.queue.writeBuffer(vertexBuffer, 0, vertices, 0, vertices.length);
+
+	device.queue.writeBuffer(indexBuffer, 0, indexes, 0, indexes.length);
+
+	// @ts-ignore incorrectly marks object as missing some attributes
+	const vertexBuffers: GPUVertexBufferLayout = [
+		{
+			attributes: [
+				{
+					shaderLocation: 0, // position
+					offset: 0,
+					format: "float32x4",
+				},
+				{
+					shaderLocation: 1, // color
+					offset: 16,
+					format: "float32x4",
+				},
+			],
+			arrayStride: 32,
+			stepMode: "vertex",
+		},
+	];
+
+	const projection = mat4.create();
+	mat4.perspective(projection, Math.PI / 4, 800 / 600, 0.1, 10);
+
+	const view = mat4.create();
+	mat4.lookAt(view, [0, 0, 5], [0, 0, 0], [0, 1, 0]);
+
+	const uniformBuffer = device.createBuffer({
+		size: 64 * 3,
+		usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST,
+		label: "Matrices"
+	});
+
+	device.queue.writeBuffer(uniformBuffer, 64, view as ArrayBuffer);
+	device.queue.writeBuffer(uniformBuffer, 128, projection as ArrayBuffer);
+
+	let t = 0;
+
+	const render = async () => {
+		t += 0.01;
+		if (t > 2.0 * Math.PI) t = 0;
+		
+		const model = mat4.create();
+		mat4.rotate(model, model, t, [1, 1, 0]);
+
+		device.queue.writeBuffer(uniformBuffer, 0, model as ArrayBuffer);
+
+		const bindGroupLayout = device.createBindGroupLayout({
+			entries: [
+				{
+					binding: 0,
+					visibility: GPUShaderStage.VERTEX,
+					buffer: {},
+				},
+			],
+		});
+
+		const bindGroup = device.createBindGroup({
+			layout: bindGroupLayout,
+			entries: [
+				{
+					binding: 0,
+					resource: {
+						buffer: uniformBuffer,
+					},
+				},
+			],
+		});
+
+		const pipelineDescriptor: GPURenderPipelineDescriptor = {
+			vertex: {
+				module: shaderModule,
+				entryPoint: "vertex_main",
+				// @ts-ignore see previous ts-ignore
+				buffers: vertexBuffers,
+			},
+			fragment: {
+				module: shaderModule,
+				entryPoint: "fragment_main",
+				targets: [
+					{
+						format: navigator.gpu.getPreferredCanvasFormat(),
+					},
+				],
+			},
+			primitive: {
+				topology: "triangle-list",
+				cullMode: "back"
+			},
+			layout: device.createPipelineLayout({
+				bindGroupLayouts: [bindGroupLayout],
+			}),
+		};
+
+		const renderPipeline = await device.createRenderPipelineAsync(
+			pipelineDescriptor
+		);
+
+		const commandEncoder = device.createCommandEncoder();
+
+		const renderPassdescriptor: GPURenderPassDescriptor = {
+			colorAttachments: [
+				{
+					clearValue: { r: 0.0, g: 0.0, b: 0.0, a: 1.0 },
+					loadOp: "clear",
+					storeOp: "store",
+					view: context.getCurrentTexture().createView(),
+				},
+			],
+		};
+
+		const passEncoder =
+			commandEncoder.beginRenderPass(renderPassdescriptor);
+
+		passEncoder.setPipeline(renderPipeline);
+		passEncoder.setBindGroup(0, bindGroup);
+		passEncoder.setVertexBuffer(0, vertexBuffer);
+		passEncoder.setIndexBuffer(indexBuffer, "uint32");
+		passEncoder.drawIndexed(36);
+
+		passEncoder.end();
+
+		device.queue.submit([commandEncoder.finish()]);
+
+		requestAnimationFrame(render);
+	};
+
+	requestAnimationFrame(render);
+</script>
