@@ -1,0 +1,34 @@
+---
+import Layout from "@layouts/Layout.astro";
+---
+<Layout
+	head={{
+		title: "WGSL shader playground",
+		description: "Create your own WGSL shaders",
+	}}
+>
+	<div>
+		<div id="container">
+			<div id="player">
+				<canvas id="shader-playground" width="800" height="600"></canvas>
+				<div id="bar">
+					<span id="resolution">0 x 0</span>
+				</div>
+			</div>
+			<div>
+				<div id="shader-input"></div>
+			</div>
+		</div>
+		
+		<button id="recompile">Compile</button>
+		
+	</div>
+</Layout>
+
+<script>
+	import WGSLPlayground from "@scripts/wgsl-playground";
+
+	const playground = await WGSLPlayground.Initialize();
+
+	playground.Draw()
+</script>

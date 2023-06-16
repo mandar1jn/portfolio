@@ -1,3 +1,6 @@
 {
-	"editor.semanticHighlighting.enabled": false
+	"editor.semanticHighlighting.enabled": false,
+	"githubPullRequests.ignoredPullRequestBranches": [
+		"master"
+	]
 }
