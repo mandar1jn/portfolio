@@ -97,9 +97,13 @@ import Section from "../../components/Section.astro";
 
 		const data = new Uint8Array(1024);
 
-		const uuidArray = crypto.randomUUID().match(/.{2}/g)!;
+		const uuidArray = crypto.randomUUID().match(/.{4}/g)!;
 		data[0] = parseInt(uuidArray[0], 16);
 		data[1] = parseInt(uuidArray[1], 16);
+                data[2] = parseInt(uuidArray[2], 16);
+                data[3] = parseInt(uuidArray[3], 16);
+
+                data[4] = data[0] ^ data[1] ^ data[2] ^ data[3];
 
 		const idString = figure.Id.toString(16).padStart(4, "0");
 		const idStringArray = idString.match(/.{2}/g)!;
