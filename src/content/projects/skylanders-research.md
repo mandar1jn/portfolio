@@ -9,7 +9,7 @@ tags: ["c", "c#", "typescript"]
 If you were a child or parent in the 2010's, you have probably heard of Skylanders. The game that sold you physical toys just so you could play more of the game. Personally, I have spent way too much money on those figures when I was a child. So, when I got bored over the summer and needed something to do, I decided that I would reverse-engineer the Toys to Life gimmick of the Skylanders games.
 
 ## Research
-During my research, I have written several blog posts that can be found [on my posts page](http://localhost:3000/posts/). These describe my process and my findings.
+During my research, I have written several blog posts that can be found [on my posts page](http://marijnkneppers.dev/posts/). These describe my process and my findings.
 
 Although my research is far from finished, I can now confidently describe most of the communication between the game and the Portal of Power used the read the figures.
 
