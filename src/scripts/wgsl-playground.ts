@@ -182,11 +182,20 @@ export default class WGSLPlayground {
 		})
 	}
 
-	Recompile()
+	async Recompile()
 	{
-		this.shader = this.device.createShaderModule({
+		const shader = this.device.createShaderModule({
 			code: this.editorView.state.doc.toString()
 		})
+
+		if((await shader.getCompilationInfo()).messages.length > 0)
+		{
+			// highlight errors
+		}
+		else 
+		{
+			this.shader = shader;
+		}
 	}
 
 }
