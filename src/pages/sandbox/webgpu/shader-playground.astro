@@ -7,21 +7,17 @@ import Layout from "@layouts/Layout.astro";
 		description: "Create your own WGSL shaders",
 	}}
 >
-	<div>
-		<div id="container">
-			<div id="player">
-				<canvas id="shader-playground" width="800" height="600"></canvas>
-				<div id="bar">
-					<span id="resolution">0 x 0</span>
-				</div>
-			</div>
-			<div>
-				<div id="shader-input"></div>
+	<div id="container">
+		<div id="player">
+			<canvas id="shader-playground" width="800" height="600"></canvas>
+			<div id="bar">
+				<span id="resolution">0 x 0</span>
 			</div>
 		</div>
-		
-		<button id="recompile">Compile</button>
-		
+		<div>
+			<div id="shader-input"></div>
+			<button id="recompile">Compile</button>
+		</div>
 	</div>
 </Layout>
 
@@ -32,3 +28,11 @@ import Layout from "@layouts/Layout.astro";
 
 	playground.Draw()
 </script>
+
+<style>
+	#container {
+		display: flex;
+		flex-direction: row;
+		gap: 5px;
+	}
+</style>
