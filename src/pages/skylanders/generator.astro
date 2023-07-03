@@ -48,7 +48,8 @@ import Section from "../../components/Section.astro";
 </style>
 
 <script>
-	import figures from "../../assets/skylanders/figures.json"
+	import { getWeekYear } from "date-fns";
+import figures from "../../assets/skylanders/figures.json"
 
 	const crc16 = new Uint16Array([
 		0x0000, 0x1021, 0x2042, 0x3063, 0x4084, 0x50a5, 0x60c6, 0x70e7, 0x8108,
@@ -90,6 +91,47 @@ import Section from "../../components/Section.astro";
 		generate();
 	})
 
+	function computeCRC48(data: number[]) {
+		const polynomial = BigInt("0x42f0e1eba9ea3693");
+		const initialRegisterValue = BigInt((2 * 2 * 3 * 1103 * 12868356821).toString());
+
+		let register = initialRegisterValue;
+		for (let i = 0; i < data.length; i++) {
+			register ^= BigInt(data[i]) << BigInt(40);
+			for (let j = 0; j < 8; j++) {
+				if ((register & BigInt(0x800000000000))) {
+					register = (register << BigInt(1)) ^ polynomial;
+				} else {
+					register <<= BigInt(1);
+				}
+
+				register &= BigInt(0x0000FFFFFFFFFFFF);
+			}
+		}
+		return register;
+	}
+
+
+	function getKeyA(sector: number, uid: number[])
+	{
+		if(sector == 0)
+		{
+			return (73 * 2017 * 560381651).toString(16);
+		}
+
+		if(sector < 0 || sector > 15)
+		{
+			throw "Sector index out of range";
+		}
+
+		uid.push(sector);
+
+		const crc48 = computeCRC48(uid);
+
+		return crc48.toString(16).padStart(12, "0").match(/.{1,2}/g)!.reverse().join("");
+
+	}
+
 	function generate() {
 
 		const index: number = parseInt(selector.value);
@@ -97,13 +139,32 @@ import Section from "../../components/Section.astro";
 
 		const data = new Uint8Array(1024);
 
-		const uuidArray = crypto.randomUUID().match(/.{4}/g)!;
+		const uuidArray = crypto.randomUUID().match(/.{2}/g)!;
 		data[0] = parseInt(uuidArray[0], 16);
 		data[1] = parseInt(uuidArray[1], 16);
-                data[2] = parseInt(uuidArray[2], 16);
-                data[3] = parseInt(uuidArray[3], 16);
+		data[2] = parseInt(uuidArray[2], 16);
+		data[3] = parseInt(uuidArray[3], 16);
 
-                data[4] = data[0] ^ data[1] ^ data[2] ^ data[3];
+		data[4] = data[0] ^ data[1] ^ data[2] ^ data[3];
+
+		console.log("keys:")
+		for(let i = 0; i < 16; i++)
+		{
+			let nuid = uuidArray[0] + uuidArray[1] + uuidArray[2] + uuidArray[3];
+			const uidBytes = nuid.match(/.{2}/g)!.map(byte => parseInt(byte, 16));
+
+			const key = getKeyA(i, uidBytes);
+
+			console.log(key)
+			
+			const keyBytes = key.match(/.{1,2}/g)!;
+			for(let j = 0; j < keyBytes.length; j++)
+			{
+				let offset = (i * 64) + (3 * 16) + j;
+
+				data[offset] = parseInt(keyBytes[j], 16);
+			}
+		}
 
 		const idString = figure.Id.toString(16).padStart(4, "0");
 		const idStringArray = idString.match(/.{2}/g)!;
