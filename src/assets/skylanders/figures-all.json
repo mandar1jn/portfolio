@@ -1582,6 +1582,41 @@
 		"Element": "None"
 	},
 	{
+		"Id": 235,
+		"Variant": 20481,
+		"Name": "Item - Mystery Chest (Bronze)",
+		"Series": "Imaginators",
+		"Element": "None"
+	},
+	{
+		"Id": 235,
+		"Variant": 20482,
+		"Name": "Item - Mystery Chest (Silver)",
+		"Series": "Imaginators",
+		"Element": "None"
+	},
+	{
+		"Id": 235,
+		"Variant": 20483,
+		"Name": "Item - Mystery Chest (Gold)",
+		"Series": "Imaginators",
+		"Element": "None"
+	},
+	{
+		"Id": 235,
+		"Variant": 20503,
+		"Name": "Item - Cursed Tiki Temple",
+		"Series": "Imaginators",
+		"Element": "None"
+	},
+	{
+		"Id": 235,
+		"Variant": 20505,
+		"Name": "Item - Lost Imaginite Mines",
+		"Series": "Imaginators",
+		"Element": "None"
+	},
+	{
 		"Id": 300,
 		"Variant": 0,
 		"Name": "Item - Dragon's Peak",
@@ -1642,6 +1677,20 @@
 		"Variant": 12806,
 		"Name": "Item - Midnight Museum",
 		"Series": "TrapTeam",
+		"Element": "None"
+	},
+	{
+		"Id": 310,
+		"Variant": 20480,
+		"Name": "Item - Gryphon Park Observatory",
+		"Series": "Imaginators",
+		"Element": "None"
+	},
+	{
+		"Id": 311,
+		"Variant": 20480,
+		"Name": "Item - Enchanted Elven Forest",
+		"Series": "Imaginators",
 		"Element": "None"
 	},
 	{
@@ -2189,6 +2238,559 @@
 		"Name": "Eye-Small (Mini)",
 		"Series": "TrapTeam",
 		"Element": "Undead"
+	},
+	{
+		"Id": 601,
+		"Variant": 20480,
+		"Name": "Sensei - King Pen",
+		"Series": "Imaginators",
+		"Element": "Water"
+	},
+	{
+		"Id": 601,
+		"Variant": 21506,
+		"Name": "Sensei - King Pen (Dark)",
+		"Series": "Imaginators",
+		"Element": "Water"
+	},
+	{
+		"Id": 602,
+		"Variant": 20480,
+		"Name": "Sensei - Tri-Tip",
+		"Series": "Imaginators",
+		"Element": "Earth"
+	},
+	{
+		"Id": 602,
+		"Variant": 21507,
+		"Name": "Sensei - Tri-Tip (Legendary)",
+		"Series": "Imaginators",
+		"Element": "Earth"
+	},
+	{
+		"Id": 603,
+		"Variant": 20480,
+		"Name": "Sensei - Chopscotch",
+		"Series": "Imaginators",
+		"Element": "Undead"
+	},
+	{
+		"Id": 603,
+		"Variant": 21525,
+		"Name": "Sensei - Chopscotch (Candy-Coated)",
+		"Series": "Imaginators",
+		"Element": "Undead"
+	},
+	{
+		"Id": 604,
+		"Variant": 20480,
+		"Name": "Sensei - Boom Bloom",
+		"Series": "Imaginators",
+		"Element": "Life"
+	},
+	{
+		"Id": 605,
+		"Variant": 20480,
+		"Name": "Sensei - Pit Boss",
+		"Series": "Imaginators",
+		"Element": "Undead"
+	},
+	{
+		"Id": 605,
+		"Variant": 21507,
+		"Name": "Sensei - Pit Boss (Legendary)",
+		"Series": "Imaginators",
+		"Element": "Undead"
+	},
+	{
+		"Id": 606,
+		"Variant": 20480,
+		"Name": "Sensei - Barbella",
+		"Series": "Imaginators",
+		"Element": "Earth"
+	},
+	{
+		"Id": 607,
+		"Variant": 20480,
+		"Name": "Sensei - Air Strike",
+		"Series": "Imaginators",
+		"Element": "Air"
+	},
+	{
+		"Id": 607,
+		"Variant": 21517,
+		"Name": "Sensei - Air Strike (Egg Bomber)",
+		"Series": "Imaginators",
+		"Element": "Air"
+	},
+	{
+		"Id": 608,
+		"Variant": 20480,
+		"Name": "Sensei - Ember",
+		"Series": "Imaginators",
+		"Element": "Fire"
+	},
+	{
+		"Id": 609,
+		"Variant": 20480,
+		"Name": "Sensei - Ambush",
+		"Series": "Imaginators",
+		"Element": "Life"
+	},
+	{
+		"Id": 610,
+		"Variant": 20480,
+		"Name": "Villain Sensei - Dr. Krankcase",
+		"Series": "Imaginators",
+		"Element": "Tech"
+	},
+	{
+		"Id": 611,
+		"Variant": 20480,
+		"Name": "Villain Sensei - Hood Sickle",
+		"Series": "Imaginators",
+		"Element": "Dark"
+	},
+	{
+		"Id": 611,
+		"Variant": 21506,
+		"Name": "Villain Sensei - Hood Sickle (Steel Plated)",
+		"Series": "Imaginators",
+		"Element": "Dark"
+	},
+	{
+		"Id": 612,
+		"Variant": 20480,
+		"Name": "Villain Sensei - Tae Kwon Crow",
+		"Series": "Imaginators",
+		"Element": "Fire"
+	},
+	{
+		"Id": 612,
+		"Variant": 21506,
+		"Name": "Villain Sensei - Tae Kwon Crow (Mystical)",
+		"Series": "Imaginators",
+		"Element": "Fire"
+	},
+	{
+		"Id": 613,
+		"Variant": 20480,
+		"Name": "Villain Sensei - Golden Queen",
+		"Series": "Imaginators",
+		"Element": "Earth"
+	},
+	{
+		"Id": 613,
+		"Variant": 21506,
+		"Name": "Villain Sensei - Golden Queen (Dark)",
+		"Series": "Imaginators",
+		"Element": "Earth"
+	},
+	{
+		"Id": 614,
+		"Variant": 20480,
+		"Name": "Villain Sensei - Wolfgang",
+		"Series": "Imaginators",
+		"Element": "Undead"
+	},
+	{
+		"Id": 614,
+		"Variant": 21506,
+		"Name": "Villain Sensei - Wolfgang (Dark)",
+		"Series": "Imaginators",
+		"Element": "Undead"
+	},
+	{
+		"Id": 615,
+		"Variant": 20480,
+		"Name": "Villain Sensei - Pain-Yatta",
+		"Series": "Imaginators",
+		"Element": "Magic"
+	},
+	{
+		"Id": 616,
+		"Variant": 20480,
+		"Name": "Sensei - Mysticat",
+		"Series": "Imaginators",
+		"Element": "Magic"
+	},
+	{
+		"Id": 38,
+		"Variant": 20480,
+		"Name": "Sensei - Starcast",
+		"Series": "Imaginators",
+		"Element": "Dark"
+	},
+	{
+		"Id": 618,
+		"Variant": 20480,
+		"Name": "Sensei - Buckshot",
+		"Series": "Imaginators",
+		"Element": "Magic"
+	},
+	{
+		"Id": 618,
+		"Variant": 21516,
+		"Name": "Sensei - Buckshot (Heart-breaker)",
+		"Series": "Imaginators",
+		"Element": "Magic"
+	},
+	{
+		"Id": 619,
+		"Variant": 20480,
+		"Name": "Sensei - Aurora",
+		"Series": "Imaginators",
+		"Element": "Light"
+	},
+	{
+		"Id": 619,
+		"Variant": 21506,
+		"Name": "Sensei - Aurora (Solar Flare)",
+		"Series": "Imaginators",
+		"Element": "Light"
+	},
+	{
+		"Id": 620,
+		"Variant": 20480,
+		"Name": "Sensei - Flare Wolf",
+		"Series": "Imaginators",
+		"Element": "Fire"
+	},
+	{
+		"Id": 620,
+		"Variant": 21517,
+		"Name": "Sensei - Flare Wolf (Hard-Boiled)",
+		"Series": "Imaginators",
+		"Element": "Fire"
+	},
+	{
+		"Id": 621,
+		"Variant": 20480,
+		"Name": "Villain Sensei - Chompy Mage",
+		"Series": "Imaginators",
+		"Element": "Life"
+	},
+	{
+		"Id": 621,
+		"Variant": 21518,
+		"Name": "Villain Sensei - Chompy Mage (Jingle Bell)",
+		"Series": "Imaginators",
+		"Element": "Life"
+	},
+	{
+		"Id": 622,
+		"Variant": 20480,
+		"Name": "Villain Sensei - Bad Juju",
+		"Series": "Imaginators",
+		"Element": "Air"
+	},
+	{
+		"Id": 622,
+		"Variant": 21506,
+		"Name": "Villain Sensei - Bad Juju (Mystical)",
+		"Series": "Imaginators",
+		"Element": "Air"
+	},
+	{
+		"Id": 623,
+		"Variant": 20480,
+		"Name": "Villain Sensei - Grave Clobber",
+		"Series": "Imaginators",
+		"Element": "Water"
+	},
+	{
+		"Id": 624,
+		"Variant": 20480,
+		"Name": "Villain Sensei - Blaster-Tron",
+		"Series": "Imaginators",
+		"Element": "Light"
+	},
+	{
+		"Id": 625,
+		"Variant": 20480,
+		"Name": "Sensei - Ro-Bow",
+		"Series": "Imaginators",
+		"Element": "Tech"
+	},
+	{
+		"Id": 626,
+		"Variant": 20480,
+		"Name": "Sensei - Chain Reaction",
+		"Series": "Imaginators",
+		"Element": "Tech"
+	},
+	{
+		"Id": 627,
+		"Variant": 20480,
+		"Name": "Villain Sensei - Kaos",
+		"Series": "Imaginators",
+		"Element": "Kaos"
+	},
+	{
+		"Id": 628,
+		"Variant": 20480,
+		"Name": "Sensei - Wild Storm",
+		"Series": "Imaginators",
+		"Element": "Air"
+	},
+	{
+		"Id": 629,
+		"Variant": 20480,
+		"Name": "Sensei - Tidepool",
+		"Series": "Imaginators",
+		"Element": "Water"
+	},
+	{
+		"Id": 630,
+		"Variant": 20480,
+		"Name": "Sensei - Crash Bandicoot",
+		"Series": "Imaginators",
+		"Element": "Life"
+	},
+	{
+		"Id": 631,
+		"Variant": 20480,
+		"Name": "Sensei - Dr. Neo Cortex",
+		"Series": "Imaginators",
+		"Element": "Tech"
+	},
+	{
+		"Id": 680,
+		"Variant": 20996,
+		"Name": "Crystal - Magic Pyramid",
+		"Series": "Imaginators",
+		"Element": "Magic"
+	},
+	{
+		"Id": 680,
+		"Variant": 21000,
+		"Name": "Crystal - Magic Lantern",
+		"Series": "Imaginators",
+		"Element": "Magic"
+	},
+	{
+		"Id": 680,
+		"Variant": 21019,
+		"Name": "Crystal - Magic Claw",
+		"Series": "Imaginators",
+		"Element": "Magic"
+	},
+	{
+		"Id": 680,
+		"Variant": 22024,
+		"Name": "Crystal - Magic Lantern (Legendary)",
+		"Series": "Imaginators",
+		"Element": "Magic"
+	},
+	{
+		"Id": 681,
+		"Variant": 21012,
+		"Name": "Crystal - Water Armor",
+		"Series": "Imaginators",
+		"Element": "Water"
+	},
+	{
+		"Id": 681,
+		"Variant": 21016,
+		"Name": "Crystal - Water Fanged",
+		"Series": "Imaginators",
+		"Element": "Water"
+	},
+	{
+		"Id": 681,
+		"Variant": 21020,
+		"Name": "Crystal - Water Rocket",
+		"Series": "Imaginators",
+		"Element": "Water"
+	},
+	{
+		"Id": 682,
+		"Variant": 20994,
+		"Name": "Crystal - Air Angel",
+		"Series": "Imaginators",
+		"Element": "Air"
+	},
+	{
+		"Id": 682,
+		"Variant": 20999,
+		"Name": "Crystal - Air Lantern",
+		"Series": "Imaginators",
+		"Element": "Air"
+	},
+	{
+		"Id": 682,
+		"Variant": 39321,
+		"Name": "Crystal - Air Acorn",
+		"Series": "Imaginators",
+		"Element": "Air"
+	},
+	{
+		"Id": 683,
+		"Variant": 21001,
+		"Name": "Crystal - Undead Lantern",
+		"Series": "Imaginators",
+		"Element": "Undead"
+	},
+	{
+		"Id": 683,
+		"Variant": 21015,
+		"Name": "Crystal - Undead Fanged",
+		"Series": "Imaginators",
+		"Element": "Undead"
+	},
+	{
+		"Id": 683,
+		"Variant": 21017,
+		"Name": "Crystal - Undead Claw",
+		"Series": "Imaginators",
+		"Element": "Undead"
+	},
+	{
+		"Id": 684,
+		"Variant": 21005,
+		"Name": "Crystal - Tech Reactor",
+		"Series": "Imaginators",
+		"Element": "Tech"
+	},
+	{
+		"Id": 684,
+		"Variant": 21013,
+		"Name": "Crystal - Tech Armor",
+		"Series": "Imaginators",
+		"Element": "Tech"
+	},
+	{
+		"Id": 684,
+		"Variant": 39321,
+		"Name": "Crystal - Tech Pyramid",
+		"Series": "Imaginators",
+		"Element": "Tech"
+	},
+	{
+		"Id": 685,
+		"Variant": 21007,
+		"Name": "Crystal - Fire Reactor",
+		"Series": "Imaginators",
+		"Element": "Fire"
+	},
+	{
+		"Id": 685,
+		"Variant": 21009,
+		"Name": "Crystal - Fire Acorn",
+		"Series": "Imaginators",
+		"Element": "Fire"
+	},
+	{
+		"Id": 685,
+		"Variant": 39321,
+		"Name": "Crystal - Fire Angel",
+		"Series": "Imaginators",
+		"Element": "Fire"
+	},
+	{
+		"Id": 686,
+		"Variant": 21011,
+		"Name": "Crystal - Earth Armor",
+		"Series": "Imaginators",
+		"Element": "Earth"
+	},
+	{
+		"Id": 686,
+		"Variant": 21021,
+		"Name": "Crystal - Earth Rocket",
+		"Series": "Imaginators",
+		"Element": "Earth"
+	},
+	{
+		"Id": 686,
+		"Variant": 39321,
+		"Name": "Crystal - Earth Rune",
+		"Series": "Imaginators",
+		"Element": "Earth"
+	},
+	{
+		"Id": 687,
+		"Variant": 21008,
+		"Name": "Crystal - Life Acorn",
+		"Series": "Imaginators",
+		"Element": "Life"
+	},
+	{
+		"Id": 687,
+		"Variant": 21018,
+		"Name": "Crystal - Life Claw",
+		"Series": "Imaginators",
+		"Element": "Life"
+	},
+	{
+		"Id": 687,
+		"Variant": 21022,
+		"Name": "Crystal - Life Rocket",
+		"Series": "Imaginators",
+		"Element": "Life"
+	},
+	{
+		"Id": 687,
+		"Variant": 21023,
+		"Name": "Crystal - Life Rune",
+		"Series": "Imaginators",
+		"Element": "Life"
+	},
+	{
+		"Id": 687,
+		"Variant": 22032,
+		"Name": "Crystal - Life Acorn (Legendary)",
+		"Series": "Imaginators",
+		"Element": "Life"
+	},
+	{
+		"Id": 688,
+		"Variant": 9999,
+		"Name": "Crystal - Dark Rune",
+		"Series": "Imaginators",
+		"Element": "Dark"
+	},
+	{
+		"Id": 688,
+		"Variant": 20998,
+		"Name": "Crystal - Dark Pyramid",
+		"Series": "Imaginators",
+		"Element": "Dark"
+	},
+	{
+		"Id": 688,
+		"Variant": 21006,
+		"Name": "Crystal - Dark Reactor",
+		"Series": "Imaginators",
+		"Element": "Dark"
+	},
+	{
+		"Id": 689,
+		"Variant": 21003,
+		"Name": "Crystal - Light Rune",
+		"Series": "Imaginators",
+		"Element": "Light"
+	},
+	{
+		"Id": 689,
+		"Variant": 21014,
+		"Name": "Crystal - Light Fanged",
+		"Series": "Imaginators",
+		"Element": "Light"
+	},
+	{
+		"Id": 689,
+		"Variant": 22038,
+		"Name": "Crystal - Light Fanged (Legendary)",
+		"Series": "Imaginators",
+		"Element": "Light"
+	},
+	{
+		"Id": 689,
+		"Variant": 39321,
+		"Name": "Crystal - Light Angel",
+		"Series": "Imaginators",
+		"Element": "Light"
 	},
 	{
 		"Id": 999,
@@ -2933,6 +3535,13 @@
 		"Element": "Air"
 	},
 	{
+		"Id": 3232,
+		"Variant": 17679,
+		"Name": "Vehicle - Sky Slicer (Instant)",
+		"Series": "Imaginators",
+		"Element": "Air"
+	},
+	{
 		"Id": 3233,
 		"Variant": 16384,
 		"Name": "Vehicle - Clown Cruiser",
@@ -2993,6 +3602,13 @@
 		"Variant": 17410,
 		"Name": "Vehicle - Sea Shadow (Dark)",
 		"Series": "Superchargers",
+		"Element": "Dark"
+	},
+	{
+		"Id": 3237,
+		"Variant": 17679,
+		"Name": "Vehicle - Sea Shadow (Instant)",
+		"Series": "Imaginators",
 		"Element": "Dark"
 	},
 	{
