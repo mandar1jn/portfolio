@@ -17,7 +17,7 @@ import Section from "../../components/Section.astro";
 	<Section>
 		<form id="form">
 			<label for="figure">Figure: </label>
-			<select name="figure" id="figure">
+			<select class="black-text" name="figure" id="figure">
 				{
 					figures.map((figure, index) =>
 					{
@@ -30,7 +30,7 @@ import Section from "../../components/Section.astro";
 					})
 				}
 			</select>
-			<select id="save-type">
+			<select class="black-text" id="save-type">
 				<option value="true">Encrypted</option>
 				<option value="false">Unencrypted</option>
 			</select>
@@ -299,3 +299,10 @@ import Section from "../../components/Section.astro";
 		setTimeout(() => window.URL.revokeObjectURL(url), 1000);
 	}
 </script>
+
+<style>
+	.black-text
+	{
+		color: black
+	}
+</style>
