@@ -48,10 +48,13 @@ import Layout from "@layouts/Layout.astro";
 			
 		}
 
-		for(let i = 0; i < 16; i++)
+		// Key B
+		keys.push("000000000000");
+
+		for(let i = 0; i < keys.length; i++)
 		{
 			keyList.innerText += keys[i];
-			if(i != 15)
+			if(i != keys.length - 1)
 			{
 				keyList.innerText += "\n";
 			}
