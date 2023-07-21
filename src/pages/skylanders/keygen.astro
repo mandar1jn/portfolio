@@ -1,0 +1,67 @@
+---
+import Section from "@components/Section.astro";
+import Layout from "@layouts/Layout.astro";
+
+---
+
+<Layout head={{ title: "Skylanders key generator", description: "This page can be used to generate the A key for skylanders figures" }}>
+
+	<Section>
+		<h1>Skylanders figure generator</h1>
+		<p>
+			This website is custom written by me and <b>not</b> associated with Activision or Toys for Bob.
+		</p>
+	</Section>
+	<Section>
+		<form id="form">
+			<label for="nuid-input">Figure NUID: </label>
+			<input id="nuid-input" type="text" placeholder="00000000" minlength="8" maxlength="8"/>
+			<input type="submit" value="Generate" />
+		</form>
+	</Section>
+	<Section>
+		<p id="key-list"></p>
+	</Section>
+
+</Layout>
+
+<script>import { getKeyA } from "@scripts/skylanders/skylanders";
+
+	const form = document.getElementById("form") as HTMLFormElement;
+	const keyList = document.getElementById("key-list") as HTMLParagraphElement;
+	const nuidInput = document.getElementById("nuid-input") as HTMLInputElement;
+	form.onsubmit = (e) =>
+	{
+		e.preventDefault();
+
+		keyList.innerText = "";
+
+		let keys: string[] = []
+
+		for(let i = 0; i < 16; i++)
+		{
+			const uidBytes = nuidInput.value.match(/.{2}/g)!.map(byte => parseInt(byte, 16))
+
+			const key = getKeyA(i, uidBytes);
+
+			keys.push(key)
+			
+		}
+
+		for(let i = 0; i < 16; i++)
+		{
+			keyList.innerText += keys[i];
+			if(i != 15)
+			{
+				keyList.innerText += "\n";
+			}
+		}
+	}
+</script>
+
+<style>
+	#nuid-input
+	{
+		color: black
+	}
+</style>
