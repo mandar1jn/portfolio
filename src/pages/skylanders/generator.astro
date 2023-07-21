@@ -30,6 +30,10 @@ import Section from "../../components/Section.astro";
 					})
 				}
 			</select>
+			<select id="save-type">
+				<option value="true">Encrypted</option>
+				<option value="false">Unencrypted</option>
+			</select>
 			<input type="submit" value="Generate" />
 		</form>
 	</Section>
@@ -54,6 +58,7 @@ import Section from "../../components/Section.astro";
 	import {getKeyA, crc16} from "@scripts/skylanders/skylanders";
 
 	const selector = document.getElementById("figure") as HTMLSelectElement;
+	const saveType = document.getElementById("save-type") as HTMLSelectElement;
 	const form = document.getElementById("form") as HTMLFormElement;
 	form.addEventListener("submit", (event) => 
 	{
@@ -232,64 +237,51 @@ import Section from "../../components/Section.astro";
 		data[0x2D0] = (type6Area1 & 0xFF);
 		data[0x2D1] = (type6Area1 >> 8);
 		
+		if(saveType.value == "true")
 		{
-			const blob = new Blob([data], { type: "application/octet-stream" });
-
-			const url = window.URL.createObjectURL(blob);
-
-			const a = document.createElement("a");
-			a.href = url;
-			a.download = `${selector.options[selector.selectedIndex].text}.bin`;
-			document.body.appendChild(a);
-			a.style.display = "none";
-			a.click();
-			a.remove();
-
-			setTimeout(() => window.URL.revokeObjectURL(url), 1000);
-		}
-
-		// encrypt
-		for(let i = 0; i < 64; i++)
-		{
-			if(((i + 1) % 4 == 0) || i < 8)
+			// encrypt
+			for(let i = 0; i < 64; i++)
 			{
-				// not encrypted
-				continue;
+				if(((i + 1) % 4 == 0) || i < 8)
+				{
+					// not encrypted
+					continue;
+				}
+
+				let hashIn = new Uint8Array(0x56);
+				for(let j = 0; j < 0x20; j++)
+				{
+					hashIn[j] = data[j];
+				}
+				hashIn[0x20] = i;
+				const HASH_CONST = new Uint8Array([
+					0x20, 0x43, 0x6F, 0x70, 0x79, 0x72, 0x69, 0x67, 0x68, 0x74, 0x20, 0x28, 0x43, 0x29, 0x20, 0x32,
+					0x30, 0x31, 0x30, 0x20, 0x41, 0x63, 0x74, 0x69, 0x76, 0x69, 0x73, 0x69, 0x6F, 0x6E, 0x2E, 0x20,
+					0x41, 0x6C, 0x6C, 0x20, 0x52, 0x69, 0x67, 0x68, 0x74, 0x73, 0x20, 0x52, 0x65, 0x73, 0x65, 0x72,
+					0x76, 0x65, 0x64, 0x2E, 0x20]);
+				hashIn.set(HASH_CONST, 0x21)
+
+				let md5 = new Md5();
+				md5.start();
+				md5.appendByteArray(hashIn);
+				let hash = Uint8Array.from((md5.end() as string).match(/.{1,2}/g)!.map((byte: any) => parseInt(byte, 16)));
+
+				console.log(hash)
+
+				var aesEcb = new aesjs.ModeOfOperation.ecb(hash);
+				console.log(aesEcb)
+
+				let block = new Uint8Array(0x10);
+				block.set(data.subarray(16 * i, (16 * (i + 1))), 0)
+				if(i == 8)
+				{
+					console.log(block)
+				}
+				let encrypted = aesEcb.encrypt(block);
+
+				data.set(encrypted, 16 * i);
+
 			}
-
-			let hashIn = new Uint8Array(0x56);
-			for(let j = 0; j < 0x20; j++)
-			{
-				hashIn[j] = data[j];
-			}
-			hashIn[0x20] = i;
-			const HASH_CONST = new Uint8Array([
-				0x20, 0x43, 0x6F, 0x70, 0x79, 0x72, 0x69, 0x67, 0x68, 0x74, 0x20, 0x28, 0x43, 0x29, 0x20, 0x32,
-				0x30, 0x31, 0x30, 0x20, 0x41, 0x63, 0x74, 0x69, 0x76, 0x69, 0x73, 0x69, 0x6F, 0x6E, 0x2E, 0x20,
-				0x41, 0x6C, 0x6C, 0x20, 0x52, 0x69, 0x67, 0x68, 0x74, 0x73, 0x20, 0x52, 0x65, 0x73, 0x65, 0x72,
-				0x76, 0x65, 0x64, 0x2E, 0x20]);
-			hashIn.set(HASH_CONST, 0x21)
-
-			let md5 = new Md5();
-			md5.start();
-			md5.appendByteArray(hashIn);
-  			let hash = Uint8Array.from((md5.end() as string).match(/.{1,2}/g)!.map((byte: any) => parseInt(byte, 16)));
-
-			console.log(hash)
-
-			var aesEcb = new aesjs.ModeOfOperation.ecb(hash);
-			console.log(aesEcb)
-
-			let block = new Uint8Array(0x10);
-			block.set(data.subarray(16 * i, (16 * (i + 1))), 0)
-			if(i == 8)
-			{
-				console.log(block)
-			}
-			let encrypted = aesEcb.encrypt(block);
-
-			data.set(encrypted, 16 * i);
-
 		}
 
 		const blob = new Blob([data], { type: "application/octet-stream" });
