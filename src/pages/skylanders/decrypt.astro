@@ -1,0 +1,139 @@
+---
+import Section from "@components/Section.astro";
+import Layout from "@layouts/Layout.astro";
+
+---
+
+<Layout head={{ title: "Skylanders decryptor", description: "This page can be used to decrypt skylanders dumps" }}>
+
+	<Section>
+		<h1>Skylanders figure generator</h1>
+		<p>
+			This website is custom written by me and <b>not</b> associated with Activision or Toys for Bob.
+		</p>
+	</Section>
+	<Section>
+		<form id="form">
+			<label for="file">File</label>
+			<input id="file" type="file">
+			<input type="submit" value="Decrypt">
+		</form>
+	</Section>
+	<Section>
+		<p id="output"></p>
+	</Section>
+
+</Layout>
+
+<script>
+	import { Md5 } from "ts-md5";
+	import aesjs from "aes-js";
+
+	const form = document.getElementById("form") as HTMLFormElement;
+	const fileInput = document.getElementById("file") as HTMLInputElement;
+	const output = document.getElementById("output") as HTMLParagraphElement;
+
+	form.onsubmit = async (event) => {
+		event.preventDefault();
+
+		output.innerText = "";
+
+		const files = fileInput.files!;
+		const fileCount = files.length;
+
+		if(fileCount <= 0)
+		{
+			output.innerText = "Please select a file";
+		}
+
+		for(let fileIndex = 0; fileIndex < fileCount; fileIndex++)
+		{
+			const file = files[fileIndex];
+			
+			if(fileIndex != 0)
+			{
+				output.innerText += "\n";
+			}
+
+			if(file.size != 1024)
+			{
+				output.innerText += `${file.name} is not the correct size`
+			}
+
+			const data = new Uint8Array(await file.arrayBuffer());
+
+			for(let i = 0; i < 64; i++)
+			{
+				if(((i + 1) % 4 == 0) || i < 8)
+				{
+					// not encrypted
+					continue;
+				}
+
+				let hashIn = new Uint8Array(0x56);
+				for(let j = 0; j < 0x20; j++)
+				{
+					hashIn[j] = data[j];
+				}
+				hashIn[0x20] = i;
+				const HASH_CONST = new Uint8Array([
+					0x20, 0x43, 0x6F, 0x70, 0x79, 0x72, 0x69, 0x67, 0x68, 0x74, 0x20, 0x28, 0x43, 0x29, 0x20, 0x32,
+					0x30, 0x31, 0x30, 0x20, 0x41, 0x63, 0x74, 0x69, 0x76, 0x69, 0x73, 0x69, 0x6F, 0x6E, 0x2E, 0x20,
+					0x41, 0x6C, 0x6C, 0x20, 0x52, 0x69, 0x67, 0x68, 0x74, 0x73, 0x20, 0x52, 0x65, 0x73, 0x65, 0x72,
+					0x76, 0x65, 0x64, 0x2E, 0x20]);
+				hashIn.set(HASH_CONST, 0x21)
+
+				let md5 = new Md5();
+				md5.start();
+				md5.appendByteArray(hashIn);
+				let hash = Uint8Array.from((md5.end() as string).match(/.{1,2}/g)!.map((byte: any) => parseInt(byte, 16)));
+
+				console.log(hash)
+
+				var aesEcb = new aesjs.ModeOfOperation.ecb(hash);
+				console.log(aesEcb)
+
+				let block = new Uint8Array(0x10);
+				block.set(data.subarray(16 * i, (16 * (i + 1))), 0)
+				if(i == 8)
+				{
+					console.log(block)
+				}
+				let encrypted = aesEcb.decrypt(block);
+
+				data.set(encrypted, 16 * i);
+
+			}
+
+			const blob = new Blob([data], { type: "application/octet-stream" });
+
+			const url = window.URL.createObjectURL(blob);
+
+			let fileName = "";
+
+			const fileParts = file.name.split(".");
+
+			for(let k = 0; k < fileParts.length; k++)
+			{
+				if(k == fileParts.length - 1)
+				{
+					fileName += ".decrypted";
+				}
+
+				fileName += `${(k == 0)? "" : "."}${fileParts[k]}`;
+			}
+
+			const a = document.createElement("a");
+			a.href = url;
+			a.download = fileName;
+			document.body.appendChild(a);
+			a.style.display = "none";
+			a.click();
+			a.remove();
+
+			setTimeout(() => window.URL.revokeObjectURL(url), 1000);
+
+			output.innerText += `Successfully decrypted ${file.name}`;
+		}
+	}
+</script>
