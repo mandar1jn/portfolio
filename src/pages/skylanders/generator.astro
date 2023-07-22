@@ -15,7 +15,7 @@ import Section from "../../components/Section.astro";
 		</p>
 	</Section>
 	<Section>
-		<form id="form">
+		<form id="form" name="skylander">
 			<label for="figure">Figure: </label>
 			<select class="black-text" name="figure" id="figure">
 				{
@@ -30,10 +30,12 @@ import Section from "../../components/Section.astro";
 					})
 				}
 			</select>
-			<select class="black-text" id="save-type">
+			<select class="black-text" name="save-type" id="save-type">
 				<option value="true">Encrypted</option>
 				<option value="false">Unencrypted</option>
 			</select>
+
+			<input type="number" class="black-text" max="6500" min="0" value="0" name="money">
 			<input type="submit" value="Generate" />
 		</form>
 	</Section>
@@ -57,9 +59,11 @@ import Section from "../../components/Section.astro";
 	import aesjs from "aes-js";
 	import {getKeyA, crc16} from "@scripts/skylanders/skylanders";
 
-	const selector = document.getElementById("figure") as HTMLSelectElement;
-	const saveType = document.getElementById("save-type") as HTMLSelectElement;
-	const form = document.getElementById("form") as HTMLFormElement;
+	const form = document.forms.namedItem("skylander")!;
+	const selector = form["figure"] as HTMLSelectElement;
+	const saveType = form["save-type"] as HTMLSelectElement;
+	const money = form["money"] as HTMLInputElement;
+	
 	form.addEventListener("submit", (event) => 
 	{
 		event.preventDefault();
@@ -129,6 +133,9 @@ import Section from "../../components/Section.astro";
 			data[offset + 3] = 0x08;
 			data[offset + 4] = 0x69;
 		}
+
+		data[0x83] = (parseInt(money.value) & 0xFF);;
+		data[0x84] = (parseInt(money.value) >> 8);
 
 		data[0x89] = 0x1;
 		data[0x112] = 0x1;
