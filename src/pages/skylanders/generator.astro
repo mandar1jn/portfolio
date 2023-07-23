@@ -30,13 +30,21 @@ import Section from "../../components/Section.astro";
 					})
 				}
 			</select>
+
+			<label for="save-type">Download type: </label>
 			<select class="black-text" name="save-type" id="save-type">
 				<option value="true">Encrypted</option>
 				<option value="false">Unencrypted</option>
 			</select>
 
+			<label for="money">Money: </label>
 			<input type="number" class="black-text" max="6500" min="0" value="0" name="money">
-			<input type="datetime-local" class="black-text" name="first-played">
+
+			<label for="first-played">First played: </label>
+			<input type="datetime-local" class="black-text" name="first-played" min="0000-00-00T00:00" >
+
+			<label for="last-placed">Last placed: </label>
+			<input type="datetime-local" class="black-text" name="last-placed" min="0000-00-00T00:00" >
 
 			<input type="submit" value="Generate" />
 		</form>
@@ -66,6 +74,11 @@ import Section from "../../components/Section.astro";
 	const saveType = form["save-type"] as HTMLSelectElement;
 	const money = form["money"] as HTMLInputElement;
 	const firstPlayed = form["first-played"] as HTMLInputElement;
+	const lastPlaced = form["last-placed"] as HTMLInputElement;
+
+	// set default time
+	firstPlayed.value = new Date().toISOString().substring(0, 16);
+	lastPlaced.value = new Date().toISOString().substring(0, 16);
 	
 	form.addEventListener("submit", (event) => 
 	{
@@ -138,8 +151,25 @@ import Section from "../../components/Section.astro";
 		data[0x83] = (parseInt(money.value) & 0xFF);
 		data[0x84] = (parseInt(money.value) >> 8);
 
+		// Last placed
+		const lastPlacedDate: Date = new Date(lastPlaced.value);
+
+		data[0xD0] = lastPlacedDate.getMinutes();
+		data[0xD1] = lastPlacedDate.getHours();
+		data[0xD2] = lastPlacedDate.getDate();
+		data[0xD3] = lastPlacedDate.getMonth() + 1;
+		data[0xD4] = (lastPlacedDate.getFullYear() & 0xFF);
+		data[0xD5] = (lastPlacedDate.getFullYear() >> 8);
+
 		// First played
-		//console.log(firstPlayed.valueAsDate)
+		const firstPlayedDate: Date = new Date(firstPlayed.value);
+
+		data[0xE0] = firstPlayedDate.getMinutes();
+		data[0xE1] = firstPlayedDate.getHours();
+		data[0xE2] = firstPlayedDate.getDate();
+		data[0xE3] = firstPlayedDate.getMonth() + 1;
+		data[0xE4] = (firstPlayedDate.getFullYear() & 0xFF);
+		data[0xE5] = (firstPlayedDate.getFullYear() >> 8);
 
 		// area counters
 		data[0x89] = 0x1;
