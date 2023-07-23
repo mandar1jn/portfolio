@@ -36,6 +36,8 @@ import Section from "../../components/Section.astro";
 			</select>
 
 			<input type="number" class="black-text" max="6500" min="0" value="0" name="money">
+			<input type="datetime-local" class="black-text" name="first-played">
+
 			<input type="submit" value="Generate" />
 		</form>
 	</Section>
@@ -63,6 +65,7 @@ import Section from "../../components/Section.astro";
 	const selector = form["figure"] as HTMLSelectElement;
 	const saveType = form["save-type"] as HTMLSelectElement;
 	const money = form["money"] as HTMLInputElement;
+	const firstPlayed = form["first-played"] as HTMLInputElement;
 	
 	form.addEventListener("submit", (event) => 
 	{
@@ -85,15 +88,12 @@ import Section from "../../components/Section.astro";
 
 		data[4] = data[0] ^ data[1] ^ data[2] ^ data[3];
 
-		console.log("keys:")
 		for(let i = 0; i < 16; i++)
 		{
 			let nuid = uuidArray[0] + uuidArray[1] + uuidArray[2] + uuidArray[3];
 			const uidBytes = nuid.match(/.{2}/g)!.map(byte => parseInt(byte, 16));
 
 			const key = getKeyA(i, uidBytes);
-
-			console.log(key)
 			
 			const keyBytes = key.match(/.{1,2}/g)!;
 			for(let j = 0; j < keyBytes.length; j++)
@@ -134,9 +134,14 @@ import Section from "../../components/Section.astro";
 			data[offset + 4] = 0x69;
 		}
 
-		data[0x83] = (parseInt(money.value) & 0xFF);;
+		// money
+		data[0x83] = (parseInt(money.value) & 0xFF);
 		data[0x84] = (parseInt(money.value) >> 8);
 
+		// First played
+		//console.log(firstPlayed.valueAsDate)
+
+		// area counters
 		data[0x89] = 0x1;
 		data[0x112] = 0x1;
 
@@ -223,7 +228,6 @@ import Section from "../../components/Section.astro";
 		input.set(data.subarray(0x240, 0x24E), 0);
 		input[0xE] = 0x05;
 		input[0xF] = 0x00;
-		console.log(input)
 
 		let type1Area1 = crc16(input, 0, 0x10)
 
@@ -273,17 +277,10 @@ import Section from "../../components/Section.astro";
 				md5.appendByteArray(hashIn);
 				let hash = Uint8Array.from((md5.end() as string).match(/.{1,2}/g)!.map((byte: any) => parseInt(byte, 16)));
 
-				console.log(hash)
-
 				var aesEcb = new aesjs.ModeOfOperation.ecb(hash);
-				console.log(aesEcb)
 
 				let block = new Uint8Array(0x10);
 				block.set(data.subarray(16 * i, (16 * (i + 1))), 0)
-				if(i == 8)
-				{
-					console.log(block)
-				}
 				let encrypted = aesEcb.encrypt(block);
 
 				data.set(encrypted, 16 * i);
