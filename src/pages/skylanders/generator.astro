@@ -43,6 +43,9 @@ import Section from "../../components/Section.astro";
 			<label for="experience">Experience: </label>
 			<input type="number" class="black-text" max="65535" min="0" value="0" name="experience">
 
+			<label for="hero-level">Hero level: </label>
+			<input type="number" class="black-text" max="999" min="0" value="0" name="hero-level">
+
 			<label for="first-played">First played: </label>
 			<input type="datetime-local" class="black-text" name="first-played" min="0000-00-00T00:00" >
 
@@ -79,6 +82,7 @@ import Section from "../../components/Section.astro";
 	const experience = form["experience"] as HTMLInputElement;
 	const firstPlayed = form["first-played"] as HTMLInputElement;
 	const lastPlaced = form["last-placed"] as HTMLInputElement;
+	const heroLevel = form["hero-level"] as HTMLInputElement;
 
 	// set default time
 	firstPlayed.value = new Date().toISOString().substring(0, 16);
@@ -168,6 +172,11 @@ import Section from "../../components/Section.astro";
 		data[0xD3] = lastPlacedDate.getMonth() + 1;
 		data[0xD4] = (lastPlacedDate.getFullYear() & 0xFF);
 		data[0xD5] = (lastPlacedDate.getFullYear() >> 8);
+
+		// hero points
+
+		data[0xDA] = (parseInt(heroLevel.value) & 0xFF);
+		data[0xDB] = (parseInt(heroLevel.value) >> 8);
 
 		// First played
 		const firstPlayedDate: Date = new Date(firstPlayed.value);
