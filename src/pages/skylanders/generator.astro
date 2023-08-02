@@ -40,6 +40,9 @@ import Section from "../../components/Section.astro";
 			<label for="money">Money: </label>
 			<input type="number" class="black-text" max="65000" min="0" value="0" name="money">
 
+			<label for="experience">Experience: </label>
+			<input type="number" class="black-text" max="65535" min="0" value="0" name="experience">
+
 			<label for="first-played">First played: </label>
 			<input type="datetime-local" class="black-text" name="first-played" min="0000-00-00T00:00" >
 
@@ -73,6 +76,7 @@ import Section from "../../components/Section.astro";
 	const selector = form["figure"] as HTMLSelectElement;
 	const saveType = form["save-type"] as HTMLSelectElement;
 	const money = form["money"] as HTMLInputElement;
+	const experience = form["experience"] as HTMLInputElement;
 	const firstPlayed = form["first-played"] as HTMLInputElement;
 	const lastPlaced = form["last-placed"] as HTMLInputElement;
 
@@ -150,6 +154,10 @@ import Section from "../../components/Section.astro";
 		// money
 		data[0x83] = (parseInt(money.value) & 0xFF);
 		data[0x84] = (parseInt(money.value) >> 8);
+
+		// experience
+		data[0x80] = (parseInt(experience.value) & 0xFF);
+		data[0x81] = (parseInt(experience.value) >> 8);
 
 		// Last placed
 		const lastPlacedDate: Date = new Date(lastPlaced.value);
