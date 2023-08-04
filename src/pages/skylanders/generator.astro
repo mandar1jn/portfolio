@@ -1,5 +1,5 @@
 ---
-import figures from "../../assets/skylanders/figures.json";
+import skylanders from "../../assets/skylanders/figures.json";
 import Layout from "../../layouts/Layout.astro";
 import Section from "../../components/Section.astro";
 ---
@@ -16,10 +16,19 @@ import Section from "../../components/Section.astro";
 	</Section>
 	<Section>
 		<form id="form" name="skylander">
+			<label for="figure-type">Figure type:</label>
+			<select class="black-text" name="figure-type">
+				<option value="Skylander">Skylander</option>
+				<option value="Item">Item</option>
+				<option value="Trap">Trap</option>
+				<option value="Vehicle">Vehicle</option>
+				<option value="Trophies">Trophies</option>
+			</select>
+
 			<label for="figure">Figure: </label>
 			<select class="black-text" name="figure" id="figure">
 				{
-					figures.map((figure, index) =>
+					skylanders.map((figure, index) =>
 					{
 						if(typeof (figure.Variant) !== "string")
 						{
@@ -31,26 +40,35 @@ import Section from "../../components/Section.astro";
 				}
 			</select>
 
-			<label for="save-type">Download type: </label>
-			<select class="black-text" name="save-type" id="save-type">
-				<option value="true">Encrypted</option>
-				<option value="false">Unencrypted</option>
-			</select>
+			<div id="save-type-div" style="display: grid;">
+				<label for="save-type">Download type: </label>
+				<select class="black-text" name="save-type" id="save-type">
+					<option value="true">Encrypted</option>
+					<option value="false">Unencrypted</option>
+				</select>
+			</div>
 
-			<label for="money">Money: </label>
-			<input type="number" class="black-text" max="65000" min="0" value="0" name="money">
+			<div id="skylanders-data-div" style="display: grid;">
+				<label for="money">Money: </label>
+				<input type="number" class="black-text" max="65000" min="0" value="0" name="money">
 
-			<label for="experience">Experience: </label>
-			<input type="number" class="black-text" max="65535" min="0" value="0" name="experience">
+				<label for="experience">Experience: </label>
+				<input type="number" class="black-text" max="65535" min="0" value="0" name="experience">
 
-			<label for="hero-level">Hero level: </label>
-			<input type="number" class="black-text" max="999" min="0" value="0" name="hero-level">
+				<label for="hero-level">Hero level: </label>
+				<input type="number" class="black-text" max="999" min="0" value="0" name="hero-level">
 
-			<label for="first-played">First played: </label>
-			<input type="datetime-local" class="black-text" name="first-played" min="0000-00-00T00:00" >
+				<label for="first-played">First played: </label>
+				<input type="datetime-local" class="black-text" name="first-played" min="0000-00-00T00:00" >
 
-			<label for="last-placed">Last placed: </label>
-			<input type="datetime-local" class="black-text" name="last-placed" min="0000-00-00T00:00" >
+				<label for="last-placed">Last placed: </label>
+				<input type="datetime-local" class="black-text" name="last-placed" min="0000-00-00T00:00" >
+			</div>
+
+			<div id="trophy-villains" style="display: none;">
+				<label for="unlock-villains">Unlock all villains</label>
+				<input name="unlock-villains" type="checkbox" />
+			</div>
 
 			<input type="submit" value="Generate" />
 		</form>
@@ -70,12 +88,17 @@ import Section from "../../components/Section.astro";
 </style>
 
 <script>
-	import figures from "../../assets/skylanders/figures.json"
+	import skylanders from "../../assets/skylanders/figures.json"
+	import items from "../../assets/skylanders/items.json"
+	import traps from "../../assets/skylanders/traps.json"
+	import vehicles from "../../assets/skylanders/vehicles.json"
+	import trophies from "../../assets/skylanders/trophies.json"
 	import {Md5} from 'ts-md5';
 	import aesjs from "aes-js";
 	import {getKeyA, crc16} from "@scripts/skylanders/skylanders";
 
 	const form = document.forms.namedItem("skylander")!;
+	const figureType = form["figure-type"] as HTMLSelectElement;
 	const selector = form["figure"] as HTMLSelectElement;
 	const saveType = form["save-type"] as HTMLSelectElement;
 	const money = form["money"] as HTMLInputElement;
@@ -83,6 +106,12 @@ import Section from "../../components/Section.astro";
 	const firstPlayed = form["first-played"] as HTMLInputElement;
 	const lastPlaced = form["last-placed"] as HTMLInputElement;
 	const heroLevel = form["hero-level"] as HTMLInputElement;
+
+	const captureAllVillains = form["unlock-villains"] as HTMLInputElement;
+
+	const saveTypeDiv = document.getElementById("save-type-div")! as HTMLDivElement;
+	const skylandersDataDiv = document.getElementById("skylanders-data-div")! as HTMLDivElement;
+	const trophyVillainsDiv = document.getElementById("trophy-villains")! as HTMLDivElement;
 
 	// set default time
 	firstPlayed.value = new Date().toISOString().substring(0, 16);
@@ -94,10 +123,76 @@ import Section from "../../components/Section.astro";
 		generate();
 	})
 
+	figureType.onchange = () =>
+	{
+		let toMap;
+		switch(figureType.value)
+		{
+			case "Skylander":
+				toMap = skylanders;
+				saveTypeDiv.style.display = "grid";
+				skylandersDataDiv.style.display = "grid";
+				trophyVillainsDiv.style.display = "none";
+				break;
+			case "Item":
+				toMap = items;
+				saveTypeDiv.style.display = "none";
+				skylandersDataDiv.style.display = "none";
+				trophyVillainsDiv.style.display = "none";
+				break;
+			case "Trap":
+				toMap = traps;
+				saveTypeDiv.style.display = "grid";
+				skylandersDataDiv.style.display = "none";
+				trophyVillainsDiv.style.display = "none";
+				break;
+			case "Vehicle":
+				toMap = vehicles;
+				saveTypeDiv.style.display = "grid";
+				skylandersDataDiv.style.display = "none";
+				trophyVillainsDiv.style.display = "none";
+				break;
+			case "Trophies":
+				toMap = trophies;
+				saveTypeDiv.style.display = "grid";
+				skylandersDataDiv.style.display = "none";
+				trophyVillainsDiv.style.display = "block";
+				break;
+		}
+		selector.innerHTML = toMap!.map((figure, index) =>
+					{
+						if(typeof (figure.Variant) !== "string")
+						{
+							return `<option value="${index}">${figure.Name}</option>`;
+						}
+					}).reduce((prev, cur) => {
+						return prev + cur!;
+					})!
+	}
+
 	async function generate() {
 
 		const index: number = parseInt(selector.value);
-		const figure = figures[index];
+		let figure = skylanders[index];
+
+		switch(figureType.value)
+		{
+			case "Skylander":
+				figure = skylanders[index];
+				break;
+			case "Item":
+				figure = items[index];
+				break;
+			case "Trap":
+				figure = traps[index];
+				break;
+			case "Vehicle":
+				figure = vehicles[index];
+				break;
+			case "Trophies":
+				figure = trophies[index];
+				break;
+		}
 
 		const data = new Uint8Array(1024);
 
@@ -155,147 +250,172 @@ import Section from "../../components/Section.astro";
 			data[offset + 4] = 0x69;
 		}
 
-		// money
-		data[0x83] = (parseInt(money.value) & 0xFF);
-		data[0x84] = (parseInt(money.value) >> 8);
+		// trophy data
+		if(figureType.value == "Trophies")
+		{
+			if(captureAllVillains.value)
+			{
+				data[0x94] = 0xFF;
+			}
+		}
 
-		// experience
-		data[0x80] = (parseInt(experience.value) & 0xFF);
-		data[0x81] = (parseInt(experience.value) >> 8);
+		// skylanders data
+		if(figureType.value == "Skylander")
+		{
+			// money
+			data[0x83] = (parseInt(money.value) & 0xFF);
+			data[0x84] = (parseInt(money.value) >> 8);
 
-		// Last placed
-		const lastPlacedDate: Date = new Date(lastPlaced.value);
+			// experience
+			data[0x80] = (parseInt(experience.value) & 0xFF);
+			data[0x81] = (parseInt(experience.value) >> 8);
 
-		data[0xD0] = lastPlacedDate.getMinutes();
-		data[0xD1] = lastPlacedDate.getHours();
-		data[0xD2] = lastPlacedDate.getDate();
-		data[0xD3] = lastPlacedDate.getMonth() + 1;
-		data[0xD4] = (lastPlacedDate.getFullYear() & 0xFF);
-		data[0xD5] = (lastPlacedDate.getFullYear() >> 8);
+			// Last placed
+			const lastPlacedDate: Date = new Date(lastPlaced.value);
 
-		// hero points
+			data[0xD0] = lastPlacedDate.getMinutes();
+			data[0xD1] = lastPlacedDate.getHours();
+			data[0xD2] = lastPlacedDate.getDate();
+			data[0xD3] = lastPlacedDate.getMonth() + 1;
+			data[0xD4] = (lastPlacedDate.getFullYear() & 0xFF);
+			data[0xD5] = (lastPlacedDate.getFullYear() >> 8);
 
-		data[0xDA] = (parseInt(heroLevel.value) & 0xFF);
-		data[0xDB] = (parseInt(heroLevel.value) >> 8);
+			// hero levels
 
-		// First played
-		const firstPlayedDate: Date = new Date(firstPlayed.value);
+			data[0xDA] = (parseInt(heroLevel.value) & 0xFF);
+			data[0xDB] = (parseInt(heroLevel.value) >> 8);
 
-		data[0xE0] = firstPlayedDate.getMinutes();
-		data[0xE1] = firstPlayedDate.getHours();
-		data[0xE2] = firstPlayedDate.getDate();
-		data[0xE3] = firstPlayedDate.getMonth() + 1;
-		data[0xE4] = (firstPlayedDate.getFullYear() & 0xFF);
-		data[0xE5] = (firstPlayedDate.getFullYear() >> 8);
+			//playtime
 
-		// area counters
-		data[0x89] = 0x1;
-		data[0x112] = 0x1;
+			data[0x85] = 0xFF - 60;
+			data[0x86] = 0xFF;
+			data[0x87] = 0xFF;
+			data[0x88] = 0xFF / 2;
+
+			// First played
+			const firstPlayedDate: Date = new Date(firstPlayed.value);
+
+			data[0xE0] = firstPlayedDate.getMinutes();
+			data[0xE1] = firstPlayedDate.getHours();
+			data[0xE2] = firstPlayedDate.getDate();
+			data[0xE3] = firstPlayedDate.getMonth() + 1;
+			data[0xE4] = (firstPlayedDate.getFullYear() & 0xFF);
+			data[0xE5] = (firstPlayedDate.getFullYear() >> 8);
+		}
 
 		// checksums
-		// type 3
-		// area 0
+		if(figureType.value == "Skylander" || figureType.value == "Trophies")
+		{
+			// area counters
+			data[0x89] = 0x1;
+			data[0x112] = 0x1;
 
-		let input = new Uint8Array(0x110);
+			// checksums
+			// type 3
+			// area 0
 
-		input.set(data.subarray(0xD0, 0xF0), 0);
-		input.set(data.subarray(0x100, 0x110), 0x20);
+			let input = new Uint8Array(0x110);
 
-		let type3Area0 = crc16(input, 0, 0x110);
+			input.set(data.subarray(0xD0, 0xF0), 0);
+			input.set(data.subarray(0x100, 0x110), 0x20);
 
-		data[0x8A] = (type3Area0 & 0xFF);
-		data[0x8B] = (type3Area0 >> 8);
+			let type3Area0 = crc16(input, 0, 0x110);
 
-		// type 2
-		// area 0
-		input = new Uint8Array(0x30);
-		input.set(data.subarray(0x90, 0xB0), 0);
-		input.set(data.subarray(0xC0, 0xD0), 0x20);
+			data[0x8A] = (type3Area0 & 0xFF);
+			data[0x8B] = (type3Area0 >> 8);
 
-		let type2Area0 = crc16(input, 0, 0x30)
+			// type 2
+			// area 0
+			input = new Uint8Array(0x30);
+			input.set(data.subarray(0x90, 0xB0), 0);
+			input.set(data.subarray(0xC0, 0xD0), 0x20);
 
-		data[0x8C] = (type2Area0 & 0xFF);
-		data[0x8D] = (type2Area0 >> 8);
+			let type2Area0 = crc16(input, 0, 0x30)
 
-		// type 1
-		// area 0
+			data[0x8C] = (type2Area0 & 0xFF);
+			data[0x8D] = (type2Area0 >> 8);
 
-		input = new Uint8Array(0x10);
-		input.set(data.subarray(0x80, 0x8E), 0);
-		input[0xE] = 0x05;
-		input[0xF] = 0x00;
+			// type 1
+			// area 0
 
-		let type1Area0 = crc16(input, 0, 0x10)
+			input = new Uint8Array(0x10);
+			input.set(data.subarray(0x80, 0x8E), 0);
+			input[0xE] = 0x05;
+			input[0xF] = 0x00;
 
-		data[0x8E] = (type1Area0 & 0xFF);
-		data[0x8F] = (type1Area0 >> 8);
+			let type1Area0 = crc16(input, 0, 0x10)
 
-		// type 6
-		// area 0
-		input = new Uint8Array(0x40);
-		input.set(data.subarray(0x110, 0x130), 0);
-		input.set(data.subarray(0x140, 0x160), 0x20);
+			data[0x8E] = (type1Area0 & 0xFF);
+			data[0x8F] = (type1Area0 >> 8);
 
-		input[0] = 0x6;
-		input[1] = 0x1
+			// type 6
+			// area 0
+			input = new Uint8Array(0x40);
+			input.set(data.subarray(0x110, 0x130), 0);
+			input.set(data.subarray(0x140, 0x160), 0x20);
 
-		let type6Area0 = crc16(input, 0, 0x40)
+			input[0] = 0x6;
+			input[1] = 0x1
 
-		data[0x110] = (type6Area0 & 0xFF);
-		data[0x111] = (type6Area0 >> 8);
+			let type6Area0 = crc16(input, 0, 0x40)
 
-		// type 3
-		// area 1
+			data[0x110] = (type6Area0 & 0xFF);
+			data[0x111] = (type6Area0 >> 8);
 
-		input = new Uint8Array(0x110);
+			// type 3
+			// area 1
 
-		input.set(data.subarray(0x290, 0x2B0), 0);
-		input.set(data.subarray(0x2C0, 0x2D0), 0x20);
+			input = new Uint8Array(0x110);
 
-		let type3Area1 = crc16(input, 0, 0x110);
+			input.set(data.subarray(0x290, 0x2B0), 0);
+			input.set(data.subarray(0x2C0, 0x2D0), 0x20);
 
-		data[0x24A] = (type3Area1 & 0xFF);
-		data[0x24B] = (type3Area1 >> 8);
+			let type3Area1 = crc16(input, 0, 0x110);
 
-		// type 2
-		// area 1
-		input = new Uint8Array(0x30);
-		input.set(data.subarray(0x250, 0x270), 0);
-		input.set(data.subarray(0x280, 0x290), 0x20);
+			data[0x24A] = (type3Area1 & 0xFF);
+			data[0x24B] = (type3Area1 >> 8);
 
-		let type2Area1 = crc16(input, 0, 0x30)
+			// type 2
+			// area 1
+			input = new Uint8Array(0x30);
+			input.set(data.subarray(0x250, 0x270), 0);
+			input.set(data.subarray(0x280, 0x290), 0x20);
 
-		data[0x24C] = (type2Area1 & 0xFF);
-		data[0x24D] = (type2Area1 >> 8);
+			let type2Area1 = crc16(input, 0, 0x30)
 
-		// type 1
-		// area 1
+			data[0x24C] = (type2Area1 & 0xFF);
+			data[0x24D] = (type2Area1 >> 8);
 
-		input = new Uint8Array(0x10);
-		input.set(data.subarray(0x240, 0x24E), 0);
-		input[0xE] = 0x05;
-		input[0xF] = 0x00;
+			// type 1
+			// area 1
 
-		let type1Area1 = crc16(input, 0, 0x10)
+			input = new Uint8Array(0x10);
+			input.set(data.subarray(0x240, 0x24E), 0);
+			input[0xE] = 0x05;
+			input[0xF] = 0x00;
 
-		data[0x24E] = (type1Area1 & 0xFF);
-		data[0x24F] = (type1Area1 >> 8);
+			let type1Area1 = crc16(input, 0, 0x10)
 
-		// type 6
-		// area 1
-		input = new Uint8Array(0x40);
-		input.set(data.subarray(0x2D0, 0x2F0), 0);
-		input.set(data.subarray(0x300, 0x320), 0x20);
+			data[0x24E] = (type1Area1 & 0xFF);
+			data[0x24F] = (type1Area1 >> 8);
 
-		input[0] = 0x6;
-		input[1] = 0x1;
+			// type 6
+			// area 1
+			input = new Uint8Array(0x40);
+			input.set(data.subarray(0x2D0, 0x2F0), 0);
+			input.set(data.subarray(0x300, 0x320), 0x20);
 
-		let type6Area1 = crc16(input, 0, 0x40)
+			input[0] = 0x6;
+			input[1] = 0x1;
 
-		data[0x2D0] = (type6Area1 & 0xFF);
-		data[0x2D1] = (type6Area1 >> 8);
+			let type6Area1 = crc16(input, 0, 0x40)
+
+			data[0x2D0] = (type6Area1 & 0xFF);
+			data[0x2D1] = (type6Area1 >> 8);
+		}
 		
-		if(saveType.value == "true")
+		// encryption
+		if(saveType.value == "true" && figureType.value != "Item")
 		{
 			// encrypt
 			for(let i = 0; i < 64; i++)

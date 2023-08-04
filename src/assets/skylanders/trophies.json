@@ -1,0 +1,37 @@
+[
+	{
+		"Id": 3500,
+		"Variant": 16384,
+		"Name": "Sky Trophy",
+		"Series": "Superchargers",
+		"Element": "Air"
+	},
+	{
+		"Id": 3500,
+		"Variant": 17411,
+		"Name": "Sky Trophy (Legendary)",
+		"Series": "Superchargers",
+		"Element": "Air"
+	},
+	{
+		"Id": 3501,
+		"Variant": 16384,
+		"Name": "Land Trophy",
+		"Series": "Superchargers",
+		"Element": "Earth"
+	},
+	{
+		"Id": 3502,
+		"Variant": 16384,
+		"Name": "Sea Trophy",
+		"Series": "Superchargers",
+		"Element": "Water"
+	},
+	{
+		"Id": 3503,
+		"Variant": 16384,
+		"Name": "Kaos Trophy",
+		"Series": "Superchargers",
+		"Element": "Kaos"
+	}
+]

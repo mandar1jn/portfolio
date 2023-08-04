@@ -1,0 +1,247 @@
+[
+	{
+		"Id": 3220,
+		"Variant": 16384,
+		"Name": "Jet Stream",
+		"Series": "Superchargers",
+		"Element": "Air"
+	},
+	{
+		"Id": 3221,
+		"Variant": 16384,
+		"Name": "Tomb Buggy",
+		"Series": "Superchargers",
+		"Element": "Undead"
+	},
+	{
+		"Id": 3222,
+		"Variant": 16384,
+		"Name": "Reef Ripper",
+		"Series": "Superchargers",
+		"Element": "Water"
+	},
+	{
+		"Id": 3223,
+		"Variant": 16384,
+		"Name": "Burn-Cycle",
+		"Series": "Superchargers",
+		"Element": "Fire"
+	},
+	{
+		"Id": 3224,
+		"Variant": 16384,
+		"Name": "Hot Streak",
+		"Series": "Superchargers",
+		"Element": "Fire"
+	},
+	{
+		"Id": 3224,
+		"Variant": 16388,
+		"Name": "Hot Streak (Mobile)",
+		"Series": "Superchargers",
+		"Element": "Fire"
+	},
+	{
+		"Id": 3224,
+		"Variant": 17410,
+		"Name": "Hot Streak (Dark)",
+		"Series": "Superchargers",
+		"Element": "Fire"
+	},
+	{
+		"Id": 3224,
+		"Variant": 17438,
+		"Name": "Hot Streak (Golden) (E3)",
+		"Series": "Superchargers",
+		"Element": "Fire"
+	},
+	{
+		"Id": 3224,
+		"Variant": 17679,
+		"Name": "Hot Streak (Instant)",
+		"Series": "Superchargers",
+		"Element": "Fire"
+	},
+	{
+		"Id": 3225,
+		"Variant": 16384,
+		"Name": "Shark Tank",
+		"Series": "Superchargers",
+		"Element": "Earth"
+	},
+	{
+		"Id": 3226,
+		"Variant": 16384,
+		"Name": "Thump Truck",
+		"Series": "Superchargers",
+		"Element": "Earth"
+	},
+	{
+		"Id": 3227,
+		"Variant": 16384,
+		"Name": "Crypt Crusher",
+		"Series": "Superchargers",
+		"Element": "Undead"
+	},
+	{
+		"Id": 3228,
+		"Variant": 16384,
+		"Name": "Stealth Stinger",
+		"Series": "Superchargers",
+		"Element": "Life"
+	},
+	{
+		"Id": 3228,
+		"Variant": 17410,
+		"Name": "Stealth Stinger (Nitro)",
+		"Series": "Superchargers",
+		"Element": "Life"
+	},
+	{
+		"Id": 3228,
+		"Variant": 17679,
+		"Name": "Stealth Stinger (Instant)",
+		"Series": "Superchargers",
+		"Element": "Life"
+	},
+	{
+		"Id": 3231,
+		"Variant": 16384,
+		"Name": "Dive Bomber",
+		"Series": "Superchargers",
+		"Element": "Water"
+	},
+	{
+		"Id": 3231,
+		"Variant": 17410,
+		"Name": "Dive Bomber (Spring Ahead)",
+		"Series": "Superchargers",
+		"Element": "Water"
+	},
+	{
+		"Id": 3231,
+		"Variant": 17679,
+		"Name": "Dive Bomber (Instant)",
+		"Series": "Superchargers",
+		"Element": "Water"
+	},
+	{
+		"Id": 3232,
+		"Variant": 16384,
+		"Name": "Sky Slicer",
+		"Series": "Superchargers",
+		"Element": "Air"
+	},
+	{
+		"Id": 3233,
+		"Variant": 16384,
+		"Name": "Clown Cruiser",
+		"Series": "Superchargers",
+		"Element": "Air"
+	},
+	{
+		"Id": 3233,
+		"Variant": 17410,
+		"Name": "Clown Cruiser (Dark)",
+		"Series": "Superchargers",
+		"Element": "Air"
+	},
+	{
+		"Id": 3234,
+		"Variant": 16384,
+		"Name": "Gold Rusher",
+		"Series": "Superchargers",
+		"Element": "Tech"
+	},
+	{
+		"Id": 3234,
+		"Variant": 17410,
+		"Name": "Gold Rusher (Power Blue)",
+		"Series": "Superchargers",
+		"Element": "Tech"
+	},
+	{
+		"Id": 3235,
+		"Variant": 16384,
+		"Name": "Shield Striker",
+		"Series": "Superchargers",
+		"Element": "Tech"
+	},
+	{
+		"Id": 3236,
+		"Variant": 16384,
+		"Name": "Sun Runner",
+		"Series": "Superchargers",
+		"Element": "Light"
+	},
+	{
+		"Id": 3236,
+		"Variant": 17411,
+		"Name": "Sun Runner (Legendary)",
+		"Series": "Superchargers",
+		"Element": "Light"
+	},
+	{
+		"Id": 3237,
+		"Variant": 16384,
+		"Name": "Sea Shadow",
+		"Series": "Superchargers",
+		"Element": "Dark"
+	},
+	{
+		"Id": 3237,
+		"Variant": 17410,
+		"Name": "Sea Shadow (Dark)",
+		"Series": "Superchargers",
+		"Element": "Dark"
+	},
+	{
+		"Id": 3238,
+		"Variant": 16384,
+		"Name": "Splatter Splasher",
+		"Series": "Superchargers",
+		"Element": "Magic"
+	},
+	{
+		"Id": 3238,
+		"Variant": 17410,
+		"Name": "Splatter Splasher (Power Blue)",
+		"Series": "Superchargers",
+		"Element": "Magic"
+	},
+	{
+		"Id": 3239,
+		"Variant": 16384,
+		"Name": "Soda Skimmer",
+		"Series": "Superchargers",
+		"Element": "Magic"
+	},
+	{
+		"Id": 3239,
+		"Variant": 17410,
+		"Name": "Soda Skimmer (Nitro)",
+		"Series": "Superchargers",
+		"Element": "Magic"
+	},
+	{
+		"Id": 3240,
+		"Variant": 16384,
+		"Name": "Barrel Blaster",
+		"Series": "Superchargers",
+		"Element": "Tech"
+	},
+	{
+		"Id": 3240,
+		"Variant": 17410,
+		"Name": "Barrel Blaster (Dark)",
+		"Series": "Superchargers",
+		"Element": "Tech"
+	},
+	{
+		"Id": 3241,
+		"Variant": 16384,
+		"Name": "Buzz Wing",
+		"Series": "Superchargers",
+		"Element": "Life"
+	}
+]

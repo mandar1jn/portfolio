@@ -1,0 +1,240 @@
+[
+	{
+		"Id": 200,
+		"Variant": 8192,
+		"Name": "Anvil Rain",
+		"Series": "Spyros Adventure",
+		"Element": "None"
+	},
+	{
+		"Id": 201,
+		"Variant": 8192,
+		"Name": "Hidden Treasure",
+		"Series": "Spyros Adventure",
+		"Element": "None"
+	},
+	{
+		"Id": 202,
+		"Variant": 8192,
+		"Name": "Healing Elixer",
+		"Series": "Spyros Adventure",
+		"Element": "None"
+	},
+	{
+		"Id": 203,
+		"Variant": 8192,
+		"Name": "Ghost Pirate Swords",
+		"Series": "Spyros Adventure",
+		"Element": "None"
+	},
+	{
+		"Id": 204,
+		"Variant": 8192,
+		"Name": "Time Twister Hourglass",
+		"Series": "Spyros Adventure",
+		"Element": "None"
+	},
+	{
+		"Id": 205,
+		"Variant": 8192,
+		"Name": "Sky-Iron Shield",
+		"Series": "Spyros Adventure",
+		"Element": "None"
+	},
+	{
+		"Id": 206,
+		"Variant": 8192,
+		"Name": "Winged Boots",
+		"Series": "Spyros Adventure",
+		"Element": "None"
+	},
+	{
+		"Id": 207,
+		"Variant": 8192,
+		"Name": "Sparx Dragonfly",
+		"Series": "Spyros Adventure",
+		"Element": "None"
+	},
+	{
+		"Id": 208,
+		"Variant": 4614,
+		"Name": "Dragonfire Cannon",
+		"Series": "Giants",
+		"Element": "None"
+	},
+	{
+		"Id": 208,
+		"Variant": 5634,
+		"Name": "Golden Dragonfire Cannon",
+		"Series": "Giants",
+		"Element": "None"
+	},
+	{
+		"Id": 209,
+		"Variant": 4614,
+		"Name": "Scorpion Striker Catapult",
+		"Series": "Giants",
+		"Element": "None"
+	},
+	{
+		"Id": 230,
+		"Variant": 0,
+		"Name": "Hand Of Fate",
+		"Series": "TrapTeam",
+		"Element": "None"
+	},
+	{
+		"Id": 230,
+		"Variant": 13315,
+		"Name": "Hand Of Fate (Legendary)",
+		"Series": "TrapTeam",
+		"Element": "None"
+	},
+	{
+		"Id": 231,
+		"Variant": 0,
+		"Name": "Piggy Bank",
+		"Series": "TrapTeam",
+		"Element": "None"
+	},
+	{
+		"Id": 232,
+		"Variant": 0,
+		"Name": "Rocket Ram",
+		"Series": "TrapTeam",
+		"Element": "None"
+	},
+	{
+		"Id": 233,
+		"Variant": 0,
+		"Name": "Tiki Speaky",
+		"Series": "TrapTeam",
+		"Element": "None"
+	},
+	{
+		"Id": 300,
+		"Variant": 0,
+		"Name": "Dragon's Peak",
+		"Series": "Spyros Adventure",
+		"Element": "None"
+	},
+	{
+		"Id": 301,
+		"Variant": 8192,
+		"Name": "Empire Of Ice",
+		"Series": "Spyros Adventure",
+		"Element": "None"
+	},
+	{
+		"Id": 302,
+		"Variant": 8192,
+		"Name": "Pirate Ship",
+		"Series": "Spyros Adventure",
+		"Element": "None"
+	},
+	{
+		"Id": 303,
+		"Variant": 8192,
+		"Name": "Darklight Crypt",
+		"Series": "Spyros Adventure",
+		"Element": "None"
+	},
+	{
+		"Id": 304,
+		"Variant": 8192,
+		"Name": "Volcanic Vault",
+		"Series": "Spyros Adventure",
+		"Element": "None"
+	},
+	{
+		"Id": 305,
+		"Variant": 12288,
+		"Name": "Mirror Of Mystery",
+		"Series": "TrapTeam",
+		"Element": "None"
+	},
+	{
+		"Id": 306,
+		"Variant": 12288,
+		"Name": "Nightmare Express",
+		"Series": "TrapTeam",
+		"Element": "None"
+	},
+	{
+		"Id": 307,
+		"Variant": 12806,
+		"Name": "Sunscraper Spire",
+		"Series": "TrapTeam",
+		"Element": "None"
+	},
+	{
+		"Id": 308,
+		"Variant": 12806,
+		"Name": "Midnight Museum",
+		"Series": "TrapTeam",
+		"Element": "None"
+	},
+	{
+		"Id": 3200,
+		"Variant": 8192,
+		"Name": "Battle Hammer",
+		"Series": "SwapForce",
+		"Element": "None"
+	},
+	{
+		"Id": 3201,
+		"Variant": 8192,
+		"Name": "Sky Diamond",
+		"Series": "SwapForce",
+		"Element": "None"
+	},
+	{
+		"Id": 3202,
+		"Variant": 8192,
+		"Name": "Platinum Sheep",
+		"Series": "SwapForce",
+		"Element": "None"
+	},
+	{
+		"Id": 3203,
+		"Variant": 8192,
+		"Name": "Groove Machine",
+		"Series": "SwapForce",
+		"Element": "None"
+	},
+	{
+		"Id": 3204,
+		"Variant": 8192,
+		"Name": "Ufo Hat",
+		"Series": "SwapForce",
+		"Element": "None"
+	},
+	{
+		"Id": 3300,
+		"Variant": 8192,
+		"Name": "Sheep Wreck Island",
+		"Series": "SwapForce",
+		"Element": "None"
+	},
+	{
+		"Id": 3301,
+		"Variant": 8192,
+		"Name": "Tower Of Time",
+		"Series": "SwapForce",
+		"Element": "None"
+	},
+	{
+		"Id": 3302,
+		"Variant": 8710,
+		"Name": "Fiery Forge",
+		"Series": "SwapForce",
+		"Element": "None"
+	},
+	{
+		"Id": 3303,
+		"Variant": 8710,
+		"Name": "Arkeyan Crossbow",
+		"Series": "SwapForce",
+		"Element": "None"
+	}
+]

@@ -1,0 +1,429 @@
+[
+	{
+		"Id": 210,
+		"Variant": 12289,
+		"Name": "Magic Log Holder",
+		"Series": "TrapTeam",
+		"Element": "Magic"
+	},
+	{
+		"Id": 210,
+		"Variant": 12296,
+		"Name": "Magic Skull",
+		"Series": "TrapTeam",
+		"Element": "Magic"
+	},
+	{
+		"Id": 210,
+		"Variant": 12299,
+		"Name": "Magic Axe",
+		"Series": "TrapTeam",
+		"Element": "Magic"
+	},
+	{
+		"Id": 210,
+		"Variant": 12302,
+		"Name": "Magic Hourglass",
+		"Series": "TrapTeam",
+		"Element": "Magic"
+	},
+	{
+		"Id": 210,
+		"Variant": 12306,
+		"Name": "Magic Totem",
+		"Series": "TrapTeam",
+		"Element": "Magic"
+	},
+	{
+		"Id": 210,
+		"Variant": 12309,
+		"Name": "Magic Rocket",
+		"Series": "TrapTeam",
+		"Element": "Magic"
+	},
+	{
+		"Id": 211,
+		"Variant": 12289,
+		"Name": "Water Tiki",
+		"Series": "TrapTeam",
+		"Element": "Water"
+	},
+	{
+		"Id": 211,
+		"Variant": 12290,
+		"Name": "Water Log Holder",
+		"Series": "TrapTeam",
+		"Element": "Water"
+	},
+	{
+		"Id": 211,
+		"Variant": 12294,
+		"Name": "Water Jughead",
+		"Series": "TrapTeam",
+		"Element": "Water"
+	},
+	{
+		"Id": 211,
+		"Variant": 12295,
+		"Name": "Water Angel",
+		"Series": "TrapTeam",
+		"Element": "Water"
+	},
+	{
+		"Id": 211,
+		"Variant": 12299,
+		"Name": "Water Axe",
+		"Series": "TrapTeam",
+		"Element": "Water"
+	},
+	{
+		"Id": 211,
+		"Variant": 12310,
+		"Name": "Water Flying Helmet",
+		"Series": "TrapTeam",
+		"Element": "Water"
+	},
+	{
+		"Id": 211,
+		"Variant": 13318,
+		"Name": "Water Jughead (Legendary)",
+		"Series": "TrapTeam",
+		"Element": "Water"
+	},
+	{
+		"Id": 212,
+		"Variant": 12291,
+		"Name": "Air Toucan",
+		"Series": "TrapTeam",
+		"Element": "Air"
+	},
+	{
+		"Id": 212,
+		"Variant": 12294,
+		"Name": "Air Jughead",
+		"Series": "TrapTeam",
+		"Element": "Air"
+	},
+	{
+		"Id": 212,
+		"Variant": 12302,
+		"Name": "Air Hourglass",
+		"Series": "TrapTeam",
+		"Element": "Air"
+	},
+	{
+		"Id": 212,
+		"Variant": 12304,
+		"Name": "Air Snake",
+		"Series": "TrapTeam",
+		"Element": "Air"
+	},
+	{
+		"Id": 212,
+		"Variant": 12305,
+		"Name": "Air Screamer",
+		"Series": "TrapTeam",
+		"Element": "Air"
+	},
+	{
+		"Id": 212,
+		"Variant": 12312,
+		"Name": "Air Sword",
+		"Series": "TrapTeam",
+		"Element": "Air"
+	},
+	{
+		"Id": 213,
+		"Variant": 12292,
+		"Name": "Undead Orb",
+		"Series": "TrapTeam",
+		"Element": "Undead"
+	},
+	{
+		"Id": 213,
+		"Variant": 12296,
+		"Name": "Undead Skull",
+		"Series": "TrapTeam",
+		"Element": "Undead"
+	},
+	{
+		"Id": 213,
+		"Variant": 12299,
+		"Name": "Undead Axe",
+		"Series": "TrapTeam",
+		"Element": "Undead"
+	},
+	{
+		"Id": 213,
+		"Variant": 12300,
+		"Name": "Undead Hand",
+		"Series": "TrapTeam",
+		"Element": "Undead"
+	},
+	{
+		"Id": 213,
+		"Variant": 12304,
+		"Name": "Undead Snake",
+		"Series": "TrapTeam",
+		"Element": "Undead"
+	},
+	{
+		"Id": 213,
+		"Variant": 12311,
+		"Name": "Undead Captain's Hat",
+		"Series": "TrapTeam",
+		"Element": "Undead"
+	},
+	{
+		"Id": 213,
+		"Variant": 13316,
+		"Name": "Undead Orb (Legendary)",
+		"Series": "TrapTeam",
+		"Element": "Undead"
+	},
+	{
+		"Id": 213,
+		"Variant": 13320,
+		"Name": "Undead Skull (Legendary)",
+		"Series": "TrapTeam",
+		"Element": "Undead"
+	},
+	{
+		"Id": 214,
+		"Variant": 12289,
+		"Name": "Tech Tiki",
+		"Series": "TrapTeam",
+		"Element": "Tech"
+	},
+	{
+		"Id": 214,
+		"Variant": 12295,
+		"Name": "Tech Angel",
+		"Series": "TrapTeam",
+		"Element": "Tech"
+	},
+	{
+		"Id": 214,
+		"Variant": 12297,
+		"Name": "Tech Scepter",
+		"Series": "TrapTeam",
+		"Element": "Tech"
+	},
+	{
+		"Id": 214,
+		"Variant": 12300,
+		"Name": "Tech Hand",
+		"Series": "TrapTeam",
+		"Element": "Tech"
+	},
+	{
+		"Id": 214,
+		"Variant": 12310,
+		"Name": "Tech Flying Helmet",
+		"Series": "TrapTeam",
+		"Element": "Tech"
+	},
+	{
+		"Id": 214,
+		"Variant": 12314,
+		"Name": "Tech Handstand",
+		"Series": "TrapTeam",
+		"Element": "Tech"
+	},
+	{
+		"Id": 215,
+		"Variant": 12289,
+		"Name": "Fire Flower",
+		"Series": "TrapTeam",
+		"Element": "Fire"
+	},
+	{
+		"Id": 215,
+		"Variant": 12293,
+		"Name": "Fire Torch",
+		"Series": "TrapTeam",
+		"Element": "Fire"
+	},
+	{
+		"Id": 215,
+		"Variant": 12297,
+		"Name": "Fire Flower (NEW)",
+		"Series": "TrapTeam",
+		"Element": "Fire"
+	},
+	{
+		"Id": 215,
+		"Variant": 12305,
+		"Name": "Fire Screamer",
+		"Series": "TrapTeam",
+		"Element": "Fire"
+	},
+	{
+		"Id": 215,
+		"Variant": 12306,
+		"Name": "Fire Totem",
+		"Series": "TrapTeam",
+		"Element": "Fire"
+	},
+	{
+		"Id": 215,
+		"Variant": 12311,
+		"Name": "Fire Captain's Hat",
+		"Series": "TrapTeam",
+		"Element": "Fire"
+	},
+	{
+		"Id": 215,
+		"Variant": 12315,
+		"Name": "Fire Yawn",
+		"Series": "TrapTeam",
+		"Element": "Fire"
+	},
+	{
+		"Id": 216,
+		"Variant": 12291,
+		"Name": "Earth Toucan",
+		"Series": "TrapTeam",
+		"Element": "Earth"
+	},
+	{
+		"Id": 216,
+		"Variant": 12292,
+		"Name": "Earth Orb",
+		"Series": "TrapTeam",
+		"Element": "Earth"
+	},
+	{
+		"Id": 216,
+		"Variant": 12298,
+		"Name": "Earth Hammer",
+		"Series": "TrapTeam",
+		"Element": "Earth"
+	},
+	{
+		"Id": 216,
+		"Variant": 12302,
+		"Name": "Earth Hourglass",
+		"Series": "TrapTeam",
+		"Element": "Earth"
+	},
+	{
+		"Id": 216,
+		"Variant": 12306,
+		"Name": "Earth Totem",
+		"Series": "TrapTeam",
+		"Element": "Earth"
+	},
+	{
+		"Id": 216,
+		"Variant": 12314,
+		"Name": "Earth Handstand",
+		"Series": "TrapTeam",
+		"Element": "Earth"
+	},
+	{
+		"Id": 217,
+		"Variant": 12289,
+		"Name": "Life Toucan",
+		"Series": "TrapTeam",
+		"Element": "Life"
+	},
+	{
+		"Id": 217,
+		"Variant": 12291,
+		"Name": "Life Toucan (NEW)",
+		"Series": "TrapTeam",
+		"Element": "Life"
+	},
+	{
+		"Id": 217,
+		"Variant": 12293,
+		"Name": "Life Torch",
+		"Series": "TrapTeam",
+		"Element": "Life"
+	},
+	{
+		"Id": 217,
+		"Variant": 12298,
+		"Name": "Life Hammer",
+		"Series": "TrapTeam",
+		"Element": "Life"
+	},
+	{
+		"Id": 217,
+		"Variant": 12304,
+		"Name": "Life Snake",
+		"Series": "TrapTeam",
+		"Element": "Life"
+	},
+	{
+		"Id": 217,
+		"Variant": 12312,
+		"Name": "Life Sword",
+		"Series": "TrapTeam",
+		"Element": "Life"
+	},
+	{
+		"Id": 217,
+		"Variant": 12315,
+		"Name": "Life Yawn",
+		"Series": "TrapTeam",
+		"Element": "Life"
+	},
+	{
+		"Id": 218,
+		"Variant": 12308,
+		"Name": "Dark Spider",
+		"Series": "TrapTeam",
+		"Element": "Dark"
+	},
+	{
+		"Id": 218,
+		"Variant": 12312,
+		"Name": "Dark Sword",
+		"Series": "TrapTeam",
+		"Element": "Dark"
+	},
+	{
+		"Id": 218,
+		"Variant": 12314,
+		"Name": "Dark Handstand",
+		"Series": "TrapTeam",
+		"Element": "Dark"
+	},
+	{
+		"Id": 219,
+		"Variant": 12303,
+		"Name": "Light Owl",
+		"Series": "TrapTeam",
+		"Element": "Light"
+	},
+	{
+		"Id": 219,
+		"Variant": 12309,
+		"Name": "Light Rocket",
+		"Series": "TrapTeam",
+		"Element": "Light"
+	},
+	{
+		"Id": 219,
+		"Variant": 12315,
+		"Name": "Light Yawn",
+		"Series": "TrapTeam",
+		"Element": "Light"
+	},
+	{
+		"Id": 220,
+		"Variant": 12318,
+		"Name": "Kaos",
+		"Series": "TrapTeam",
+		"Element": "Kaos"
+	},
+	{
+		"Id": 220,
+		"Variant": 13599,
+		"Name": "Kaos (Ultimate)",
+		"Series": "TrapTeam",
+		"Element": "Kaos"
+	}
+]
