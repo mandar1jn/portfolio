@@ -826,21 +826,21 @@
 		"Element": "Fire"
 	},
 	{
-		"Id": 6,
+		"Id": 105,
 		"Variant": 4096,
 		"Name": "Hot Dog",
 		"Series": "Giants",
 		"Element": "Fire"
 	},
 	{
-		"Id": 6,
+		"Id": 105,
 		"Variant": 5122,
 		"Name": "Hot Dog (Molten)",
 		"Series": "Giants",
 		"Element": "Fire"
 	},
 	{
-		"Id": 6,
+		"Id": 105,
 		"Variant": 10245,
 		"Name": "Hot Dog (Fire Bone)",
 		"Series": "SwapForce",
