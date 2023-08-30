@@ -9,16 +9,5 @@ export default defineConfig({
 	output: "static",
 	markdown: {
 		syntaxHighlight: false,
-	},
-	build: {
-		inlineStylesheets: "auto",
-	},
-	experimental: {
-		assets: true,
-	},
-	image: {
-		service: {
-			entrypoint: "astro/assets/services/sharp",
-		},
 	}
 });

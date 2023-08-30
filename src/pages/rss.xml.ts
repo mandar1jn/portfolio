@@ -7,7 +7,7 @@ const posts = await getCollection('blog', ({ data }) => {
 	return true;
 });
 
-export const get = () => rss({
+export const GET = () => rss({
   // `<title>` field in output xml
   title: 'Marijn Kneppers\' Blog',
   // `<description>` field in output xml
