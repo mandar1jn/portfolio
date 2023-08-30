@@ -49,7 +49,7 @@ const canonical = Astro.url;
 		<meta property="og:site_name" content={config.siteName} />
 		<meta name="twitter:site" content={config.author.twitterHandle} />
 
-		<ViewTransitions />
+		<ViewTransitions fallback="none"/>
 
 		<slot name="head" />
 	</head>
