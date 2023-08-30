@@ -7,18 +7,8 @@ export default defineConfig({
 	site: "https://marijnkneppers.dev",
 	integrations: [sitemap(), tailwind()],
 	output: "static",
+	trailingSlash: 'ignore',
 	markdown: {
 		syntaxHighlight: false,
-	},
-	build: {
-		inlineStylesheets: "auto",
-	},
-	experimental: {
-		assets: true,
-	},
-	image: {
-		service: {
-			entrypoint: "astro/assets/services/sharp",
-		},
 	}
 });
