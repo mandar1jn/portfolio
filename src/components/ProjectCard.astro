@@ -1,5 +1,5 @@
 ---
-import { ProjectTag, tags } from '../utils/tags';
+import { type ProjectTag, tags } from '../utils/tags';
 import Tag from './Tag.astro';
 import {Image} from "astro:assets"
 import type { CollectionEntry } from 'astro:content';
@@ -23,7 +23,7 @@ for(let i: number = 0; i < project.data.tags.length; i++)
 <div class="projectCard">
 	<div class="imageContainer">
 		<a href={"/projects/" + project.slug}>
-			<Image src={project.data.imgSrc} format="avif" width={256} height={256} alt={project.data.imgAlt} class="image" />
+			<Image transition:name={project.slug} src={project.data.imgSrc} format="avif" width={256} height={256} alt={project.data.imgAlt} class="image" />
 		</a>
 	</div>
 	<div>

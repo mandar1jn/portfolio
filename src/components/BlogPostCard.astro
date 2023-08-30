@@ -12,7 +12,7 @@ const {post} = Astro.props as Props;
 
 <a class="blogPostCard" href={"/posts/" + post.slug}>
 	<div class="imageContainer">
-		<Image class="image" width={333} height={222} src={post.data.imgSrc} format={"avif"} alt={post.data.imgAlt} />
+		<Image transition:name={post.slug} class="image" width={333} height={222} src={post.data.imgSrc} format={"avif"} alt={post.data.imgAlt} />
 	</div>
 	<div class="infoContainer">
 		<h2 class="title">{post.data.title}</h2>

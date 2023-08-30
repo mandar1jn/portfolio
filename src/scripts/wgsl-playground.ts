@@ -74,9 +74,9 @@ export default class WGSLPlayground {
 
 	static InitializeRenderer = async (): Promise<RendererInitializationData> =>
 	{
-		const { gpu, adapter, device } = await InitializeWebGPU();
+		const { gpu, device } = await InitializeWebGPU();
 
-		const { canvas, context } = ConfigureCanvas(gpu, device, "shader-playground");
+		const { context } = ConfigureCanvas(gpu, device, "shader-playground");
 
 		const shader = device.createShaderModule({
 			code: defaultCode
