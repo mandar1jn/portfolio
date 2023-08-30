@@ -6,17 +6,18 @@ interface Props {
 	title: string,
 	description: string,
 	imgSrc: ImageMetadata,
-	imgAlt: string
+	imgAlt: string,
+	slug: string
 }
 
-const {title, description, imgSrc, imgAlt} = Astro.props as Props;
+const {title, description, imgSrc, imgAlt, slug} = Astro.props as Props;
 ---
 <BaseLayout head={{title: title, description: description}}>
 	<article id="article">
 		<h1 id="title">{title}</h1>
 		<slot name="after-title" />
 		<div id="articleSection">
-				<Image src={imgSrc} width={256} height={205} alt={imgAlt} format="avif" loading="eager" id="image" />
+				<Image transition:name={slug} src={imgSrc} width={256} height={205} alt={imgAlt} format="avif" loading="eager" id="image" />
 			<div id="articleContent">
 				<slot name="article" />
 			</div>

@@ -1,5 +1,5 @@
 ---
-import { CollectionEntry, getCollection } from "astro:content";
+import { type CollectionEntry, getCollection } from "astro:content";
 import ArticleLayout from "@layouts/ArticleLayout.astro";
 
 export async function getStaticPaths() {
@@ -18,6 +18,6 @@ const { project } = Astro.props as Props;
 const { Content } = await project.render();
 ---
 
-<ArticleLayout title={project.data.title} description={project.data.description} imgSrc={project.data.imgSrc} imgAlt={project.data.imgAlt}>
+<ArticleLayout title={project.data.title} description={project.data.description} imgSrc={project.data.imgSrc} imgAlt={project.data.imgAlt} slug={project.slug}>
 	<Content slot="article" />
 </ArticleLayout>

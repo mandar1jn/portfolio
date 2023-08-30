@@ -1,5 +1,5 @@
 ---
-import { CollectionEntry, getCollection } from "astro:content";
+import { type CollectionEntry, getCollection } from "astro:content";
 import ArticleLayout from "@layouts/ArticleLayout.astro";
 import { format } from "date-fns";
 
@@ -23,7 +23,7 @@ const { post } = Astro.props as Props;
 const { Content } = await post.render();
 ---
 
-<ArticleLayout title={post.data.title} description={post.data.description} imgSrc={post.data.imgSrc} imgAlt={post.data.imgAlt}>
+<ArticleLayout title={post.data.title} description={post.data.description} imgSrc={post.data.imgSrc} imgAlt={post.data.imgAlt} slug={post.slug}>
 	<div slot="after-title" class="date">By Marijn Kneppers on <time datetime={post.data.pubDate.toISOString()}>{format(post.data.pubDate, "MMM d, y")}</time></div>
 	<Content slot="article" />
 </ArticleLayout>
