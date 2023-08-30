@@ -17,6 +17,7 @@ import Layout from "@layouts/Layout.astro";
 			<label for="file">File</label>
 			<input id="file" type="file">
 			<input type="submit" value="Decrypt">
+			<a id="file-download" style="display: none;" data-astro-reload />
 		</form>
 	</Section>
 	<Section>
@@ -124,13 +125,10 @@ import Layout from "@layouts/Layout.astro";
 				fileName += `${(k == 0)? "" : "."}${fileParts[k]}`;
 			}
 
-			const a = document.createElement("a");
+			let a = document.getElementById("file-download") as HTMLAnchorElement;
 			a.href = url;
 			a.download = fileName;
-			document.body.appendChild(a);
-			a.style.display = "none";
 			a.click();
-			a.remove();
 
 			setTimeout(() => window.URL.revokeObjectURL(url), 1000);
 
