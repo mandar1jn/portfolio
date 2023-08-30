@@ -7,7 +7,6 @@ export default defineConfig({
 	site: "https://marijnkneppers.dev",
 	integrations: [sitemap(), tailwind()],
 	output: "static",
-	trailingSlash: 'ignore',
 	markdown: {
 		syntaxHighlight: false,
 	}
