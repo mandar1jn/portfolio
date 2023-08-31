@@ -14,7 +14,7 @@ import Layout from "@layouts/Layout.astro";
 <script>
 	import { InitializeWebGPU } from "@scripts/sandbox/webgpu/index";
 
-	const {gpu, adapter, device} = await InitializeWebGPU();
+	const {device} = await InitializeWebGPU();
 
 	const BUFFER_SIZE = 1000;
 

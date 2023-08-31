@@ -17,9 +17,9 @@ import Layout from "@layouts/Layout.astro";
 <script>
 	import { InitializeWebGPU, ConfigureCanvas } from "@scripts/sandbox/webgpu/index";
 
-	const { gpu, adapter, device } = await InitializeWebGPU();
+	const { gpu, device } = await InitializeWebGPU();
 
-	const { canvas, context } = ConfigureCanvas(
+	const { context } = ConfigureCanvas(
 		gpu,
 		device,
 		"spinning-cube"
