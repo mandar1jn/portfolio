@@ -71,7 +71,6 @@ import Section from "../../components/Section.astro";
 			</div>
 
 			<input type="submit" value="Generate" />
-			<a id="file-download" style="display: none;" data-astro-reload />
 		</form>
 	</Section>
 
@@ -460,10 +459,12 @@ import Section from "../../components/Section.astro";
 
 		const url = window.URL.createObjectURL(blob);
 
-		let a = document.getElementById("file-download") as HTMLAnchorElement;
+		const a = document.createElement("a");
+		a.style.display = "none";
 		a.href = url;
 		a.download = `${selector.options[selector.selectedIndex].text}.bin`;
 		a.click();
+		a.remove();
 
 		setTimeout(() => window.URL.revokeObjectURL(url), 1000);
 	}
