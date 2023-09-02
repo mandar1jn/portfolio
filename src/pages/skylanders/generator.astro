@@ -17,7 +17,7 @@ import Section from "../../components/Section.astro";
 	<Section>
 		<form id="form" name="skylander">
 			<label for="figure-type">Figure type:</label>
-			<select class="black-text" name="figure-type">
+			<select class="black-text" name="figure-type" id="figure-type">
 				<option value="Skylander">Skylander</option>
 				<option value="Item">Item</option>
 				<option value="Trap">Trap</option>
@@ -50,24 +50,24 @@ import Section from "../../components/Section.astro";
 
 			<div id="skylanders-data-div" style="display: grid;">
 				<label for="money">Money: </label>
-				<input type="number" class="black-text" max="65000" min="0" value="0" name="money">
+				<input type="number" class="black-text" max="65000" min="0" value="0" name="money" id="money">
 
 				<label for="experience">Experience: </label>
-				<input type="number" class="black-text" max="65535" min="0" value="0" name="experience">
+				<input type="number" class="black-text" max="65535" min="0" value="0" name="experience" id="experience">
 
 				<label for="hero-level">Hero level: </label>
-				<input type="number" class="black-text" max="999" min="0" value="0" name="hero-level">
+				<input type="number" class="black-text" max="999" min="0" value="0" name="hero-level" id="hero-level">
 
 				<label for="first-played">First played: </label>
-				<input type="datetime-local" class="black-text" name="first-played" min="0000-00-00T00:00" >
+				<input type="datetime-local" class="black-text" name="first-played" id="first-played" min="0000-00-00T00:00" >
 
 				<label for="last-placed">Last placed: </label>
-				<input type="datetime-local" class="black-text" name="last-placed" min="0000-00-00T00:00" >
+				<input type="datetime-local" class="black-text" name="last-placed" id="last-placed" min="0000-00-00T00:00" >
 			</div>
 
 			<div id="trophy-villains" style="display: none;">
 				<label for="unlock-villains">Unlock all villains</label>
-				<input name="unlock-villains" type="checkbox" />
+				<input name="unlock-villains" id="unlock-villains" type="checkbox" />
 			</div>
 
 			<input type="submit" value="Generate" />
