@@ -12,7 +12,7 @@ The game reads the figures through a portal of power. A USB-powered device that 
 ## Research
 Before I go and do my own research, I decided to google around to see if I could find some earlier research. And sure enough, I found some. A quick google search for “Skylanders portal protocol” gives us the following result:
 - [https://github.com/tresni/PoweredPortals/wiki/USB-Protocols](https://github.com/tresni/PoweredPortals/wiki/USB-Protocols/)
-- [https://pastebin.com/EqtTRzeF](https://pastebin.com/EqtTRzeF/)
+- [https://pastebin.com/EqtTRzeF](https://pastebin.com/EqtTRzeF=)
 
 Sadly, there are several problems with these documents. The first problem is that they document features for, at the latest, the Skylanders swap force portal. My goal is to create a sandbox that can interact with any portal and all features of these portals. This means I will need to do my own research on how to control the speakers of the trap team portal. Another issue is that these documents only describe the data layout for the Skylanders. So, I will need to figure out the layout for the vehicles, traps, magic items, and imagination crystals. I will also need to find the layout for the sensei Skylanders since they seem to be extra encrypted. And the final problem is: that these documents don’t describe how to communicate with the portal itself. They describe the possible commands, but not what type of communication to use. So, that will be next on my list.
 
