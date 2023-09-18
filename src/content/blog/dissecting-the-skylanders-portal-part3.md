@@ -40,10 +40,10 @@ This all leads to a final command structure:
 ```
 
 ## The editor
-Although dissecting this command took some time, it was not the main reason why this story took so long. As my goal is to make editing Skylanders as accessible as possible, I decided to start working on a visual editor so I don’t have to refactor all my code to work with this later on. This also required some changes to the way my project was set up. For the rendering of the application, I used [Raylib](https://github.com/raysan5/raylib) and [Raygui](https://github.com/raysan5/raygui)
+Although dissecting this command took some time, it was not the main reason why this story took so long. As my goal is to make editing Skylanders as accessible as possible, I decided to start working on a visual editor so I don’t have to refactor all my code to work with this later on. This also required some changes to the way my project was set up. For the rendering of the application, I used [Raylib](https://github.com/raysan5/raylib/) and [Raygui](https://github.com/raysan5/raygui/)
 
 ![A screenshot of the editor in it's current state](../../assets/images/blog/skylanders-editor/editor-raylib.png)
 
 As you can see, this is still very much a work in progress. Currently, you can connect to the portal and you can set the color. My next goal is to add the ability to set the color of either side and to add some debug features to the editor.
 
-As always, the source for this project can be found [on github](https://github.com/mandar1jn/SkylandersEditor).
+As always, the source for this project can be found [on github](https://github.com/mandar1jn/SkylandersEditor/).

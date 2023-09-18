@@ -22,13 +22,13 @@ for(let i: number = 0; i < project.data.tags.length; i++)
 
 <div class="projectCard">
 	<div class="imageContainer">
-		<a href={"/projects/" + project.slug}>
+		<a href={`/projects/${project.slug}/`}>
 			<Image transition:name={project.slug} src={project.data.imgSrc} format="avif" width={256} height={256} alt={project.data.imgAlt} class="image" />
 		</a>
 	</div>
 	<div>
 		<div class="titleContainer">
-			<a href={"/projects/" + project.slug}>
+			<a href={`/projects/${project.slug}/`}>
 				<div class="title">
 					{
 						project.data.title

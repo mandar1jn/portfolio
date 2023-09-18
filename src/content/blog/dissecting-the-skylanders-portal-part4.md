@@ -174,4 +174,4 @@ In short, the figure ID is stored in sector 0x01 as the first two bytes. The for
 As I mentioned, my figure was a Series 2 Cynder. However, there were no other Cynder files to be found. This means figures likely store a separate variant ID or something like this. This is something that I'll have to look into.
 
 ## Conclusion
-For now, that will be it for this article. As I'm getting closer and closer to dissecting the portal and the figures, it gets more and more interesting. I'm really looking forward to diving deeper into these figures. As always, the code can be found on [GitHub](https://github.com/mandar1jn/SkylandersEditor).
+For now, that will be it for this article. As I'm getting closer and closer to dissecting the portal and the figures, it gets more and more interesting. I'm really looking forward to diving deeper into these figures. As always, the code can be found on [GitHub](https://github.com/mandar1jn/SkylandersEditor/).

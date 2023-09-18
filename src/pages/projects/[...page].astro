@@ -45,7 +45,7 @@ const description = "Here you can read all about the projects I have been workin
 		<div class="projectNavContainer">
 			<div class="projectNav olderProjects">
 				{page.url.prev &&
-					<a href={page.url.prev}>	
+					<a href={`${page.url.prev}/`}>	
 						← Older projects
 					</a>
 				}
@@ -53,13 +53,13 @@ const description = "Here you can read all about the projects I have been workin
 			<div class="projectNavIndexes">
 			{
 				[...Array(page.lastPage)].map((_, index) => (
-					<a href={`/posts/${(index != 0)? index + 1 : ""}`}>{index + 1}</a>
+					<a href={`/posts/${(index != 0)? index + 1 : ""}/`}>{index + 1}</a>
 				))
 			}
 			</div>
 			<div class="projectNav newerProjects">
 				{page.url.next &&
-					<a href={page.url.next}>	
+					<a href={`${page.url.next}/`}>	
 						Newer projects →
 					</a>
 				}

@@ -48,7 +48,7 @@ const description = "Here you can read all about what's on my mind or what I'm c
 		<div class="postNavContainer">
 			<div class="postNav olderPosts">
 				{page.url.prev &&
-					<a href={page.url.prev}>	
+					<a href={`${page.url.prev}/`}>	
 						← Older posts
 					</a>
 				}
@@ -56,13 +56,13 @@ const description = "Here you can read all about what's on my mind or what I'm c
 			<div class="postNavIndexes">
 			{
 				[...Array(page.lastPage)].map((_, index) => (
-					<a href={`/posts/${(index != 0)? index + 1 : ""}`}>{index + 1}</a>
+					<a href={`/posts/${(index != 0)? index + 1 : ""}/`}>{index + 1}</a>
 				))
 			}
 			</div>
 			<div class="postNav newerPosts">
 				{page.url.next &&
-					<a href={page.url.next}>	
+					<a href={`${page.url.next}/`}>	
 						Newer posts →
 					</a>
 				}
