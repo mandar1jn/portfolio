@@ -17,7 +17,7 @@ Although my research is far from finished, I can now confidently describe most o
 Research in itself isn't very useful if you have no way to actually use it. Happily, I have already been able to apply my research in a few places.
 
 ### Portal emulation in Dolphin
-Something I was planning on doing after my research was finished was adding portal emulation to [the Dolphin Emulator](dolphin-emu.org). But before I could do that, [deReeperJosh](https://github.com/deReeperJosh/) already opened [a pull request adding portal emulation](https://github.com/dolphin-emu/dolphin/pull/11331/). This PR was based on the code from [RPCS3](https://rpcs3.net/). However, their code has a few flaws and some command descriptions were way off. I was ablet o resolve/improve those parts and ended up becoming a co-author of the commit.
+Something I was planning on doing after my research was finished was adding portal emulation to [the Dolphin Emulator](https://dolphin-emu.org). But before I could do that, [deReeperJosh](https://github.com/deReeperJosh/) already opened [a pull request adding portal emulation](https://github.com/dolphin-emu/dolphin/pull/11331/). This PR was based on the code from [RPCS3](https://rpcs3.net/). However, their code has a few flaws and some command descriptions were way off. I was ablet o resolve/improve those parts and ended up becoming a co-author of the commit.
 
 #### Improving figure data
 deReeperJosh's PR also added the ability to generate figure data. The code used for this used a addition to generate a UID for figures. The problem with this is that this could easily lead to figures having the same ID. Because of that, I opened [a PR that generates random UID's](https://github.com/dolphin-emu/dolphin/pull/11492/).
