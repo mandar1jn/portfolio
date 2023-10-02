@@ -53,7 +53,7 @@ const description = "Here you can read all about the projects I have been workin
 			<div class="projectNavIndexes">
 			{
 				[...Array(page.lastPage)].map((_, index) => (
-					<a href={`/posts/${(index != 0)? index + 1 : ""}/`}>{index + 1}</a>
+					<a href={`/posts/${(index != 0)? `${index + 1}/` : ""}`}>{index + 1}</a>
 				))
 			}
 			</div>
