@@ -1,7 +1,7 @@
 ---
 title: "Reverse engineering Skylanders' Toys-to-life mechanics"
 description: "From hardware to software, this post covers everything I have managed to uncover about Skylanders' Toys-to-life mechanics."
-pubDate: 2022-11-09T20:08:27+0200
+pubDate: 2024-02-07T17:30:00+0200
 imgSrc: "@assets/images/blog/skylanders-mega-post/skylanders-collection.png"
 imgAlt: "My full collection of Skylanders figures placed on top of a table"
 ---
