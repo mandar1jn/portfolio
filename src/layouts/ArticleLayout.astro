@@ -21,7 +21,7 @@ const image = await getImage({src: imgSrc, format: 'avif'});
 		<h1 id="title">{title}</h1>
 		<slot name="after-title" />
 		<div id="articleSection">
-				<img transition:name={slug} src={image.src} width={256} height={205} alt={imgAlt} loading="eager" id="image" />
+				<Image transition:name={slug} src={imgSrc} width={256} height={205} alt={imgAlt} format="avif" loading="eager" id="image" />
 			<div id="articleContent">
 				<slot name="article" />
 			</div>
