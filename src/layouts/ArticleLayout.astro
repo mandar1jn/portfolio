@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "@layouts/Layout.astro"
-import {Image} from "astro:assets"
+import {Image, getImage} from "astro:assets"
 
 interface Props {
 	title: string,
@@ -11,13 +11,18 @@ interface Props {
 }
 
 const {title, description, imgSrc, imgAlt, slug} = Astro.props as Props;
+
+const image = await getImage({src: imgSrc, format: 'avif'});
 ---
 <BaseLayout head={{title: title, description: description}}>
+	<head>
+		<meta property="og:image" content={image.src} />
+	</head>
 	<article id="article">
 		<h1 id="title">{title}</h1>
 		<slot name="after-title" />
 		<div id="articleSection">
-				<Image transition:name={slug} src={imgSrc} width={256} height={205} alt={imgAlt} format="avif" loading="eager" id="image" />
+				<img transition:name={slug} src={image.src} width={256} height={205} alt={imgAlt} loading="eager" id="image" />
 			<div id="articleContent">
 				<slot name="article" />
 			</div>
