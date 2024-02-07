@@ -8,10 +8,11 @@ interface Props {
 	head: {
 		title: string;
 		description: string;
+		openGraphImage?: string;
 	}
 }
 
-const { head: { title, description} } = Astro.props as Props;
+const { head: { title, description, openGraphImage} } = Astro.props as Props;
 
 const canonical = Astro.url;
 ---
@@ -47,6 +48,13 @@ const canonical = Astro.url;
 		
 		<meta property="og:site_name" content={config.siteName} />
 		<meta name="twitter:site" content={config.author.twitterHandle} />
+		<meta name="twitter:creator" content={config.author.twitterHandle} />
+
+		{openGraphImage &&
+			<>
+			<meta property="og:image" content={openGraphImage} />
+			</>
+		}
 
 		<ViewTransitions fallback="none"/>
 

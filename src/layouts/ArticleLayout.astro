@@ -14,9 +14,7 @@ const {title, description, imgSrc, imgAlt, slug} = Astro.props as Props;
 
 const image = await getImage({src: imgSrc, format: 'avif'});
 ---
-<meta property="og:image" content={image.src} slot="head" />
-
-<BaseLayout head={{title: title, description: description}}>
+<BaseLayout head={{title: title, description: description, openGraphImage: image.src}}>
 	<article id="article">
 		<h1 id="title">{title}</h1>
 		<slot name="after-title" />
