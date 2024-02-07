@@ -216,7 +216,7 @@ Along with the list of things stored on a Skylander, it also lists when data is 
 * A Skylander gets a stat boost after completing a challenge
 *(Skylanders Toy FAQ)*
 
-At some point during my research, the Skylanders Toy FAQ website started returning an error page, presumably because it was intentionally removed from the site by Activision. An archived version of the FAQ can be found at https://web.archive.org/web/20220525044625/https://support.activision.com/articles/skylanders-toy-faq. 
+At some point during my research, the Skylanders Toy FAQ website started returning an error page, presumably because it was intentionally removed from the site by Activision. An archived version of the FAQ can be found using [the wayback machine](https://web.archive.org/web/20220525044625/https://support.activision.com/articles/skylanders-toy-faq). 
 
 Knowing what data is stored on a figure saves us a lot of work when deciphering the figure data since we already know some things that we can look for.
 
