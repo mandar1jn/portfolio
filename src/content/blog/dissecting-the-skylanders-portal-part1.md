@@ -5,6 +5,8 @@ pubDate: 2022-06-24T13:08:45+0200
 imgSrc: "@assets/images/blog/skylanders-editor/runic-portal.png"
 imgAlt: "A picture of the runic portal from Skylanders: Spyro's adventure"
 ---
+This post is outdated and is only kept around for archival purposes. Information contained within should be considered as imcomplete or incorrect. For future reference, use [my new post on the subject](https://marijnkneppers.dev/posts/reverse-engineering-skylanders-toys-to-life-mechanics/).
+
 If you’ve paid any attention to gaming over the last decade, you have probably heard of them. Skylanders. The plastic figurines that accompany the game with the same name. But how does the game recognize them? And how can we communicate with them? In this series of articles, I’m planning to find out.
 
 The game reads the figures through a portal of power. A USB-powered device that reads the data from the figures.

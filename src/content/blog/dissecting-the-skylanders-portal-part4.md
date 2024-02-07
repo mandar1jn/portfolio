@@ -5,6 +5,8 @@ pubDate: 2022-11-09T20:08:27+0200
 imgSrc: "@assets/images/blog/skylanders-editor/runic-portal.png"
 imgAlt: "A picture of the runic portal from Skylanders: Spyro's adventure"
 ---
+This post is outdated and is only kept around for archival purposes. Information contained within should be considered as imcomplete or incorrect. For future reference, use [my new post on the subject](https://marijnkneppers.dev/posts/reverse-engineering-skylanders-toys-to-life-mechanics/).
+
 ## Introduction
 Hey everyone. It's been a while. To be exact, it has been over 4 months. In that time, I've rewritten my program several times, but that's something I'll get into later. In this post, I'll discuss where I've been, and how to read from a figure using the Skylanders portal, and I'll start dissecting the figure data.
 

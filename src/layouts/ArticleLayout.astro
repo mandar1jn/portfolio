@@ -74,4 +74,22 @@ const {title, description, imgSrc, imgAlt, slug} = Astro.props as Props;
 		font-size: 1rem;
     	line-height: 1.75rem;
 	}
+
+	#articleContent :global(blockquote) 
+	{
+		margin: 0em 10px;
+		border-left: 5px solid #ccc;
+		padding: 0.5em 10px;
+	}
+
+	#articleContent :global(li)
+	{
+		list-style: initial;
+		margin-left: 1em;
+	}
+
+	#articleContent :global(p:last-child)
+	{
+		margin-bottom: 0%;
+	}
 </style>

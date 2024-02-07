@@ -5,6 +5,8 @@ pubDate: 2022-06-25T16:20:12+0200
 imgSrc: "@assets/images/blog/skylanders-editor/runic-portal.png"
 imgAlt: "A picture of the runic portal from Skylanders: Spyro's adventure"
 ---
+This post is outdated and is only kept around for archival purposes. Information contained within should be considered as imcomplete or incorrect. For future reference, use [my new post on the subject](https://marijnkneppers.dev/posts/reverse-engineering-skylanders-toys-to-life-mechanics/).
+
 In part 2 of this series, I will be looking at writing to the portal and also give some more information on how it works.
 
 Before we begin, I’d quickly like to note that this article will be a bit more technical than part one. I’ve tried to write everything as simple as I could, but it might still be a bit challenging to understand if you do not have a background in Computer Science.

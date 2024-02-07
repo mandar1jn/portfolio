@@ -5,6 +5,8 @@ pubDate: 2022-11-27T14:09:35+0200
 imgSrc: "@assets/images/blog/skylanders-editor/runic-portal.png"
 imgAlt: "A picture of the runic portal from Skylanders: Spyro's adventure"
 ---
+This post is outdated and is only kept around for archival purposes. Information contained within should be considered as imcomplete or incorrect. For future reference, use [my new post on the subject](https://marijnkneppers.dev/posts/reverse-engineering-skylanders-toys-to-life-mechanics/).
+
 ## Introduction
 Well, I've got another massive post for you. And this time, it didn't take me 4 months. In this post, I will be looking at some more figure data, discovering some spicy new commands, and correcting some old ones.
 

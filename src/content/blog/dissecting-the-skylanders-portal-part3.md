@@ -5,6 +5,8 @@ pubDate: 2022-07-02T15:07:51+0200
 imgSrc: "@assets/images/blog/skylanders-editor/runic-portal.png"
 imgAlt: "A picture of the runic portal from Skylanders: Spyro's adventure"
 ---
+This post is outdated and is only kept around for archival purposes. Information contained within should be considered as imcomplete or incorrect. For future reference, use [my new post on the subject](https://marijnkneppers.dev/posts/reverse-engineering-skylanders-toys-to-life-mechanics/).
+
 In the first 2 stories, we’ve looked at the structure of a few commands. However, these commands were already documented elsewhere, and although I verified the data, nothing new was discovered. In this story, however, I will document a command that, as far as I can find, has not been documented anywhere before.
 
 ## The command
