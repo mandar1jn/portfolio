@@ -240,7 +240,7 @@ On every Skylander, the sector trailer of block 0 is set to all 0’s, except th
 #### Access Bits
 In the middle of both keys, there is a set of 4 bytes called the Access Bits. These are meant to indicate what keys are required to perform certain actions like reading and writing to a block.
 
-![A diagram of the access conditions for a data sector](@assets/images/blog/skylanders-mega-post/internal-picture.png)
+![A diagram of the access conditions for a data sector](@assets/images/blog/skylanders-mega-post/access-conditions.png)
 *(“MIFARE Classic EV1 1K - Mainstream Contactless Smart Card IC for Fast and Easy Solution Development”)*
 
 In the figure above, you can see that the first 3 bytes are responsible for the actual access rules, while the last byte is called “user data”. This byte is always set to 0x69 and does not seem to be used.
