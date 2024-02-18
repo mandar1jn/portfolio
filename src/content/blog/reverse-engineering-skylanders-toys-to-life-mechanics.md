@@ -108,7 +108,8 @@ The Music command is somewhat similar to the Activate command in the sense that 
 The Music command is weird in that it does require a response, but it does not need to be instantaneous. After having sent a few activation commands, the game starts sending music data. Meanwhile, the game will keep sending more Music requests. This means that, until the portal sends a response, the game is unable to send any other commands and therefore will cease to function properly.
 
 The response for this command still contains some mysteries. Just like the Activate command, the first two bytes mimic the request. After that, there are two more bytes in the response. The first one can be the full range 0x00 - 0xFF while the second byte is constant and set to 0x19. I have not been able to figure out the function of these bytes.
-The Query command
+
+### The Query command
 The Query command is responsible for reading data from the figures. The request structure is as follows: start with the command character, followed by the figure index in the range 0x00-0x0F, and finally followed by the block index in the range 0x00-0x3F. For a full read, this command needs to be sent 64 times. Once for each block of data on the portal.
 
 At this point, we would expect the response to start with a copy of the first 3 bytes of the request. In this case, however, there are some changes. It is possible that the game tries to query data from a figure index that is currently not being tracked by the portal, or that something goes wrong while reading the data. In this case, the first byte after the command character is set to 0x01. If no issues were encountered, the first byte after the command character is 0x10 plus the command character. Regardless of whether an error occurred or not, the following byte reflects the requested block index. Following this, there are 0x10 (16) more bytes. This is the data stored in the block that was requested by the game.
@@ -120,12 +121,12 @@ The Ready command is the first command that is sent by the games. It is used to 
 
 The request is the most basic request there is, as it is only the command request. The response contains 2 extra bytes. The first one of those is always either 0x00 or 0x01 while the second byte can seemingly be anything from 0x00 to 0xFF. Every portal type has a different set of values for these bytes. When we send the bytes for a portal that is not supported by the game we get a warning that the portal is not supported. This tells us that these bytes either encode the features supported by a portal or directly identify a portal variant.
 
-The Status command
+### The Status command
 The Status command is one of the most important commands because, without this, there would be no way for the games to tell whether a figure is on the portal or not. Whenever the portal is active, Status responses will automatically be sent every tick whenever no other response is queued up.
 
 The Status request is one of the simplest as it only consists of the command character. The response on the other hand is one of, if not the most complex responses in this entire protocol. As always the response starts with the command character. This is directly followed by what I call the character status array. 
 
-The character status array consists of 4 bytes being read as a little-endian 32-bit integer. This integer is essentially an array consisting of 16 entries where each entry is 2 bytes and index 0 is the right-most bit pair and index 15 is the left-most bit pair. Within every pair the right bit is used to represent the state and the leftmost bit is an event indicator. For the right bit, this means that it is 0b0 if no figure is present and 0b1 if a figure is present. For the left bit, this means that if the state has no changes it is set to 0b0 and when the state has changed it is set to 0b1. This essentially forms an enum as seen below.
+The character status array consists of 4 bytes being read as a little-endian 32-bit integer. This integer is essentially an array consisting of 16 entries where each entry is 2 bits and index 0 is the right-most bit pair and index 15 is the left-most bit pair. Within every pair the right bit is used to represent the state and the leftmost bit is an event indicator. For the right bit, this means that it is 0b0 if no figure is present and 0b1 if a figure is present. For the left bit, this means that if the state has no changes it is set to 0b0 and when the state has changed it is set to 0b1. This essentially forms an enum as seen below.
 
 ```c
 enum Status {
