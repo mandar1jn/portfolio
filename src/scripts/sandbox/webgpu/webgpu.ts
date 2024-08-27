@@ -13,7 +13,7 @@ export const InitializeWebGPU = async () => {
 		throw "Failed to request a WebGPU adapter";
 	}
 
-	console.log(await adapter.requestAdapterInfo());
+	console.log(adapter.info);
 
 	const device = await adapter.requestDevice();
 
