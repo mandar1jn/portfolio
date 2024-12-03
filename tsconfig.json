@@ -7,9 +7,8 @@
 			"@layouts/*": ["./src/layouts/*"],
 			"@assets/*": ["./src/assets/*"],
 			"@scripts/*": ["./src/scripts/*"]
-		},
-		"typeRoots": [ "./node_modules/@webgpu/types", "./node_modules/@types"]
+		}
 	},
-	"include": [".astro/types.d.ts", "**/*"],
+	"include": [".astro/types.d.ts", "**/*", "./node_modules/@webgpu/types", "./node_modules/@types"],
 	"exclude": ["dist"]
 }
