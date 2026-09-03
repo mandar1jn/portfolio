@@ -1,17 +1,22 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
+import { type CollectionEntry, getCollection, render } from "astro:content";
 import ArticleLayout from "@layouts/ArticleLayout.astro";
 import { format } from "date-fns";
 
 export async function getStaticPaths() {
-	const posts: CollectionEntry<'blog'>[] = await getCollection('blog', ({ data } : any) => {
-		if(import.meta.env.MODE == "production")
-			return data.draft != true;
-		return true;
+	const posts: CollectionEntry<"blog">[] = await getCollection(
+		"blog",
+		({ data }: any) => {
+			if (import.meta.env.MODE == "production") return data.draft != true;
+			return true;
+		},
+	);
+
+	const params = posts.map((post) => {
+		const slug = post.id;
+		return { params: { post: slug }, props: { post: post } };
 	});
 
-	const params = posts.map((post) => { const slug = post.slug; return {params: {post: slug}, props: {post: post}} })
-	
 	return params;
 }
 
@@ -20,16 +25,27 @@ interface Props {
 }
 
 const { post } = Astro.props as Props;
-const { Content } = await post.render();
+const { Content } = await render(post);
 ---
 
-<ArticleLayout title={post.data.title} description={post.data.description} imgSrc={post.data.imgSrc} imgAlt={post.data.imgAlt} slug={post.slug}>
-	<div slot="after-title" class="date">By Marijn Kneppers on <time datetime={post.data.pubDate.toISOString()}>{format(post.data.pubDate, "MMM d, y")}</time></div>
+<ArticleLayout
+	title={post.data.title}
+	description={post.data.description}
+	imgSrc={post.data.imgSrc}
+	imgAlt={post.data.imgAlt}
+	slug={post.id}
+>
+	<div slot="after-title" class="date">
+		By Marijn Kneppers on <time datetime={post.data.pubDate.toISOString()}
+			>{format(post.data.pubDate, "MMM d, y")}</time
+		>
+	</div>
 	<Content slot="article" />
 </ArticleLayout>
 
 <style>
+	@reference "tailwindcss";
 	.date {
-		@apply text-gray-400 text-center
+		@apply text-gray-400 text-center;
 	}
 </style>
