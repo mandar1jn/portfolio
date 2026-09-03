@@ -24,3 +24,6 @@ pnpm-debug.log*
 
 # Astro files
 .astro/
+
+# Wrangler files
+.wrangler/
