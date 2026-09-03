@@ -5,11 +5,7 @@ import { format } from "date-fns";
 
 export async function getStaticPaths() {
 	const posts: CollectionEntry<"blog">[] = await getCollection(
-		"blog",
-		({ data }: any) => {
-			if (import.meta.env.MODE == "production") return data.draft != true;
-			return true;
-		},
+		"blog"
 	);
 
 	const params = posts.map((post) => {

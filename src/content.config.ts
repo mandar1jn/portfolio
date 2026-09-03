@@ -1,22 +1,21 @@
 import { defineCollection } from "astro:content"
-import {z} from "astro/zod"
+import { z } from "astro/zod"
 import { glob } from 'astro/loaders';
 
 const blog = defineCollection({
 	loader: glob({ pattern: '**/[^_]*.md', base: "./src/content/blog" }),
-	schema: ({image}) => z.object({
+	schema: ({ image }) => z.object({
 		title: z.string(),
 		description: z.string(),
 		pubDate: z.coerce.date(),
 		imgSrc: image(),
 		imgAlt: z.string(),
-		draft: z.boolean().optional()
 	})
 })
 
 const projects = defineCollection({
 	loader: glob({ pattern: '**/[^_]*.md', base: "./src/content/projects" }),
-	schema: ({image}) => z.object({
+	schema: ({ image }) => z.object({
 		title: z.string(),
 		description: z.string(),
 		imgSrc: image(),

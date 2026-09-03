@@ -10,11 +10,7 @@ import {Image} from "astro:assets";
 import Icon from "@components/Icon.astro";
 import heroImage from "@assets/images/foto.jpg";
 
-const posts = await getCollection('blog', ({ data }) => {
-	if(import.meta.env.MODE == "production")
-		return data.draft != true;
-	return true;
-});
+const posts = await getCollection('blog');
 const sortedPosts = sortPostsByDate(posts);
 const lastPosts = sortedPosts.slice(0, 3);
 

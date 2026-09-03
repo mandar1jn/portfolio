@@ -1,11 +1,7 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 
-const posts = await getCollection('blog', ({ data }) => {
-	if (import.meta.env.PROD)
-		return data.draft != true;
-	return true;
-});
+const posts = await getCollection('blog');
 
 export const GET = () => rss({
 	// `<title>` field in output xml
