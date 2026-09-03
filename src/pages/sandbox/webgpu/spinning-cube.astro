@@ -123,9 +123,9 @@ import Layout from "@layouts/Layout.astro";
 			usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST,
 		});
 
-		device.queue.writeBuffer(uniformBuffer, 0, model as ArrayBuffer);
-		device.queue.writeBuffer(uniformBuffer, 64, view as ArrayBuffer);
-		device.queue.writeBuffer(uniformBuffer, 128, projection as ArrayBuffer);
+		device.queue.writeBuffer(uniformBuffer, 0, model as unknown as ArrayBuffer);
+		device.queue.writeBuffer(uniformBuffer, 64, view as unknown as ArrayBuffer);
+		device.queue.writeBuffer(uniformBuffer, 128, projection as unknown as ArrayBuffer);
 
 		const bindGroupLayout = device.createBindGroupLayout({
 			entries: [

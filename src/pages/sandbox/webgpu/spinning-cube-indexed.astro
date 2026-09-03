@@ -131,8 +131,8 @@ import Layout from "@layouts/Layout.astro";
 		label: "Matrices"
 	});
 
-	device.queue.writeBuffer(uniformBuffer, 64, view as ArrayBuffer);
-	device.queue.writeBuffer(uniformBuffer, 128, projection as ArrayBuffer);
+	device.queue.writeBuffer(uniformBuffer, 64, view as unknown as ArrayBuffer);
+	device.queue.writeBuffer(uniformBuffer, 128, projection as unknown as ArrayBuffer);
 
 	let t = 0;
 
@@ -143,7 +143,7 @@ import Layout from "@layouts/Layout.astro";
 		const model = mat4.create();
 		mat4.rotate(model, model, t, [1, 1, 0]);
 
-		device.queue.writeBuffer(uniformBuffer, 0, model as ArrayBuffer);
+		device.queue.writeBuffer(uniformBuffer, 0, model as unknown as ArrayBuffer);
 
 		const bindGroupLayout = device.createBindGroupLayout({
 			entries: [
